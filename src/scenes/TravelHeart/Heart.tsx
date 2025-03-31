@@ -25,7 +25,7 @@ export default function Heart({ visible }: { visible: boolean }) {
           files="/images/studio_small_02_1k.exr"
           backgroundBlurriness={0.6}
           backgroundIntensity={10}
-          environmentIntensity={0.05}
+          environmentIntensity={0.2}
           environmentRotation={[0, Math.PI * 0, 0]}
         />
       )}

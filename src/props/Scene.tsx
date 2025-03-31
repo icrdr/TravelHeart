@@ -269,7 +269,7 @@ export default function Scene({
           antialias: false,
           logarithmicDepthBuffer: true,
         }}
-        dpr={isMobile ? 0.6 : 1}
+        dpr={isMobile ? 0.5 : 1}
       >
         <group name="main" visible={!!controls}>
           {children}
