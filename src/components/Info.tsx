@@ -4,13 +4,6 @@ import { cn } from "../lib/utils";
 
 function Info() {
   const [isActive, setIsActive] = useState(false);
-  const handleClick = () => {
-    // if (sceneRef.current) {
-    //   sceneRef.current.resetCamera();
-    //   sceneRef.current.moveCamera({ position: new Vector3(0, 0, 0) }, true);
-    // }
-  };
-
   return (
     // <div className="rounded-2xl bg-white p-4 shadow-2xl">
     //   <Button variant="secondary" onClick={handleClick}>X</Button>

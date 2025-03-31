@@ -1,12 +1,5 @@
 import { Bvh, Detailed, useGLTF } from "@react-three/drei";
-import {
-  Camera,
-  Light,
-  Mesh,
-  Object3D,
-  PerspectiveCamera,
-  Vector3,
-} from "three";
+import { Light, Mesh, PerspectiveCamera, Vector3 } from "three";
 import { JSX, useEffect, useMemo } from "react";
 import { getAbsolutePosition, getBBoxCenter } from "@/lib/utils";
 
@@ -32,7 +25,7 @@ export default function BlenderScene({
 }) {
   const { scene: origialScene } = useGLTF(path);
 
-  const { scene, extra, bookmarks, mainCamera } = useMemo(() => {
+  const { scene, extra, bookmarks } = useMemo(() => {
     const scene = origialScene.clone();
     const extra: JSX.Element[] = [];
     const bookmarks: Bookmark[] = [];

@@ -1,6 +1,5 @@
 import { Suspense, useRef } from "react";
-import { Detailed, Outlines, useGLTF } from "@react-three/drei";
-import { AdditiveBlending, Mesh } from "three";
+import { Detailed, useGLTF } from "@react-three/drei";
 import Loader from "@/props/Loader";
 
 useGLTF.preload("/models/CoronaryAtery.glb");

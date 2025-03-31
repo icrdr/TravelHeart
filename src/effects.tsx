@@ -21,7 +21,7 @@ export const AutoFocusDOF = ({
 
   raycaster.firstHitOnly = true;
 
-  useFrame((state) => {
+  useFrame((_state) => {
     if (mouseFocus) {
       raycaster.setFromCamera(mouse, camera);
     } else {

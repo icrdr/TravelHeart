@@ -1,6 +1,5 @@
-import { Html, OrbitControls, Text, useGLTF } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { Vector3 } from "three";
-import { Button } from "../components/ui/button";
 
 // 标签组件
 export default function Label({
@@ -26,7 +25,7 @@ export default function Label({
           <div className="flex justify-between">
             <div
               className="text-xl"
-              onClick={(e) => {
+              onClick={(_e) => {
                 if (onClick) onClick();
               }}
             >

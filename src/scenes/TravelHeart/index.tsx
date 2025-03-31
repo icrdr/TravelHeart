@@ -1,10 +1,8 @@
-import { JSX, Ref, Suspense, useState } from "react";
+import { Ref } from "react";
 import CoronaryArtery from "./CoronaryArtery";
 import Heart from "./Heart";
 import Scene, { SceneRefMethods } from "@/props/Scene";
 import { useLocation } from "react-router";
-import { Vector3 } from "three";
-import { Bookmark } from "@/props/BlenderScene";
 
 const labels = [
   {

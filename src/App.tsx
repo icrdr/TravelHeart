@@ -1,15 +1,12 @@
 import RotatableKnob from "@/components/RotatableKnob";
-import SceneContainer from "@/components/SceneContainer";
 import Title from "@/components/Title";
 import TravelHeart from "./scenes/TravelHeart/index";
 import { Flow, Heart, Valve } from "@/icons";
-import { createContext, useEffect, useMemo, useRef, useState } from "react";
-import { Vector3 } from "three";
-import Info from "@/components/Info";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
-import Scene, { SceneRefMethods } from "./props/Scene";
+import { SceneRefMethods } from "./props/Scene";
 import UnderDev from "./components/UnderDev";
 
 const WELCOME_DURATION = 3000;

@@ -1,8 +1,6 @@
 import { Suspense, useRef } from "react";
-import { Detailed, Outlines, useGLTF } from "@react-three/drei";
-import { AdditiveBlending, Mesh } from "three";
+import { Detailed, useGLTF } from "@react-three/drei";
 import Loader from "@/props/Loader";
-import Label from "../props/Label";
 
 useGLTF.preload("/Heart.glb");
 useGLTF.preload("/Heart_Cutted.glb");
@@ -70,7 +68,7 @@ export default function Heart() {
   return (
     <Suspense fallback={<Loader />}>
       <Detailed distances={[2.5, 4]}>
-        {/* <Cutted /> */}
+        <Cutted />
         <Normal />
         <WithPulmonaryVessels />
       </Detailed>

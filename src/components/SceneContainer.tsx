@@ -1,7 +1,5 @@
 import { isMobile } from "react-device-detect";
-import { CameraProps, Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import Loader from "@/props/Loader";
+import { Canvas } from "@react-three/fiber";
 
 export default function SceneContainer({
   children,

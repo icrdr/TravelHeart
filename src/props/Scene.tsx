@@ -1,13 +1,7 @@
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import {
-  CameraControls,
-  MeshTransmissionMaterial,
-  PerspectiveCamera,
-  useProgress,
-} from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { CameraControls } from "@react-three/drei";
 import {
   createContext,
-  JSX,
   Ref,
   useCallback,
   useEffect,
@@ -16,10 +10,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { lerp } from "three/src/math/MathUtils.js";
 import {
-  Autofocus,
-  DepthOfField,
   EffectComposer,
   N8AO,
   SMAA,
@@ -27,18 +18,12 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 import { isMobile } from "react-device-detect";
-import { Vector3, Mesh, Camera, Spherical } from "three";
+import { Spherical } from "three";
 import { animated, useSpring } from "@react-spring/three";
 import { config } from "@react-spring/web";
 import { AutoFocusDOF, LensDistortionn } from "@/effects";
 import Label from "@/props/Label";
-import {
-  direactionToSphericalAngles,
-  fovToZoom,
-  getAbsolutePosition,
-  sleep,
-  string2URI,
-} from "@/lib/utils";
+import { fovToZoom, sleep } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router";
 import { Bookmark, CameraData } from "./BlenderScene";
 
@@ -222,7 +207,7 @@ export default function Scene({
     };
   }, []);
 
-  const moveCamera = (to: CameraData, enableTransition = false) => {
+  const moveCamera = (to: Partial<CameraData>, enableTransition = false) => {
     if (!controls) return;
     if (enableTransition) {
       startTransition();
@@ -258,7 +243,7 @@ export default function Scene({
     controls.maxPolarAngle = Math.min(spherical.phi + 0.5, Math.PI);
   };
 
-  const resetCamera = (enableTransition = false) => {
+  const resetCamera = (_enableTransition = false) => {
     // if (sceneData) moveCamera(sceneData.initCamera, enableTransition);
   };
 

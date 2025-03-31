@@ -1,4 +1,4 @@
-import { Environment, Helper, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF } from "@react-three/drei";
 import { useContext } from "react";
 import { SceneContext } from "@/props/Scene";
 import BlenderScene from "@/props/BlenderScene";
