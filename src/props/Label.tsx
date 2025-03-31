@@ -20,7 +20,7 @@ export default function Label({
       <Html zIndexRange={[0, 0]}>
         <div
           style={{ width: width || 200, whiteSpace: "pre-line" }}
-          className="label p-2 bg-transparent flex flex-col gap-2 select-none"
+          className="p-2 bg-transparent flex flex-col gap-2 select-none"
           onClick={(_e) => {
             if (onClick) onClick();
           }}
