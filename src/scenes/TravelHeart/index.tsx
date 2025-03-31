@@ -18,7 +18,11 @@ export default function TravelHeartStage({
 }) {
   const location = useLocation();
   return (
-    <Scene ref={ref} labels={labels}>
+    <Scene
+      ref={ref}
+      labels={labels}
+      bokehScale={location.pathname === "/travelheart/ca" ? 10 : 0}
+    >
       {/* <Suspense> */}
       <Heart visible={location.pathname === "/travelheart"} />
       <CoronaryArtery visible={location.pathname === "/travelheart/ca"} />

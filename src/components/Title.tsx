@@ -11,9 +11,10 @@ function Title() {
         className={cn(
           "relative p-4 backdrop-blur-xl",
           "transition-all duration-1000",
+          "bg-[url(/images/about.png)] bg-cover bg-center",
           isActive ? "w-screen h-screen" : "w-0 h-0",
-          isActive ? "bg-white/50" : "bg-white/0",
           isActive ? "rounded-none" : "rounded-br-3xl",
+          isActive ? "opacity-100" : "opacity-0",
           isActive ? "p-4" : "p-0"
         )}
       ></div>

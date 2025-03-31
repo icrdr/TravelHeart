@@ -49,6 +49,7 @@ export const SceneContext = createContext<SceneContext | null>(null);
 
 export default function Scene({
   enabledControl = true,
+  bokehScale = 0,
   labels = [],
   bookmarks = [],
   polarRotateSpeed,
@@ -59,6 +60,7 @@ export default function Scene({
   ref,
 }: {
   enabledControl?: boolean;
+  bokehScale?: number;
   bookmarks?: Bookmark[];
   labels?: label[];
   polarRotateSpeed?: number;
@@ -237,10 +239,10 @@ export default function Scene({
     controls.getSpherical(spherical);
     controls.minDistance = spherical.radius * 0.5;
     controls.maxDistance = spherical.radius * 1.5;
-    controls.minAzimuthAngle = spherical.theta - 1;
-    controls.maxAzimuthAngle = spherical.theta + 1;
-    controls.minPolarAngle = Math.max(spherical.phi - 0.5, 0);
-    controls.maxPolarAngle = Math.min(spherical.phi + 0.5, Math.PI);
+    // controls.minAzimuthAngle = spherical.theta - 2;
+    // controls.maxAzimuthAngle = spherical.theta + 2;
+    controls.minPolarAngle = Math.max(spherical.phi - 0.8, 0);
+    controls.maxPolarAngle = Math.min(spherical.phi + 0.8, Math.PI);
   };
 
   const resetCamera = (_enableTransition = false) => {
@@ -310,7 +312,7 @@ export default function Scene({
             {!isMobile && (
               <>
                 <AutoFocusDOF
-                  bokehScale={10} //blur scale
+                  bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
                   // mouseFocus //if false, the center of the screen will be the focus
                   focusSpeed={0.05} // milliseconds to focus a new detected mesh
