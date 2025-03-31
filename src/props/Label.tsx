@@ -17,22 +17,17 @@ export default function Label({
 }) {
   return (
     <group position={position}>
-      <Html>
+      <Html zIndexRange={[0, 0]}>
         <div
           style={{ width: width || 200, whiteSpace: "pre-line" }}
-          className="font-[Sarasa_UI_CL] p-2 bg-transparent flex flex-col gap-2"
+          className="label p-2 bg-transparent flex flex-col gap-2 select-none"
+          onClick={(_e) => {
+            if (onClick) onClick();
+          }}
         >
           <div className="flex justify-between">
-            <div
-              className="text-xl"
-              onClick={(_e) => {
-                if (onClick) onClick();
-              }}
-            >
-              {title}
-            </div>
+            <div className="text-xl">{title}</div>
           </div>
-
           <div className="text-sm">{content}</div>
         </div>
       </Html>
