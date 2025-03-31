@@ -6,9 +6,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
-import { SceneRefMethods } from "./props/Scene";
-import UnderDev from "./components/UnderDev";
+import { SceneRefMethods } from "@/props/Scene";
+import UnderDev from "@/components/UnderDev";
 import { useProgress } from "@react-three/drei";
+import SplashCursor from "@/components/SplashCursor";
 
 const WELCOME_DURATION = 3000;
 
@@ -26,7 +27,7 @@ function App() {
       title: "Blood Flow",
       pathname: "/bloodflow",
       icon: <Flow width={32} />,
-      content: <UnderDev />,
+      content: <SplashCursor />,
     },
     {
       title: "Valve",
