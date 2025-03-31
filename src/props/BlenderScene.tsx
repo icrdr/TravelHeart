@@ -1,7 +1,7 @@
 import { Bvh, Detailed, useGLTF } from "@react-three/drei";
 import { Light, Mesh, PerspectiveCamera, Vector3 } from "three";
 import { JSX, useEffect, useMemo } from "react";
-import { getAbsolutePosition, getBBoxCenter } from "@/lib/utils";
+import { getAbsolutePosition } from "@/lib/utils";
 
 export type CameraData = {
   position: Vector3;
@@ -42,7 +42,8 @@ export default function BlenderScene({
           ""
         );
         const lookatObject = scene.getObjectByName(lookatObjectName);
-        const lookat = getBBoxCenter(lookatObject!);
+        if (!lookatObject) console.log(scene.children, lookatObjectName);
+        const lookat = getAbsolutePosition(lookatObject!);
         bookmarks.push({
           name: node.userData["B2R3F_name"],
           data: {
@@ -83,23 +84,6 @@ export default function BlenderScene({
           </Detailed>
         );
       }
-      // if (Object.keys(node.userData).includes("B2R3F_Callout_title")) {
-      //   node.visible = false;
-      //   const position = getAbsolutePosition(node);
-      //   const title = node.userData["B2R3F_Callout_title"]?.replace(
-      //     /\\n/g,
-      //     "\n"
-      //   );
-      //   const content = node.userData["B2R3F_Callout_content"]?.replace(
-      //     /\\n/g,
-      //     "\n"
-      //   );
-      //   const focusCameraName = node.userData[
-      //     "B2R3F_Callout_facingCamera"
-      //   ]?.replace(".", "");
-      //   const focusCamera = scene.getObjectByName(focusCameraName) as Camera;
-      //   bookmarks.push({ position, title, content, focusCamera });
-      // }
 
       if (node instanceof Mesh) {
         node.castShadow = true;
@@ -124,21 +108,6 @@ export default function BlenderScene({
   }, [origialScene]);
 
   useEffect(() => {
-    // const lookatObjectName = mainCamera.userData["B2R3F_lookat"]?.replace(
-    //   ".",
-    //   ""
-    // );
-    // const lookatObject = scene.getObjectByName(lookatObjectName);
-    // const meshes: Object3D[] = [];
-    // scene.traverse((object: Object3D) => {
-    //   if (object instanceof Mesh) {
-    //     meshes.push(object);
-    //   }
-    // });
-    // const lookat = lookatObject
-    //   ? getBBoxCenter(lookatObject)
-    //   : getBBoxCenter(meshes);
-
     onLoad?.(bookmarks);
     return () => {
       onDispose?.(bookmarks);

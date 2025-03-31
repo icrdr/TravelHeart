@@ -8,6 +8,7 @@ import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
 import { SceneRefMethods } from "./props/Scene";
 import UnderDev from "./components/UnderDev";
+import { useProgress } from "@react-three/drei";
 
 const WELCOME_DURATION = 3000;
 
@@ -57,6 +58,8 @@ function App() {
     if (!isWelcoming && isHomePage) setIsWelcoming(true);
   }, [isWelcoming, isHomePage]);
 
+  const { progress } = useProgress();
+
   return (
     <div className="w-screen h-screen bg-gray-200 overflow-hidden relative">
       <div
@@ -95,11 +98,29 @@ function App() {
               isHomePage ? "opacity-100" : "opacity-0"
             )}
           >
-            <div className="text-4xl">Home</div>
+            <div className="text-4xl">
+              {progress === 100
+                ? "Travel Heart"
+                : `${progress.toFixed(1)}% loaded`}{" "}
+            </div>
           </div>
         </div>
       )}
-
+      {progress !== 100 && (
+        <div
+          className={cn(
+            "absolute w-screen h-screen top-0 left-0",
+            "flex items-center justify-center",
+            "bg-white/30 backdrop-blur-md"
+          )}
+        >
+          <div className="text-4xl">
+            {progress === 100
+              ? "Travel Heart"
+              : `${progress.toFixed(1)}% loaded`}{" "}
+          </div>
+        </div>
+      )}
       <RotatableKnob
         show={!isHomePage}
         items={stages}

@@ -3,13 +3,14 @@ import { useContext } from "react";
 import BlenderScene from "@/props/BlenderScene";
 import { SceneContext } from "@/props/Scene";
 
-const SCENE_PATH = "/scenes/HeartScene.glb";
+const SCENE_PATH = "/scenes/HeartScene-transformed.glb";
 useGLTF.preload(SCENE_PATH);
 
 export default function Heart({ visible }: { visible: boolean }) {
   const sceneContext = useContext(SceneContext);
   return (
     <group visible={visible}>
+      {/* <BlenderScene path={SCENE_PATH} /> */}
       {sceneContext && (
         <BlenderScene
           path={SCENE_PATH}

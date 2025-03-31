@@ -3,7 +3,7 @@ import BlenderScene from "@/props/BlenderScene";
 import { Ref, useContext } from "react";
 import Scene, { SceneContext, SceneRefMethods } from "@/props/Scene";
 
-const SCENE_PATH = "/scenes/Welcome.glb";
+const SCENE_PATH = "/scenes/Welcome-transformed.glb";
 useGLTF.preload(SCENE_PATH);
 
 function Welcome() {

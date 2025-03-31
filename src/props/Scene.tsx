@@ -99,7 +99,7 @@ export default function Scene({
 
   const startTransition = () => {
     isTransitionRef.current = true;
-    // controls!.disconnect();
+    controls!.disconnect();
   };
 
   const endTransition = () => {
@@ -277,6 +277,8 @@ export default function Scene({
             .filter((l) => l.bookmark.split("#")[0] === location.pathname)
             .map((l, i) => {
               const bookmark = bookmarkList.find((b) => b.name === l.bookmark);
+              console.log(bookmark);
+              if (!bookmark) return null;
               return (
                 <Label
                   key={i}
