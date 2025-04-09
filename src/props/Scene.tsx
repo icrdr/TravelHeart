@@ -268,7 +268,7 @@ export default function Scene({
   return (
     <SceneContext.Provider value={sceneContext}>
       <Canvas
-        onScroll={(e) => {
+        onScroll={(_e) => {
           console.log("first");
         }}
         ref={canvasRef}
