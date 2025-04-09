@@ -2,7 +2,7 @@ import RotatableKnob from "@/components/RotatableKnob";
 import Title from "@/components/Title";
 import { Flow, Heart, Valve } from "@/icons";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
 import { SceneRefMethods } from "@/props/Scene";

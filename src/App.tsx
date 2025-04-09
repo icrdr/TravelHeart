@@ -1,9 +1,4 @@
 import TravelHeart from "@/scenes/TravelHeart/index";
-import { Route, Routes } from "react-router";
-import BloodFlow from "@/scenes/BloodFlow";
-import ErrorPage from "@/404";
-import Layout from "@/Layout";
-import UnderDev from "@/components/UnderDev";
 import Layout2 from "./Layout2";
 
 function App() {
