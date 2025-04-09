@@ -49,8 +49,8 @@ function Cutted() {
           color="white"
           transparent
           opacity={0.1}
-          depthWrite={false}
-          depthTest={false}
+          depthWrite={true}
+          depthTest={true}
         />
       </mesh>
       <mesh

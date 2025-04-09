@@ -80,6 +80,9 @@ importers:
       three:
         specifier: ^0.174.0
         version: 0.174.0
+      three-stdlib:
+        specifier: ^2.35.14
+        version: 2.35.14(three@0.174.0)
       tw-animate-css:
         specifier: ^1.2.4
         version: 1.2.4

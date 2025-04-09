@@ -18,7 +18,7 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 import { isMobile } from "react-device-detect";
-import { Spherical } from "three";
+import { Color, Spherical } from "three";
 import { animated, useSpring } from "@react-spring/three";
 import { config } from "@react-spring/web";
 import { AutoFocusDOF, LensDistortionn } from "@/effects";
@@ -26,6 +26,7 @@ import Label from "@/props/Label";
 import { fovToZoom, sleep } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router";
 import { Bookmark, CameraData } from "./BlenderScene";
+import { ToneMappingMode } from "postprocessing";
 
 const AnimatedLensDistortionn = animated(LensDistortionn);
 
@@ -57,6 +58,8 @@ export default function Scene({
   truckSpeed,
   dollySpeed,
   children,
+  fog,
+  bg,
   ref,
 }: {
   enabledControl?: boolean;
@@ -68,6 +71,8 @@ export default function Scene({
   truckSpeed?: number;
   dollySpeed?: number;
   children: any;
+  fog?: [string | Color, number, number];
+  bg?: [string | Color];
   ref?: Ref<SceneRefMethods>;
 }) {
   const location = useLocation();
@@ -237,12 +242,12 @@ export default function Scene({
 
     const spherical = new Spherical();
     controls.getSpherical(spherical);
-    controls.minDistance = spherical.radius * 0.5;
-    controls.maxDistance = spherical.radius * 1.5;
+    controls.minDistance = spherical.radius * 0.05;
+    controls.maxDistance = spherical.radius * 0.8;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
-    controls.minPolarAngle = Math.max(spherical.phi - 0.8, 0);
-    controls.maxPolarAngle = Math.min(spherical.phi + 0.8, Math.PI);
+    controls.minPolarAngle = Math.max(spherical.phi - 0.5, 0);
+    controls.maxPolarAngle = Math.min(spherical.phi + 0.5, Math.PI);
   };
 
   const resetCamera = (_enableTransition = false) => {
@@ -263,17 +268,23 @@ export default function Scene({
   return (
     <SceneContext.Provider value={sceneContext}>
       <Canvas
+        onScroll={(e) => {
+          console.log("first");
+        }}
         ref={canvasRef}
         shadows
         gl={{
           antialias: false,
-          logarithmicDepthBuffer: true,
+          logarithmicDepthBuffer: false,
         }}
         dpr={isMobile ? 0.5 : 1}
       >
         <group name="main" visible={!!controls}>
           {children}
         </group>
+        {fog && <fog attach="fog" args={fog} />}
+        {bg && <color attach="background" args={bg} />}
+
         {controls &&
           labels
             .filter((l) => l.bookmark.split("#")[0] === location.pathname)
@@ -307,6 +318,7 @@ export default function Scene({
           dollySpeed={enabledControl ? dollySpeed || 0.5 : 0}
           restThreshold={0.1}
         />
+
         <EffectComposer enabled={true} multisampling={0}>
           <>
             {!isMobile && (
@@ -315,13 +327,13 @@ export default function Scene({
                   bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
                   // mouseFocus //if false, the center of the screen will be the focus
-                  focusSpeed={0.05} // milliseconds to focus a new detected mesh
+                  focusSpeed={0.5} // milliseconds to focus a new detected mesh
                   focalLength={0.003} //how far the focus should go
                 />
                 <N8AO
-                  color="#A03C00"
-                  aoRadius={4}
-                  intensity={4}
+                  color="#f5efe6"
+                  aoRadius={5}
+                  intensity={40}
                   aoSamples={32}
                   denoiseSamples={8}
                 />
@@ -335,7 +347,7 @@ export default function Scene({
           />
           <AnimatedLensDistortionn distortion={d} focalLength={f} />
           <SMAA />
-          <ToneMapping />
+          <ToneMapping mode={ToneMappingMode.AGX} />
         </EffectComposer>
       </Canvas>
     </SceneContext.Provider>

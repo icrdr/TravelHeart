@@ -88,6 +88,7 @@ export default function BlenderScene({
       if (node instanceof Mesh) {
         node.castShadow = true;
         node.receiveShadow = true;
+        node.material.sheen *= 0.1
         if (node.material.transparent) {
           node.material.depthWrite = true;
           node.material.depthTest = true;
