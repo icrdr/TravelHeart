@@ -3,7 +3,7 @@ import { useContext } from "react";
 import BlenderScene from "@/props/BlenderScene";
 import { SceneContext } from "@/props/Scene";
 
-const SCENE_PATH = "/scenes/HeartScene-transformed.glb";
+const SCENE_PATH = "/HeartScene_Qiyi.glb";
 useGLTF.preload(SCENE_PATH);
 
 export default function Heart({ visible }: { visible: boolean }) {
@@ -18,9 +18,8 @@ export default function Heart({ visible }: { visible: boolean }) {
           onDispose={sceneContext.onDispose}
         />
       )}
-      {/* <ambientLight color="#404040" /> */}
-      {visible && (
-        <Environment
+      {/* {visible && (
+        <Environment 
           background
           files="/images/studio_small_02_1k.exr"
           backgroundBlurriness={0.6}
@@ -28,7 +27,7 @@ export default function Heart({ visible }: { visible: boolean }) {
           environmentIntensity={0.2}
           environmentRotation={[0, Math.PI * 0, 0]}
         />
-      )}
+      )} */}
     </group>
   );
 }

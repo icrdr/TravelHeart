@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { SceneContext } from "@/props/Scene";
 import BlenderScene from "@/props/BlenderScene";
 
-const SCENE_PATH = "/scenes/CoronaryArteryScene-transformed.glb";
+const SCENE_PATH = "/CoronaryArteryScene_Qiyi.glb";
 useGLTF.preload(SCENE_PATH);
 
 export default function CoronaryArtery({ visible }: { visible: boolean }) {
@@ -17,8 +17,8 @@ export default function CoronaryArtery({ visible }: { visible: boolean }) {
           onDispose={sceneContext.onDispose}
         />
       )}
-      {/* <ambientLight color="red" intensity={0.1}/> */}
-      {visible && (
+      
+      {/* {visible && (
         <Environment
           background
           files="/images/studio_country_hall_1k.exr"
@@ -27,7 +27,7 @@ export default function CoronaryArtery({ visible }: { visible: boolean }) {
           environmentIntensity={0.05}
           backgroundRotation={[0, Math.PI * -0.3, 0]}
         />
-      )}
+      )} */}
     </group>
   );
 }

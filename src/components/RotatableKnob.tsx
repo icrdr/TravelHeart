@@ -101,7 +101,7 @@ const RotatableKnob = ({
           className={cn(
             "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
             "rounded-full",
-            "bg-gradient-to-r from-zinc-100 via-white to-white"
+            "bg-gradient-to-r from-zinc-10 via-white to-white"
           )}
         ></div>
         {items.map((item, index) => {
