@@ -19,16 +19,17 @@ import {
 } from "@react-three/postprocessing";
 import { isMobile } from "react-device-detect";
 import { Color, Spherical } from "three";
-import { animated, useSpring } from "@react-spring/three";
-import { config } from "@react-spring/web";
-import { AutoFocusDOF, LensDistortionn } from "@/effects";
+// import {  useSpring } from "@react-spring/three";
+// import { config } from "@react-spring/web";
+import { AutoFocusDOF } from "@/effects";
 import Label from "@/props/Label";
 import { fovToZoom, sleep } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router";
 import { Bookmark, CameraData } from "./BlenderScene";
 import { ToneMappingMode } from "postprocessing";
+// import { Stats } from '@react-three/drei'
 
-const AnimatedLensDistortionn = animated(LensDistortionn);
+// const AnimatedLensDistortionn = animated(LensDistortionn);
 
 export interface SceneRefMethods {
   resetCamera: (enableTransition: boolean) => void;
@@ -79,20 +80,20 @@ export default function Scene({
   const navigate = useNavigate();
   const prevLocationRef = useRef(location);
   const [bookmarkList, setBookmarkList] = useState<Bookmark[]>(bookmarks);
-  const [distortion, setDistortion] = useState(0);
+  // const [distortion, setDistortion] = useState(0);
 
-  const springs = useSpring({
-    distortion,
-    config: config.slow,
-    onRest: () => {
-      setDistortion(0);
-    },
-  });
+  // const springs = useSpring({
+  //   distortion,
+  //   config: config.slow,
+  //   onRest: () => {
+  //     setDistortion(0);
+  //   },
+  // });
 
-  const d = springs.distortion.to([-1, 1], [-1, 1]);
-  const f = springs.distortion
-    .to((value) => (value > 0 ? value : 0))
-    .to([0, 0.5], [1, 0.05]);
+  // const d = springs.distortion.to([-1, 1], [-1, 1]);
+  // const f = springs.distortion
+  //   .to((value) => (value > 0 ? value : 0))
+  //   .to([0, 0.5], [1, 0.05]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isTransitionRef = useRef(false);
@@ -120,7 +121,7 @@ export default function Scene({
     if (!controls) return;
     controls.addEventListener("control", async () => {
       if (isTransitionRef.current) return;
-      if (controls.distance >= controls.maxDistance) {
+      if (controls.distance >= controls.maxDistance * 0.9) {
         if (!!location.hash) {
           console.log("start leap out");
           navigate(location.pathname);
@@ -136,13 +137,12 @@ export default function Scene({
             navigate(nextPathname);
           }
         }
-      } else if (controls.distance <= controls.minDistance) {
+      } else if (controls.distance <= controls.minDistance * 1.1) {
         if (!location.hash) return;
         const nextPathname =
           location.pathname + location.hash.replace("#", "/");
         if (!!bookmarkList?.find((b) => b.name === nextPathname)) {
           console.log("start leap in");
-          console.log(nextPathname);
           startTransition();
           controls.zoomTo(100, true);
           await sleep(200);
@@ -151,7 +151,7 @@ export default function Scene({
       }
     });
     controls.addEventListener("rest", () => {
-      console.log("rest");
+      // console.log("rest");
       endTransition();
     });
     return () => {
@@ -242,8 +242,8 @@ export default function Scene({
 
     const spherical = new Spherical();
     controls.getSpherical(spherical);
-    controls.minDistance = spherical.radius * 0.05;
-    controls.maxDistance = spherical.radius * 0.8;
+    controls.minDistance = spherical.radius * 0.5;
+    controls.maxDistance = spherical.radius * 2;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
     controls.minPolarAngle = Math.max(spherical.phi - 0.5, 0);
@@ -277,7 +277,7 @@ export default function Scene({
           antialias: false,
           logarithmicDepthBuffer: false,
         }}
-        dpr={isMobile ? 0.5 : 1}
+        dpr={isMobile ? 0.95 : 1}
       >
         <group name="main" visible={!!controls}>
           {children}
@@ -290,7 +290,6 @@ export default function Scene({
             .filter((l) => l.bookmark.split("#")[0] === location.pathname)
             .map((l, i) => {
               const bookmark = bookmarkList.find((b) => b.name === l.bookmark);
-              console.log(bookmark);
               if (!bookmark) return null;
               return (
                 <Label
@@ -311,7 +310,7 @@ export default function Scene({
         <CameraControls
           ref={handleControlsReady}
           makeDefault
-          smoothTime={0.5}
+          smoothTime={0.8}
           polarRotateSpeed={enabledControl ? polarRotateSpeed || 0.5 : 0}
           azimuthRotateSpeed={enabledControl ? azimuthRotateSpeed || 0.5 : 0}
           truckSpeed={enabledControl ? truckSpeed || 0.5 : 0}
@@ -327,7 +326,7 @@ export default function Scene({
                   bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
                   // mouseFocus //if false, the center of the screen will be the focus
-                  focusSpeed={0.5} // milliseconds to focus a new detected mesh
+                  focusSpeed={0.1} // milliseconds to focus a new detected mesh
                   focalLength={0.003} //how far the focus should go
                 />
                 <N8AO
@@ -345,10 +344,11 @@ export default function Scene({
             darkness={0.5} // vignette darkness
             eskil={false} // Eskil's vignette technique
           />
-          <AnimatedLensDistortionn distortion={d} focalLength={f} />
+          {/* <AnimatedLensDistortionn distortion={d} focalLength={f} /> */}
           <SMAA />
           <ToneMapping mode={ToneMappingMode.AGX} />
         </EffectComposer>
+        {/* <Stats /> */}
       </Canvas>
     </SceneContext.Provider>
   );

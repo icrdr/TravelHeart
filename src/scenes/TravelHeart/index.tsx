@@ -8,7 +8,8 @@ import { Color } from "three";
 const labels = [
   {
     bookmark: "/travelheart#ca",
-    title: "冠脉",
+    title: "冠状动脉",
+    // subtitle: "Coronary Artery",
   },
 ];
 const intensity = 20;
@@ -25,7 +26,7 @@ export default function TravelHeartStage({
       ref={ref}
       labels={labels}
       bokehScale={location.pathname === "/travelheart/ca" ? 10 : 0}
-      fog={[color, 16.5, 18]}
+      fog={[color, 19, 25]}
       bg={[color]}
     >
       {/* <Suspense> */}
