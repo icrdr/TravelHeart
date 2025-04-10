@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { SceneContext } from "@/props/Scene";
 import BlenderScene from "@/props/BlenderScene";
 
-const SCENE_PATH = "public/scenes/CoronaryArteryScene_Qiyi-transformed.glb";
+const SCENE_PATH = "/scenes/CoronaryArteryScene_Qiyi-transformed.glb";
 useGLTF.preload(SCENE_PATH);
 
 export default function CoronaryArtery({ visible }: { visible: boolean }) {
