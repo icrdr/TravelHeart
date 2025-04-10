@@ -310,12 +310,12 @@ export default function Scene({
         <CameraControls
           ref={handleControlsReady}
           makeDefault
-          smoothTime={0.8}
+          smoothTime={0.2}
           polarRotateSpeed={enabledControl ? polarRotateSpeed || 0.5 : 0}
           azimuthRotateSpeed={enabledControl ? azimuthRotateSpeed || 0.5 : 0}
           truckSpeed={enabledControl ? truckSpeed || 0.5 : 0}
           dollySpeed={enabledControl ? dollySpeed || 0.5 : 0}
-          restThreshold={0.1}
+          restThreshold={0.01}
         />
 
         <EffectComposer enabled={true} multisampling={0}>

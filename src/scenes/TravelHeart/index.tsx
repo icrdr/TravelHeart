@@ -11,6 +11,26 @@ const labels = [
     title: "冠状动脉",
     // subtitle: "Coronary Artery",
   },
+  // {
+  //   bookmark: "/travelheart#tv",
+  //   title: "三尖瓣",
+
+  // },
+  {
+    bookmark: "/travelheart#mv",
+    title: "二尖瓣",
+
+  },
+  // {
+  //   bookmark: "/travelheart#ao",
+  //   title: "主动脉瓣",
+
+  // },
+  // {
+  //   bookmark: "/travelheart#pa",
+  //   title: "肺动脉瓣",
+
+  // },
 ];
 const intensity = 20;
 const color = new Color(intensity, intensity, intensity);
