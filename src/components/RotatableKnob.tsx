@@ -23,7 +23,7 @@ const RotatableKnob = ({
   const itemCount = 24;
   const radius = isMobile? 1050 / 2 : 1600 / 2; // 圆盘半径
   // const radius = 1130 / 2;
-  const height = isMobile? 80 : 20; // 圆盘显示高度
+  const height = isMobile? 70 : 30; // 圆盘显示高度
 
   const [step, setStep] = useState(stageIndex || 0);
   const currentRotation = useRef(0); // 拖动过程中的临时角度

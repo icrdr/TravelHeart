@@ -26,7 +26,7 @@ export default function Label({
           }}
         >
           <div className="flex justify-between">
-            <div className="text-x2  md:text-xl text-stone-500 md:text-gray-700  tracking-wider" >{title}</div>
+            <div className="text-xs  md:text-xl text-stone-800 md:text-gray-900  tracking-wider" >{title}</div>
           </div>
           <div className="md:text-xs text-[8px] ">{content}</div>
         </div>

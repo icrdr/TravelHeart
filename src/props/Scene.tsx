@@ -325,7 +325,7 @@ export default function Scene({
                 <AutoFocusDOF
                   bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
-                  // mouseFocus //if false, the center of the screen will be the focus
+                  mouseFocus //if false, the center of the screen will be the focus
                   focusSpeed={0.1} // milliseconds to focus a new detected mesh
                   focalLength={0.003} //how far the focus should go
                 />

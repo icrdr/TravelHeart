@@ -16,11 +16,11 @@ const labels = [
   //   title: "三尖瓣",
 
   // },
-  {
-    bookmark: "/travelheart#mv",
-    title: "二尖瓣",
+  // {
+  //   bookmark: "/travelheart#mv",
+  //   title: "二尖瓣",
 
-  },
+  // },
   // {
   //   bookmark: "/travelheart#ao",
   //   title: "主动脉瓣",
@@ -45,7 +45,7 @@ export default function TravelHeartStage({
     <Scene
       ref={ref}
       labels={labels}
-      bokehScale={location.pathname === "/travelheart/ca" ? 10 : 0}
+      bokehScale={location.pathname === "/travelheart/ca" ? 10 : 8}
       fog={[color, 19, 25]}
       bg={[color]}
     >

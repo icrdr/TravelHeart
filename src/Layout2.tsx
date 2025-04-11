@@ -112,14 +112,14 @@ function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       )}
-      <RotatableKnob
+      {/* <RotatableKnob
         show={!isHomePage}
         items={stages}
         stageIndex={stageIndex}
         onChange={(step) => {
           navigate(stages[step].pathname);
         }}
-      />
+      /> */}
       {/* <Info /> */}
       <Title />
     </div>

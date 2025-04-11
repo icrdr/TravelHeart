@@ -27,6 +27,7 @@ export default function BlenderScene({
 
   const { scene, extra, bookmarks } = useMemo(() => {
     const scene = origialScene.clone();
+    console.log(scene.children.map(o=> o.name));
     const extra: JSX.Element[] = [];
     const bookmarks: Bookmark[] = [];
     let mainCamera: PerspectiveCamera | undefined = undefined;
@@ -42,7 +43,7 @@ export default function BlenderScene({
           ""
         );
         const lookatObject = scene.getObjectByName(lookatObjectName);
-        if (!lookatObject) console.log(scene.children, lookatObjectName);
+        // if (!lookatObject) console.log(scene.children, lookatObjectName);
         const lookat = getAbsolutePosition(lookatObject!);
         bookmarks.push({
           name: node.userData["B2R3F_name"],
