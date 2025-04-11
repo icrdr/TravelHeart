@@ -1,7 +1,7 @@
-import RotatableKnob from "@/components/RotatableKnob";
+// import RotatableKnob from "@/components/RotatableKnob";
 import Title from "@/components/Title";
 import { Flow, Heart, Valve } from "@/icons";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
@@ -12,38 +12,38 @@ const WELCOME_DURATION = 3000;
 
 function Layout({ children }: { children: React.ReactNode }) {
   const welcomeRef = useRef<SceneRefMethods>(null);
-  const stages = [
-    {
-      title: "Travel Heart",
-      pathname: "/travelheart",
-      icon: <Heart width={32} />,
-    },
-    {
-      title: "Blood Flow",
-      pathname: "/bloodflow",
-      icon: <Flow width={32} />,
-    },
-    {
-      title: "Valve",
-      pathname: "/valve",
-      icon: <Valve width={32} />,
-    },
-    {
-      title: "Heart Beat",
-      pathname: "/heartbeat",
-      icon: <Heart width={32} />,
-    },
-  ];
+  // const stages = [
+  //   {
+  //     title: "Travel Heart",
+  //     pathname: "/travelheart",
+  //     icon: <Heart width={32} />,
+  //   },
+  //   {
+  //     title: "Blood Flow",
+  //     pathname: "/bloodflow",
+  //     icon: <Flow width={32} />,
+  //   },
+  //   {
+  //     title: "Valve",
+  //     pathname: "/valve",
+  //     icon: <Valve width={32} />,
+  //   },
+  //   {
+  //     title: "Heart Beat",
+  //     pathname: "/heartbeat",
+  //     icon: <Heart width={32} />,
+  //   },
+  // ];
   const navigate = useNavigate();
   const location = useLocation();
 
-  const stageIndex = useMemo(() => {
-    let stageIndex = stages.findIndex((s) =>
-      location.pathname.startsWith(s.pathname)
-    );
-    stageIndex = stageIndex < 0 ? 0 : stageIndex;
-    return stageIndex;
-  }, [location.pathname]);
+  // const stageIndex = useMemo(() => {
+  //   let stageIndex = stages.findIndex((s) =>
+  //     location.pathname.startsWith(s.pathname)
+  //   );
+  //   stageIndex = stageIndex < 0 ? 0 : stageIndex;
+  //   return stageIndex;
+  // }, [location.pathname]);
 
   const isHomePage = location.pathname === "/";
   const [isWelcoming, setIsWelcoming] = useState(isHomePage);
