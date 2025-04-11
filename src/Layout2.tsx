@@ -1,6 +1,6 @@
 // import RotatableKnob from "@/components/RotatableKnob";
 import Title from "@/components/Title";
-import { Flow, Heart, Valve } from "@/icons";
+// import { Flow, Heart, Valve } from "@/icons";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { cn, sleep } from "./lib/utils";
