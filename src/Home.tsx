@@ -73,32 +73,38 @@ function Home() {
       {
         id: 1,
         image: "/placeholder.svg?height=400&width=600",
-        title: "Mountain Retreat",
-        description: "Escape to the serene mountains for a peaceful getaway.",
+        title: "从宏观到微观",
+        description: "多尺度心脏模型，跨层级解析心血管的生理和病理机制.",
       },
       {
         id: 2,
         image: "/placeholder.svg?height=400&width=600",
-        title: "Beach Paradise",
-        description: "Relax on pristine beaches with crystal clear waters.",
+        title: "轻松交互  自由视角",
+        description: "通过简单的手势，轻松地探索心脏的各个部分。",
       },
       {
         id: 3,
         image: "/placeholder.svg?height=400&width=600",
-        title: "Urban Adventure",
-        description: "Explore the vibrant city life and cultural attractions.",
+        title: "多端兼容  一键直达",
+        description: "无需安装额外软件，通过浏览器即可访问，支持多种设备和操作系统。",
       },
       {
         id: 4,
         image: "/placeholder.svg?height=400&width=600",
-        title: "Forest Exploration",
-        description: "Discover the wonders of ancient forests and wildlife.",
+        title: "生理模块",
+        description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
       },
       {
         id: 5,
         image: "/placeholder.svg?height=400&width=600",
-        title: "Desert Safari",
-        description: "Experience the magic of vast desert landscapes.",
+        title: "病理模块",
+        description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
+      },
+      {
+        id: 6,
+        image: "/placeholder.svg?height=400&width=600",
+        title: "个性化模型",
+        description: "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
       },
     ]
 
@@ -164,6 +170,7 @@ function Home() {
           </Button>
         </motion.div>
       </section>
+
       {/* Background Section */}
       <section
         ref={backgroundRef}
@@ -260,92 +267,6 @@ function Home() {
             </main>
           </motion.div>
 
-          {/* <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "从宏观到微观解析心血管",
-                description:
-                  " 跨越器官-组织-细胞-分子四个层级，全面解析心血管的生理和病理机制。",
-                icon: "✨",
-              },
-              {
-                title: "轻松交互  自由视角",
-                description:
-                  "通过简单的手势，轻松地探索心脏的各个部分，深入了解其结构和功能。",
-                icon: "🌱",
-              },
-              {
-                title: "多端兼容  一键直达",
-                description:
-                  "无需安装额外软件，通过浏览器即可访问，支持多种设备和操作系统。",
-                icon: "🤝",
-              },
-            ].map((highlight, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 * index }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="bg-white rounded-xl p-8 shadow-lg"
-              >
-                <div className="text-4xl mb-4">{highlight.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">
-                  {highlight.title}
-                </h3>
-                <p className="text-gray-700">{highlight.description}</p>
-              </motion.div>
-            ))}
-          </div> */}
-
-          {/* <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 bg-white rounded-xl p-8 shadow-lg"
-          >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">
-                  Something amazing is coming soon!
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>
-                      构建多尺度心脏模型，涵盖器官-组织-细胞-分子层级，手指缩放即可进行跨尺度穿梭。
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>
-                      生理模块生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>
-                      病理模块展示疾病在时间尺度上的动态演示，实现病理位点点击出现组学相关信息。
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>
-                      可基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">✓</span>
-                    <span>
-                      可视人——物理人——生理人的可视化预览，推动心血管力学研究的进一步发展。
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </motion.div> */}
-
           <div className="flex justify-center mt-16">
             <Button
               variant="outline"
@@ -362,7 +283,7 @@ function Home() {
       <section
         id="interactive"
         ref={interactiveRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 relative"
+        className="h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 relative"
       >
         <div className="container max-w-6xl mx-auto px-4 ">
           <motion.div
@@ -384,13 +305,12 @@ function Home() {
             </p> */}
           </motion.div>
 
-          {/* 将包裹 <Scene> 和 <img> 的 <motion.div> 元素的 className 中添加 relative，使其成为定位的参考元素 */}
           <motion.div
             initial={{ opacity: 0}}
             whileInView={{ opacity: 1}}
             transition={{ duration: 0.4 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="h-[800px] w-full rounded-xl overflow-hidden cursor-pointer relative"
+            className="flex flex-col h-[800px] w-full  relative"
             onDoubleClick={handleClick}
             role="button"
             tabIndex={0}
@@ -401,37 +321,23 @@ function Home() {
             }}
             aria-label="Open 3D interactive experience (double-click to activate)"
           >
-          {/* 创建一个父容器来模拟嵌套效果 */}
-          <div className="relative aspect-video">
-            <img
-              src={"/images/Ipad.png"}
-              alt="iPad"
-              className="w-full h-full object-contain "
-            />
-            {/* 使用绝对定位和 padding 来设置 Scene 的位置和间距 */}
-            <div className="absolute inset-0 flex items-center justify-center p-20">
-              <div className="bg-transparent h-[280px] w-[500px]">
-                <Scene bg={[color]} >
-                  <Heart visible={true} />
-                </Scene>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-          {/* 将 img 和 Scene 放在同一个父容器中 */}
-          {/* <div className="absolute h-full w-full ">
-            <img
+
+         <div className=" center h-[800px] w-full object-contain  bg-center bg-no-repeat "
+            style={{ backgroundImage: "url('/images/Ipad.png?height=1920&width=1080')"}}>
+            <div className=" center w-10/12 h-5/12"> </div>
+            {/* <img
               src={"/images/Ipad.png"}
               alt="iPad"
               className="w-full h-full object-contain absolute top-0 left-0 "
-            />
-            <div className="absolute center rounded-xl overflow-hidden shadow-2xl">
+            /> */}
+            <div className=" center w-10/12 h-9/12 rounded-xl  shadow-2xl">
               <Scene bg={[color]} >
                 <Heart visible={true} />
               </Scene>
             </div>
           </div>
-        </motion.div> */}
+
+        </motion.div>
 
           {/* <div className="text-center mt-8 text-gray-400">
             <p>双击进入全屏体验</p>
