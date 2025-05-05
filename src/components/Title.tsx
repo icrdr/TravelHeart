@@ -1,13 +1,14 @@
 import { ShiningHeart } from "@/icons";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Link, useNavigate } from "react-router";
 
 function Title() {
   const [isActive, setIsActive] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <>
-      <div
+      {/* <div
         className={cn(
           "relative p-4 backdrop-blur-xl",
           "transition-all duration-1000",
@@ -17,7 +18,8 @@ function Title() {
           isActive ? "opacity-100" : "opacity-0",
           isActive ? "p-4" : "p-0"
         )}
-      ></div>
+      ></div> */}
+      <Link to={"/#3d"}>
       <div
         className={cn(
           "absolute top-4 left-4",
@@ -25,15 +27,19 @@ function Title() {
           "inline-flex justify-start items-center gap-2",
           "select-none"
         )}
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
+        // onClick={() => {
+        //   setIsActive(!isActive);
+        // }}
+        // onClick={() => {
+        //   navigate("/#3d")
+        // }}
       >
         <ShiningHeart width={32} />
         <div className="text-stone-950 text-xl font-semibold font-['Montserrat']">
           Travel Heart
-        </div>
+        </div>   
       </div>
+      </Link>
     </>
   );
 }

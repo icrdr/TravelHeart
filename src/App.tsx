@@ -1,22 +1,24 @@
 import TravelHeart from "@/scenes/TravelHeart/index";
 import Layout2 from "./Layout2";
+import { Route, Routes } from "react-router";
+import Home from "./Home";
+import NotFoundPage from "./404";
 
 function App() {
   return (
-    <Layout2>
-      <TravelHeart />
-    </Layout2>
-    // <Routes>
-    //   <Route element={<Layout />}>
-    //     <Route path="/" element={<TravelHeart />} />
-    //     <Route path="travelheart" element={<TravelHeart />} />
-    //     <Route path="travelheart/ca" element={<TravelHeart />} />
-    //     <Route path="bloodflow" element={<BloodFlow />} />
-    //     <Route path="valve" element={<UnderDev />} />
-    //     <Route path="heartbeat" element={<UnderDev />} />
-    //   </Route>
-    //   <Route path="*" element={<ErrorPage />} />
-    // </Routes>
+    <Routes>
+      <Route path="/" index element={<Home />} />
+      <Route
+        path="travelheart/*"
+        index
+        element={
+          <Layout2>
+            <TravelHeart />
+          </Layout2>
+        }
+      />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 

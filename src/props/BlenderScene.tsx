@@ -1,7 +1,17 @@
 import { Bvh, Detailed, useGLTF } from "@react-three/drei";
-import { Light, Mesh, PerspectiveCamera, Vector3 } from "three";
+import {
+  Light,
+  Mesh,
+  PerspectiveCamera,
+  Vector3,
+} from "three";
 import { JSX, useEffect, useMemo } from "react";
 import { getAbsolutePosition } from "@/lib/utils";
+// import { useLoader } from "@react-three/fiber";
+// import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+
+// const textureLoader = new TextureLoader();
+// const lightMap = textureLoader.load('/images/lightmap.hdr');
 
 export type CameraData = {
   position: Vector3;
@@ -24,10 +34,11 @@ export default function BlenderScene({
   onDispose?: (bookmarks: Bookmark[]) => void;
 }) {
   const { scene: origialScene } = useGLTF(path);
+  // const lightMap = useLoader(RGBELoader, "/images/Lightmap.hdr");
 
   const { scene, extra, bookmarks } = useMemo(() => {
     const scene = origialScene.clone();
-    console.log(scene.children.map(o=> o.name));
+    // console.log(scene.children.map((o) => o.name));
     const extra: JSX.Element[] = [];
     const bookmarks: Bookmark[] = [];
     let mainCamera: PerspectiveCamera | undefined = undefined;
@@ -89,7 +100,12 @@ export default function BlenderScene({
       if (node instanceof Mesh) {
         node.castShadow = true;
         node.receiveShadow = true;
-        node.material.sheen *= 0.1
+        // if (node.name === "Mesh_0001") {
+        //   node.material.lightMap = lightMap;
+        //   node.material.lightMapIntensity = 1;
+        // }
+
+        node.material.sheen *= 0.1;
         if (node.material.transparent) {
           node.material.depthWrite = true;
           node.material.depthTest = true;

@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { CameraControls } from "@react-three/drei";
+import { Billboard, CameraControls, Outlines, Text } from "@react-three/drei";
 import {
   createContext,
   Ref,
@@ -41,10 +41,11 @@ export type SceneContext = {
   onDispose?: (bookmarks: Bookmark[]) => void;
 };
 
-export type label = {
+export type Label = {
   bookmark: string;
   title: string;
   subtitle?: string;
+  location?: [x: number, y: number, z: number];
 };
 
 export const SceneContext = createContext<SceneContext | null>(null);
@@ -66,7 +67,7 @@ export default function Scene({
   enabledControl?: boolean;
   bokehScale?: number;
   bookmarks?: Bookmark[];
-  labels?: label[];
+  labels?: Label[];
   polarRotateSpeed?: number;
   azimuthRotateSpeed?: number;
   truckSpeed?: number;
@@ -123,7 +124,7 @@ export default function Scene({
       if (isTransitionRef.current) return;
       if (controls.distance >= controls.maxDistance * 0.9) {
         if (!!location.hash) {
-          console.log("start leap out");
+          // console.log("start leap out");
           navigate(location.pathname);
         } else {
           const pathComponents = location.pathname.split("/");
@@ -142,7 +143,7 @@ export default function Scene({
         const nextPathname =
           location.pathname + location.hash.replace("#", "/");
         if (!!bookmarkList?.find((b) => b.name === nextPathname)) {
-          console.log("start leap in");
+          // console.log("start leap in");
           startTransition();
           controls.zoomTo(100, true);
           await sleep(200);
@@ -163,30 +164,35 @@ export default function Scene({
     if (!controls) return;
     const url = location.pathname + location.hash;
     const bookmark = bookmarkList?.find((b) => b.name === url);
-    if (!bookmark) return;
-    const prevLocation = prevLocationRef.current;
-    if (
-      prevLocation.pathname === location.pathname &&
-      prevLocation.hash !== location.hash
-    ) {
-      // jump between labels in same level of view
-      moveCamera(bookmark.data, true);
-    } else if (
-      prevLocation.pathname !== location.pathname &&
-      prevLocation.pathname.includes(location.pathname)
-    ) {
-      // leap from low level to high level
-      console.log("end leap out");
+    if (!bookmark) {
+      const bookmark = bookmarkList?.find((b) => !b.name.includes("#"));
+      if (!bookmark) return;
       moveCamera(bookmark.data);
-      controls.dolly(10);
-      startTransition();
-      controls.dolly(-5, true);
     } else {
-      console.log("end leap in");
-      moveCamera(bookmark.data);
-      controls.dolly(-10);
-      startTransition();
-      controls.dolly(5, true);
+      const prevLocation = prevLocationRef.current;
+      if (
+        prevLocation.pathname === location.pathname &&
+        prevLocation.hash !== location.hash
+      ) {
+        // jump between labels in same level of view
+        moveCamera(bookmark.data, true);
+      } else if (
+        prevLocation.pathname !== location.pathname &&
+        prevLocation.pathname.includes(location.pathname)
+      ) {
+        // leap from low level to high level
+        // console.log("end leap out");
+        moveCamera(bookmark.data);
+        controls.dolly(10);
+        startTransition();
+        controls.dolly(-5, true);
+      } else {
+        // console.log("end leap in");
+        moveCamera(bookmark.data);
+        controls.dolly(-10);
+        startTransition();
+        controls.dolly(5, true);
+      }
     }
   }, [controls, location]);
 
@@ -243,10 +249,10 @@ export default function Scene({
     const spherical = new Spherical();
     controls.getSpherical(spherical);
     controls.minDistance = spherical.radius * 0.5;
-    controls.maxDistance = spherical.radius * 2;
+    controls.maxDistance = spherical.radius * 1.7;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
-    controls.minPolarAngle = Math.max(spherical.phi - 0.5, 0);
+    controls.minPolarAngle = Math.max(spherical.phi - 1, 0);
     controls.maxPolarAngle = Math.min(spherical.phi + 0.5, Math.PI);
   };
 
@@ -269,7 +275,7 @@ export default function Scene({
     <SceneContext.Provider value={sceneContext}>
       <Canvas
         onScroll={(_e) => {
-          console.log("first");
+          // console.log("first");
         }}
         ref={canvasRef}
         shadows
@@ -277,7 +283,7 @@ export default function Scene({
           antialias: false,
           logarithmicDepthBuffer: false,
         }}
-        dpr={isMobile ? 0.95 : 1}
+        dpr={isMobile ? 0.9 : 1}
       >
         <group name="main" visible={!!controls}>
           {children}
@@ -294,7 +300,7 @@ export default function Scene({
               return (
                 <Label
                   key={i}
-                  position={bookmark!.data.lookat}
+                  position={l.location || bookmark!.data.lookat}
                   title={l.title}
                   content={l.subtitle}
                   onClick={() => {
@@ -315,7 +321,7 @@ export default function Scene({
           azimuthRotateSpeed={enabledControl ? azimuthRotateSpeed || 0.5 : 0}
           truckSpeed={enabledControl ? truckSpeed || 0.5 : 0}
           dollySpeed={enabledControl ? dollySpeed || 0.5 : 0}
-          restThreshold={0.01}
+          restThreshold={0.2}
         />
 
         <EffectComposer enabled={true} multisampling={0}>
@@ -327,7 +333,7 @@ export default function Scene({
                   resolution={4096} //resolution (decrease for performance)
                   mouseFocus //if false, the center of the screen will be the focus
                   focusSpeed={0.1} // milliseconds to focus a new detected mesh
-                  focalLength={0.003} //how far the focus should go
+                  focalLength={0.004} //how far the focus should go
                 />
                 <N8AO
                   color="#f5efe6"
@@ -349,6 +355,16 @@ export default function Scene({
           <ToneMapping mode={ToneMappingMode.AGX} />
         </EffectComposer>
         {/* <Stats /> */}
+        {/* <Billboard
+        follow={true}
+        lockX={false}
+        lockY={false}
+        lockZ={false} // Lock the rotation on the z axis (default=false)
+        >
+        <Text font={"/fonts/Montserrat-SemiBold.ttf"} fontSize={0.8} color="white" anchorX="center" anchorY="top" position={[0, 3.5, -8.5]} >
+          Travel            Heart
+        </Text>
+        </Billboard> */}
       </Canvas>
     </SceneContext.Provider>
   );

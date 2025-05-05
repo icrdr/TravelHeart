@@ -57,13 +57,12 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className="w-screen h-screen bg-gray-200 overflow-hidden relative">
       <div
         className={cn(
-          "absolute w-screen h-screen touch-none",
-          isHomePage ? "opacity-0" : "opacity-100"
+          "absolute w-screen h-screen touch-none"
         )}
       >
         {children}
       </div>
-      {isWelcoming && (
+      {/* {isWelcoming && (
         <div
           className={cn(
             "absolute w-screen h-screen",
@@ -111,7 +110,7 @@ function Layout({ children }: { children: React.ReactNode }) {
               : `${progress.toFixed(1)}% loaded`}{" "}
           </div>
         </div>
-      )}
+      )} */}
       {/* <RotatableKnob
         show={!isHomePage}
         items={stages}
