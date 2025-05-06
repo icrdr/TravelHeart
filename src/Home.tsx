@@ -17,6 +17,8 @@ function Home() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const highlightsRef = useRef<HTMLDivElement>(null);
   const interactiveRef = useRef<HTMLDivElement>(null);
+  const precisionMedicineRef = useRef<HTMLDivElement>(null)
+  const explorationRef = useRef<HTMLDivElement>(null)
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
@@ -344,11 +346,99 @@ function Home() {
           <div className="flex justify-center mt-1">
             <Button
               variant="outline"
-              onClick={() => scrollToSection(teamRef)}
+              onClick={() => scrollToSection(precisionMedicineRef)}
               className="rounded-full px-8 border-white text-black hover:bg-white hover:text-blue-500"
             >
-              Meet Our Team
+              Learn About Precision Medicine
             </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Precision Medicine Section */}
+      <section
+        ref={precisionMedicineRef}
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
+      >
+        <div className="container max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">让医学预见</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">精准到每一帧生命动态。</h2>
+            <p className="mt-6 max-w-3xl mx-auto text-gray-700 text-lg">可视人 - 物理人 - 生理人</p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mt-12"
+            >
+              <Button
+                variant="default"
+                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none"
+                onClick={() => scrollToSection(explorationRef)}
+              >
+                <span className="mr-2">+</span> 即将到来
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Exploration Section */}
+      <section
+        ref={explorationRef}
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
+      >
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-left"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">探索的脚步</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">从未停歇。</h2>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="mt-6"
+              >
+                <a
+                  href="#"
+                  className="text-blue-500 hover:text-blue-700 text-lg flex items-center"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToSection(teamRef)
+                  }}
+                >
+                  进一步查看 <span className="ml-1">&#62;</span>
+                </a>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="rounded-xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-u6cWrkxomp75FcXy3VyfMuCTW4OU93.png"
+                alt="Library of research materials arranged in a circular pattern with copper hanging lamps"
+                className="w-full h-auto"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -385,25 +475,25 @@ function Home() {
               {
                 name: "王建安",
                 role: "Scientist",
-                image: "/images/Team/WangJianAn.jpg?height=400&width=400",
+                // image: "/images/Team/WangJianAn.jpg?height=400&width=400",
                 bio: "主要研究方向：心脏瓣膜病介入治疗和系列器械研发、冠状动脉功能评价、心肌损伤和修复的重要机制揭示等处于国际领先地位",
               },
               {
                 name: "计剑",
                 role: "Scientist",
-                image: "/images/Team/JiJian.jpg?height=400&width=400",
+                // image: "/images/Team/JiJian.jpg?height=400&width=400",
                 bio: "主要研究方向：材料学、生物医用高分子-生物医用界面的仿生组装与修饰",
               },
               {
                 name: "吴健",
                 role: "Scientist",
-                image: "/images/Team/WuJian.jpg?height=400&width=400",
+                // image: "/images/Team/WuJian.jpg?height=400&width=400",
                 bio: "主要研究方向：医学人工智能",
               },
               {
                 name: "Dr. Taylor Reed",
                 role: "Scientist",
-                image: "/placeholder.svg?height=400&width=400",
+                // image: "/placeholder.svg?height=400&width=400",
                 bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
               },
             ].map((member, index) => (
