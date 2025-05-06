@@ -272,8 +272,6 @@ function Home() {
         ref={interactiveRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 "
       >
-        {/* 响应式填充：container类根据当前的断点设置最大宽度,mx-auto将其水平居中,
-        而填充类(px-4sm:px-6 lg:px-8)确保在更大的屏幕上内容不会紧贴边缘。 */}
         <div className="container mx-auto px-4sm:px-6 lg:px-8 center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -287,17 +285,17 @@ function Home() {
             </h2>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{  duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
             className="h-full w-full  relative "
             aria-label="Open 3D interactive experience (double-click to activate)"
-          >
+          > */}
             <div className="h-full container relative ">
-              <div
-                className="h-[68%] w-[92.4%] z-10 absolute top-[25.7%] left-[3.8%] rounded-2xl overflow-hidden"
+              {/* <div
+                className="h-[68%] w-[92.4%]  absolute top-[25.7%] left-[3.8%] rounded-2xl overflow-hidden"
                 onDoubleClick={handleClick}
                 role="button"
                 tabIndex={0}
@@ -306,24 +304,39 @@ function Home() {
                     handleClick();
                   }
                 }}
-              >
+              > */}
+              <div
+                className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] rounded-2xl overflow-hidden"
+                onDoubleClick={handleClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleClick();
+                  }
+                }}
+              >  
                 <Scene bg={[color]}>
                   <Heart visible={true} />
                 </Scene>
               </div>
               <img
-                src={"/images/Ipad.png"}
+                src={"/images/HandheldiPad.png"}
                 alt="iPad"
-                className="w-full object-contain center"
+                className="relative w-full object-contain center pointer-events-none"
               />
             </div>
-          </motion.div>
+            <div className="text-center mt-4 text-[#BBBCE2] relative  md:-top-35 sm:-top-10">
+              <p>双击进入全屏体验</p>
+              <p>Double-click to explore the full 3D experience</p>
+            </div> 
+          {/* </motion.div> */}
 
-          <div className="text-center mt-8 text-[#BBBCE2] ">
+           {/* <div className="text-center mt-4 text-[#BBBCE2] ">
             <p>双击进入全屏体验</p>
             <p>Double-click to explore the full 3D experience</p>
-          </div>
-          {/* 底下按键 */}
+          </div>  */}
+   
           <div className="flex justify-center mt-10">
             <Button
               variant="outline"
@@ -340,7 +353,7 @@ function Home() {
         ref={teamRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
       >
-        <div className="container max-w-6xl mx-auto px-4">
+        <div className="container max-w-6xl mx-auto px-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

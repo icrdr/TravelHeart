@@ -328,20 +328,20 @@ export default function Scene({
           <>
             {!isMobile && (
               <>
-                <AutoFocusDOF
+                {/* <AutoFocusDOF
                   bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
                   mouseFocus //if false, the center of the screen will be the focus
                   focusSpeed={0.1} // milliseconds to focus a new detected mesh
                   focalLength={0.004} //how far the focus should go
-                />
-                <N8AO
+                /> */}
+                {/* <N8AO
                   color="#f5efe6"
                   aoRadius={5}
                   intensity={40}
                   aoSamples={32}
                   denoiseSamples={8}
-                />
+                /> */}
               </>
             )}
           </>
