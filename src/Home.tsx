@@ -167,7 +167,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              项目背景
+              由临床问题驱动。
             </h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
@@ -179,10 +179,12 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">Our Journey</h3>
+              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">从宏观到微观  :  For Cardiac Digital Twins</h3>
+              <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">Multi-Scale and Multi-Physics Cardiac Model</h3>
               <p className="text-lg mb-6 text-gray-700 font-['Montserrat']">
-                本项目旨在通过直观的可视化展示和交互展示心血管力学的计算建模成果，并结合多尺度建模、四腔心脏模型、血流动力学模拟等技术，
-                进一步探索深度学习与物理驱动方法在心血管力学中的应用。
+              根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
+              目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
+              本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。 
               </p>
             </motion.div>
 
@@ -335,7 +337,7 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Research Team</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">研究团队</h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
             <p className="mt-6 max-w-2xl mx-auto text-gray-700">
               Meet the brilliant minds behind our groundbreaking research and innovation.
@@ -345,26 +347,26 @@ function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-[1000px]">
             {[
               {
-                name: "Dr. Alex Morgan",
-                role: "Lead Researcher",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Ph.D. in Computer Science with 15+ years of experience in AI and machine learning.",
+                name: "王建安",
+                role: "Scientist",
+                image: "/images/Team/WangJianAn.jpg?height=400&width=400",
+                bio: "主要研究方向：心脏瓣膜病介入治疗和系列器械研发、冠状动脉功能评价、心肌损伤和修复的重要机制揭示等处于国际领先地位",
               },
               {
-                name: "Dr. Jamie Chen",
-                role: "Data Scientist",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Expert in statistical modeling and big data analytics with publications in top journals.",
+                name: "计剑",
+                role: "Scientist",
+                image: "/images/Team/JiJian.jpg?height=400&width=400",
+                bio: "主要研究方向：材料学、生物医用高分子-生物医用界面的仿生组装与修饰",
               },
               {
-                name: "Dr. Sam Wilson",
-                role: "UX Researcher",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Specializes in human-computer interaction and user-centered design methodologies.",
+                name: "吴健",
+                role: "Scientist",
+                image: "/images/Team/WuJian.jpg?height=400&width=400",
+                bio: "主要研究方向：医学人工智能",
               },
               {
                 name: "Dr. Taylor Reed",
-                role: "Technology Lead",
+                role: "Scientist",
                 image: "/placeholder.svg?height=400&width=400",
                 bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
               },
