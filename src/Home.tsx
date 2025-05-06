@@ -22,26 +22,26 @@ function Home() {
   const teamRef = useRef<HTMLDivElement>(null);
 
 
-  // State for mask opacity and parallax effects
-  // const [maskOpacity, setMaskOpacity] = useState(0.8);
+  //State for mask opacity and parallax effects
+  const [maskOpacity, setMaskOpacity] = useState(0.8);
   
-  // Handle scroll to update mask opacity and parallax effects
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!homeRef.current) return
-  //     // Get the height of the home section
-  //     const homeHeight = homeRef.current.offsetHeight
-  //     // Calculate how far we've scrolled
-  //     const scrollPosition = window.scrollY
-  //     // Calculate opacity based on scroll position
-  //     // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-  //     const newOpacity = Math.max(0, 0.8 - (scrollPosition / homeHeight) * 1)
-  //     setMaskOpacity(newOpacity)}
-  //   // Add scroll event listener
-  //    window.addEventListener("scroll", handleScroll)
-  //   // Clean up
-  //   return () => window.removeEventListener("scroll", handleScroll)
-  //   }, [homeRef])
+  //Handle scroll to update mask opacity and parallax effects
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!homeRef.current) return
+      // Get the height of the home section
+      const homeHeight = homeRef.current.offsetHeight
+      // Calculate how far we've scrolled
+      const scrollPosition = window.scrollY
+      // Calculate opacity based on scroll position
+      // Start with 0.7 opacity and fade to 0 as we scroll through the home section
+      const newOpacity = Math.max(0.6, 0.8 - (scrollPosition / homeHeight) * 1.2)
+      setMaskOpacity(newOpacity)}
+    // Add scroll event listener
+     window.addEventListener("scroll", handleScroll)
+    // Clean up
+    return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
 
   // Handle parallax effect on background image
   const scrollToSection= (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -113,52 +113,34 @@ function Home() {
       {/* Home Section */}
       <section
         ref={homeRef}
-        className="h-screen w-screen flex flex-col items-center justify-center relative bg-black text-white
-         overflow-hidden "
+        className="min-h-svh w-screen flex flex-col items-center justify-center relative bg-black text-white
+         overflow-hidden  bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/HeroHeart_v002.png?height=1920&width=1080')"}}
       >
-        {/* Responsive Background Image */}
-        <div className="absolute inset-0 w-full h-full z-0 ">
-          {/* Mobile background (default) */}
-          <div
-            className="block sm:hidden w-full h-full bg-cover bg-center bg-no-repeat opacity-50"
-            style={{ backgroundImage: "url('/images/HeroHeart_v002.png?height=800&width=600')" }}
-          ></div>
-
-          {/* Tablet background */}
-          <div
-            className="hidden sm:block md:hidden w-full h-full bg-cover bg-center bg-no-repeat opacity-75"
-            style={{ backgroundImage: "url('/images/HeroHeart_v002.png?height=1024&width=768')" }}
-          ></div>
-
-          {/* Desktop background */}
-          <div
-            className="hidden md:block w-full h-full bg-cover bg-center bg-no-repeat opacity-75"
-            style={{ backgroundImage: "url('/images/HeroHeart_v002.png?height=1920&width=1080')" }}
-          ></div>
-        </div>
-
-        {/* Semi-transparent mask that fades on scroll */}
         <div
-          className="absolute inset-0 w-full h-full bg-black z-10 transition-opacity duration-300"
-          // style={{ opacity: maskOpacity }}
-          style={{ opacity: 0.7 }}
+          className="absolute inset-0 w-full h-full bg-black  transition-opacity duration-300 z-10"
+          style={{ opacity: maskOpacity }}
+          // style={{ opacity: 0.9 }}
         />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center px-4 z-20 relative"
+          className="z-20 flex flex-col items-center justify-center text-center"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
-            Travel Heart
+          <h1 className="text-6xl sm:text-6xl md:text-8xl font-bold mb-4 ">
+            可视心脏
           </h1>
+          <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Travel Heart
+          </h2>
         </motion.div>
-
+        
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-40 z-10"
+          className=" bottom-40 z-20 "
         >
           <Button
             variant="ghost"
@@ -197,18 +179,11 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-2xl font-semibold mb-4">Our Journey</h3>
-              <p className="text-lg mb-6 text-gray-700">
-                随着心血管疾病在全球范围内的发病率逐年上升，精准、高效的心血管疾病诊断和治疗手段成为医学研究和临床实践的重点。
-                然而，当前的研究成果多局限于学术论文和实验室环境，缺乏直观的可视化展示和交互式应用，
-                本项目旨在通过直观的可视化界面展示心血管力学的计算建模成果，并结合多尺度建模、四腔心脏模型、血流动力学模拟等技术，
+              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">Our Journey</h3>
+              <p className="text-lg mb-6 text-gray-700 font-['Montserrat']">
+                本项目旨在通过直观的可视化展示和交互展示心血管力学的计算建模成果，并结合多尺度建模、四腔心脏模型、血流动力学模拟等技术，
                 进一步探索深度学习与物理驱动方法在心血管力学中的应用。
               </p>
-              {/* <p className="text-lg text-gray-700">
-                网站将不仅展示当前的研究成果，还将通过交互式设计，
-                为用户提供未来可能开展的研究方向：“可视人”、“物理人”、“生理人”
-                的可视化预览，推动心血管力学研究的进一步发展。
-              </p> */}
             </motion.div>
 
              <motion.div
@@ -241,7 +216,7 @@ function Home() {
       {/* Highlights Section */}
       <section
         ref={highlightsRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
+        className="min-h-svh w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
           <motion.div
@@ -254,15 +229,13 @@ function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
               Project Highlights
             </h2>
-            <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-
           >
-            <main className="container mx-auto py-12">
+            <main className="container mx-auto py-4">
              <InfiniteCarousel items={carouselItems} />
             </main>
           </motion.div>
@@ -283,9 +256,14 @@ function Home() {
       <section
         id="interactive"
         ref={interactiveRef}
-        className="h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 relative"
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 "
       >
-        <div className="container max-w-6xl mx-auto px-4 ">
+        {/* h-svh表示100svh,代表视口安全高度：在移动设备上,浏览器的地址栏等界面元素可能会在用户滚动或与页面交互时出现或隐藏,
+        这会导致视口高度发生变化。使用100svh可以让元素(如一个全屏的容器)在这种动态变化的环境中,
+        尽可能地占满可视的安全区域,避免出现因为视口高度变化导致布局混乱的情况。 */}
+        {/* 响应式填充：container类根据当前的断点设置最大宽度,mx-auto将其水平居中,而填充类(px-4sm:px-6 lg:px-8)确保在更大的屏幕上内容不会紧贴边缘。 */}
+        <div className="container mx-auto px-4sm:px-6 lg:px-8 center">
+          {/* 文字 */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -293,24 +271,30 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat'] ">
               Interactive Experience
             </h2>
-            <div className="text-center mt-8 text-gray-400">
+            <div className="text-center mt-8 text-gray-400 ">
               <p>双击进入全屏体验</p>
               <p>Double-click to explore the full 3D experience</p>
             </div>
-            {/* <p className="mt-6 max-w-2xl mx-auto text-gray-300">
-              自由旋转、缩放，探索心脏各层级细节
-            </p> */}
+            {/* <img
+              src={"/images/Ipad.png"}
+              alt="iPad"
+              className="  object-contain center"
+            /> */}
           </motion.div>
-
+          {/* 背景图 */}
+          {/* <div className=" center h-[800px] w-full object-contain  bg-center bg-no-repeat "
+            style={{ backgroundImage: "url('/images/Ipad.png?height=1920&width=1080')"}}>
+          </div> */}
+        
           <motion.div
             initial={{ opacity: 0}}
             whileInView={{ opacity: 1}}
             transition={{ duration: 0.4 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="flex flex-col h-[800px] w-full  relative"
+            className="container h-full w-full  relative"
             onDoubleClick={handleClick}
             role="button"
             tabIndex={0}
@@ -321,29 +305,20 @@ function Home() {
             }}
             aria-label="Open 3D interactive experience (double-click to activate)"
           >
-
-         <div className=" center h-[800px] w-full object-contain  bg-center bg-no-repeat "
-            style={{ backgroundImage: "url('/images/Ipad.png?height=1920&width=1080')"}}>
-            <div className=" center w-10/12 h-5/12"> </div>
-            {/* <img
-              src={"/images/Ipad.png"}
-              alt="iPad"
-              className="w-full h-full object-contain absolute top-0 left-0 "
-            /> */}
-            <div className=" center w-10/12 h-9/12 rounded-xl  shadow-2xl">
+            <div className=" absolute  h-[28em] w-[60em] items-center justify-center px-9 py-3 top-40 z-10">
               <Scene bg={[color]} >
                 <Heart visible={true} />
               </Scene>
             </div>
-          </div>
-
-        </motion.div>
-
-          {/* <div className="text-center mt-8 text-gray-400">
-            <p>双击进入全屏体验</p>
-            <p>Double-click to explore the full 3D experience</p>
-          </div> */}
-
+            <img
+              src={"/images/Ipad.png"}
+              alt="iPad"
+              className=" container object-contain center "
+            />
+            
+          </motion.div>
+          
+          {/* 底下按键 */}
           <div className="flex justify-center mt-16">
             <Button
               variant="outline"
