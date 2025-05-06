@@ -175,7 +175,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              由临床问题驱动。
+              由临床需求驱动。
             </h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
@@ -188,7 +188,7 @@ function Home() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">
-                从宏观到微观 : For Cardiac Digital Twins
+                心脏数字孪生 For Cardiac Digital Twins
               </h3>
               <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">
                 Multi-Scale and Multi-Physics Cardiac Model
@@ -243,6 +243,7 @@ function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
               创新看得到，摸得到。
             </h2>
+            <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -272,7 +273,7 @@ function Home() {
         ref={interactiveRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 "
       >
-        <div className="container mx-auto px-4sm:px-6 lg:px-8 center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -280,9 +281,12 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-6"
           >
-            <h2 className="text-6xl md:text-5xl font-bold mb-4 font-['Montserrat'] text-[#BBBCE2]">
-              试一试
+            <h2 className="text-4xl md:text-5xl font-bold mb-4  font-['Montserrat'] text-[#BBBCE2]">
+            无需学习，自然上手。
             </h2>
+            <div className="h-1 w-20 bg-[#BBBCE2] mx-auto"></div>
+            {/* <p className="mt-6 max-w-2xl mx-auto text-neutral-300">Just drag, rotate, and zoom in as you normally would</p> */}
+            {/* <p className="mt-6 max-w-2xl mx-auto text-neutral-300">就像平常那样简单拖动、旋转、缩放</p> */}
           </motion.div>
 
           {/* <motion.div
@@ -327,7 +331,7 @@ function Home() {
               />
             </div>
             <div className="text-center mt-4 text-[#BBBCE2] relative  md:-top-35 sm:-top-10">
-              <p>双击进入全屏体验</p>
+              <p>双击进入全屏，发现无限可能</p>
               <p>Double-click to explore the full 3D experience</p>
             </div> 
           {/* </motion.div> */}
@@ -337,7 +341,7 @@ function Home() {
             <p>Double-click to explore the full 3D experience</p>
           </div>  */}
    
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-1">
             <Button
               variant="outline"
               onClick={() => scrollToSection(teamRef)}
@@ -364,8 +368,15 @@ function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">研究团队</h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
             <p className="mt-6 max-w-2xl mx-auto text-gray-700">
-              Meet the brilliant minds behind our groundbreaking research and
-              innovation.
+             Meet the brilliant minds behind our groundbreaking research and innovation.
+            </p>
+            <p className="text-left mt-6 max-w-2xl mx-auto text-gray-700">
+            经血管植入器械研究院由由院长王建安院士领衔，
+            团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
+            建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
+            打造世界一流的经血管植入器械研发、诊疗中心和人才高地。
+            研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
+            多模态影像数据和数据挖掘、器械体内失效机理、 器械全生命周期性能优化设计、器械临床转化与应用。
             </p>
           </motion.div>
 

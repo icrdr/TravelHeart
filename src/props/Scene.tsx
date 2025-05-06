@@ -249,7 +249,7 @@ export default function Scene({
     const spherical = new Spherical();
     controls.getSpherical(spherical);
     controls.minDistance = spherical.radius * 0.5;
-    controls.maxDistance = spherical.radius * 1.7;
+    controls.maxDistance = spherical.radius * 1.75;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
     controls.minPolarAngle = Math.max(spherical.phi - 1, 0);
@@ -345,11 +345,11 @@ export default function Scene({
               </>
             )}
           </>
-          <Vignette
+          {/* <Vignette
             offset={0.5} // vignette offset
             darkness={0.5} // vignette darkness
             eskil={false} // Eskil's vignette technique
-          />
+          /> */}
           {/* <AnimatedLensDistortionn distortion={d} focalLength={f} /> */}
           <SMAA />
           <ToneMapping mode={ToneMappingMode.AGX} />

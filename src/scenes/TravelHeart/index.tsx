@@ -58,7 +58,7 @@ export default function TravelHeartStage({
         ref={ref}
         labels={labels}
         bokehScale={location.pathname === "/travelheart/ca" ? 10 : 8}
-        // fog={[color, 14, 20]}
+        // fog={[color, 11.5, 20]}
         bg={[color]}
       >
         
