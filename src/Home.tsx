@@ -167,7 +167,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              Project Background
+              项目背景
             </h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
@@ -226,8 +226,9 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
+
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              Project Highlights
+              创新看得到，摸得到。
             </h2>
           </motion.div>
           <motion.div
@@ -235,7 +236,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <main className="container mx-auto py-4">
+            <main className="container mx-auto ">
              <InfiniteCarousel items={carouselItems} />
             </main>
           </motion.div>
@@ -258,12 +259,9 @@ function Home() {
         ref={interactiveRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 "
       >
-        {/* h-svh表示100svh,代表视口安全高度：在移动设备上,浏览器的地址栏等界面元素可能会在用户滚动或与页面交互时出现或隐藏,
-        这会导致视口高度发生变化。使用100svh可以让元素(如一个全屏的容器)在这种动态变化的环境中,
-        尽可能地占满可视的安全区域,避免出现因为视口高度变化导致布局混乱的情况。 */}
-        {/* 响应式填充：container类根据当前的断点设置最大宽度,mx-auto将其水平居中,而填充类(px-4sm:px-6 lg:px-8)确保在更大的屏幕上内容不会紧贴边缘。 */}
+        {/* 响应式填充：container类根据当前的断点设置最大宽度,mx-auto将其水平居中,
+        而填充类(px-4sm:px-6 lg:px-8)确保在更大的屏幕上内容不会紧贴边缘。 */}
         <div className="container mx-auto px-4sm:px-6 lg:px-8 center">
-          {/* 文字 */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -271,30 +269,21 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat'] ">
-              Interactive Experience
+            <h2 className="text-6xl md:text-5xl font-bold mb-4 font-['Montserrat'] text-[#BBBCE2]">
+              试一试
             </h2>
-            <div className="text-center mt-8 text-gray-400 ">
+            {/* <div className="text-center mt-8 text-[#BBBCE2] ">
               <p>双击进入全屏体验</p>
               <p>Double-click to explore the full 3D experience</p>
-            </div>
-            {/* <img
-              src={"/images/Ipad.png"}
-              alt="iPad"
-              className="  object-contain center"
-            /> */}
+            </div> */}
           </motion.div>
-          {/* 背景图 */}
-          {/* <div className=" center h-[800px] w-full object-contain  bg-center bg-no-repeat "
-            style={{ backgroundImage: "url('/images/Ipad.png?height=1920&width=1080')"}}>
-          </div> */}
         
           <motion.div
             initial={{ opacity: 0}}
             whileInView={{ opacity: 1}}
             transition={{ duration: 0.4 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="container h-full w-full  relative"
+            className="container h-full w-full  relative "
             onDoubleClick={handleClick}
             role="button"
             tabIndex={0}
@@ -305,21 +294,24 @@ function Home() {
             }}
             aria-label="Open 3D interactive experience (double-click to activate)"
           >
-            <div className=" absolute  h-[28em] w-[60em] items-center justify-center px-9 py-3 top-40 z-10">
+            {/* <div className=" absolute  h-[28em] w-[60em] items-center justify-center px-9 py-3 top-40 z-10">
               <Scene bg={[color]} >
                 <Heart visible={true} />
               </Scene>
-            </div>
+            </div> */}
             <img
               src={"/images/Ipad.png"}
               alt="iPad"
-              className=" container object-contain center "
+              className=" container object-contain center"
             />
             
           </motion.div>
-          
+          <div className="text-center mt-8 text-[#BBBCE2] ">
+              <p>双击进入全屏体验</p>
+              <p>Double-click to explore the full 3D experience</p>
+          </div>
           {/* 底下按键 */}
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center mt-10">
             <Button
               variant="outline"
               onClick={() => scrollToSection(teamRef)}
@@ -343,39 +335,36 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              Research Team
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Research Team</h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
             <p className="mt-6 max-w-2xl mx-auto text-gray-700">
-              Meet the brilliant minds behind our groundbreaking research and
-              innovation.
+              Meet the brilliant minds behind our groundbreaking research and innovation.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-[1000px]">
             {[
               {
-                name: "Dr. xxx",
-                role: "xxx Researcher",
+                name: "Dr. Alex Morgan",
+                role: "Lead Researcher",
                 image: "/placeholder.svg?height=400&width=400",
-                bio: "Ph.D. in xxx Science with x+ years of experience in AI and machine learning.",
+                bio: "Ph.D. in Computer Science with 15+ years of experience in AI and machine learning.",
               },
               {
-                name: "Dr. xxx",
-                role: "xxx Scientist",
+                name: "Dr. Jamie Chen",
+                role: "Data Scientist",
                 image: "/placeholder.svg?height=400&width=400",
-                bio: "Expert in xxx and big data analytics with publications in top journals.",
+                bio: "Expert in statistical modeling and big data analytics with publications in top journals.",
               },
               {
-                name: "Dr. xxx",
-                role: "xxx Researcher",
+                name: "Dr. Sam Wilson",
+                role: "UX Researcher",
                 image: "/placeholder.svg?height=400&width=400",
-                bio: "Specializes in xxx interaction and user-centered design methodologies.",
+                bio: "Specializes in human-computer interaction and user-centered design methodologies.",
               },
               {
-                name: "Dr. xxx",
-                role: "xxx Lead",
+                name: "Dr. Taylor Reed",
+                role: "Technology Lead",
                 image: "/placeholder.svg?height=400&width=400",
                 bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
               },
@@ -386,17 +375,45 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="bg-gray-50 rounded-xl overflow-hidden shadow-lg"
+                className="group h-[400px] [transform-style:preserve-3d] transition-all duration-500"
               >
-                <img
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                  <p className="text-gray-500 mb-3">{member.role}</p>
-                  <p className="text-gray-700">{member.bio}</p>
+                {/* Card container with 3D rotation on hover */}
+                <div className="relative h-full w-full rounded-xl [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-500">
+                  {/* Front of card */}
+                  <div className="absolute inset-0 bg-gray-50 rounded-xl overflow-hidden shadow-lg backface-hidden">
+                    <div className="h-64 overflow-hidden">
+                      <img
+                        src={member.image || "/placeholder.svg"}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
+                      <p className="text-gray-500 mb-3">{member.role}</p>
+                    </div>
+                  </div>
+
+                  {/* Back of card */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl p-6 [transform:rotateY(180deg)] backface-hidden shadow-lg flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold mb-4">{member.name}</h3>
+                    <p className="text-gray-300 mb-4">{member.role}</p>
+                    <p className="text-gray-100">{member.bio}</p>
+                    <div className="mt-auto pt-4 flex justify-center space-x-4">
+                      <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                        <span className="sr-only">LinkedIn</span>
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                      </a>
+                      <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                        <span className="sr-only">Twitter</span>
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -409,11 +426,7 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="mt-16 text-center"
           >
-            <Button
-              variant="default"
-              onClick={() => scrollToSection(homeRef)}
-              className="rounded-full px-8"
-            >
+            <Button variant="default" onClick={() => scrollToSection(homeRef)} className="rounded-full px-8">
               Back to Top
             </Button>
           </motion.div>
