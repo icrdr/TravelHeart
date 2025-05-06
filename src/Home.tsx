@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useRef, useState } from "react";
@@ -10,7 +9,6 @@ import Heart from "./scenes/TravelHeart/Heart";
 import { Color } from "three";
 import { InfiniteCarousel } from "./components/InfiniteCarousel";
 
-
 function Home() {
   const intensity = 20;
   const color = new Color(intensity, intensity, intensity);
@@ -21,33 +19,38 @@ function Home() {
   const interactiveRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
 
-
   //State for mask opacity and parallax effects
   const [maskOpacity, setMaskOpacity] = useState(0.8);
-  
+
   //Handle scroll to update mask opacity and parallax effects
   useEffect(() => {
     const handleScroll = () => {
-      if (!homeRef.current) return
+      if (!homeRef.current) return;
       // Get the height of the home section
-      const homeHeight = homeRef.current.offsetHeight
+      const homeHeight = homeRef.current.offsetHeight;
       // Calculate how far we've scrolled
-      const scrollPosition = window.scrollY
+      const scrollPosition = window.scrollY;
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(0.6, 0.8 - (scrollPosition / homeHeight) * 1.2)
-      setMaskOpacity(newOpacity)}
+      const newOpacity = Math.max(
+        0.6,
+        0.8 - (scrollPosition / homeHeight) * 1.2
+      );
+      setMaskOpacity(newOpacity);
+    };
     // Add scroll event listener
-     window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     // Clean up
-    return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Handle parallax effect on background image
-  const scrollToSection= (ref: React.RefObject<HTMLDivElement | null>) => {
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToSectionInstantly = (ref: React.RefObject<HTMLDivElement | null>) => {
+  const scrollToSectionInstantly = (
+    ref: React.RefObject<HTMLDivElement | null>
+  ) => {
     ref.current?.scrollIntoView({ behavior: "instant" });
   };
 
@@ -61,52 +64,54 @@ function Home() {
     const hash = location.hash;
     if (hash) {
       const sectionId = hash.slice(1);
-      console.log(sectionId)
+      console.log(sectionId);
       if (sectionId === "3d") {
         scrollToSectionInstantly(interactiveRef);
       }
     }
   }, [location]);
 
-    // Sample data for the carousel
-    const carouselItems = [
-      {
-        id: 1,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "从宏观到微观",
-        description: "多尺度心脏模型，跨层级解析心血管的生理和病理机制.",
-      },
-      {
-        id: 2,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "轻松交互  自由视角",
-        description: "通过简单的手势，轻松地探索心脏的各个部分。",
-      },
-      {
-        id: 3,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "多端兼容  一键直达",
-        description: "无需安装额外软件，通过浏览器即可访问，支持多种设备和操作系统。",
-      },
-      {
-        id: 4,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "生理模块",
-        description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
-      },
-      {
-        id: 5,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "病理模块",
-        description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
-      },
-      {
-        id: 6,
-        image: "/placeholder.svg?height=400&width=600",
-        title: "个性化模型",
-        description: "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
-      },
-    ]
+  // Sample data for the carousel
+  const carouselItems = [
+    {
+      id: 1,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "从宏观到微观",
+      description: "多尺度心脏模型，跨层级解析心血管的生理和病理机制.",
+    },
+    {
+      id: 2,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "轻松交互  自由视角",
+      description: "通过简单的手势，轻松地探索心脏的各个部分。",
+    },
+    {
+      id: 3,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "多端兼容  一键直达",
+      description:
+        "无需安装额外软件，通过浏览器即可访问，支持多种设备和操作系统。",
+    },
+    {
+      id: 4,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "生理模块",
+      description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
+    },
+    {
+      id: 5,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "病理模块",
+      description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
+    },
+    {
+      id: 6,
+      image: "/placeholder.svg?height=400&width=600",
+      title: "个性化模型",
+      description:
+        "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
+    },
+  ];
 
   return (
     <main className="relative">
@@ -115,7 +120,10 @@ function Home() {
         ref={homeRef}
         className="min-h-svh w-screen flex flex-col items-center justify-center relative bg-black text-white
          overflow-hidden  bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/HeroHeart_v002.png?height=1920&width=1080')"}}
+        style={{
+          backgroundImage:
+            "url('/images/HeroHeart_v002.png?height=1920&width=1080')",
+        }}
       >
         <div
           className="absolute inset-0 w-full h-full bg-black  transition-opacity duration-300 z-10"
@@ -135,7 +143,7 @@ function Home() {
             Travel Heart
           </h2>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -179,16 +187,20 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">从宏观到微观  :  For Cardiac Digital Twins</h3>
-              <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">Multi-Scale and Multi-Physics Cardiac Model</h3>
+              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">
+                从宏观到微观 : For Cardiac Digital Twins
+              </h3>
+              <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">
+                Multi-Scale and Multi-Physics Cardiac Model
+              </h3>
               <p className="text-lg mb-6 text-gray-700 font-['Montserrat']">
-              根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
-              目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
-              本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。 
+                根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
+                目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
+                本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。
               </p>
             </motion.div>
 
-             <motion.div
+            <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -200,7 +212,7 @@ function Home() {
                 alt="Project background"
                 className="w-full h-auto"
               />
-            </motion.div> 
+            </motion.div>
           </div>
 
           <div className="flex justify-center mt-16">
@@ -228,7 +240,6 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
               创新看得到，摸得到。
             </h2>
@@ -239,7 +250,7 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <main className="container mx-auto ">
-             <InfiniteCarousel items={carouselItems} />
+              <InfiniteCarousel items={carouselItems} />
             </main>
           </motion.div>
 
@@ -274,43 +285,43 @@ function Home() {
             <h2 className="text-6xl md:text-5xl font-bold mb-4 font-['Montserrat'] text-[#BBBCE2]">
               试一试
             </h2>
-            {/* <div className="text-center mt-8 text-[#BBBCE2] ">
-              <p>双击进入全屏体验</p>
-              <p>Double-click to explore the full 3D experience</p>
-            </div> */}
           </motion.div>
-        
+
           <motion.div
-            initial={{ opacity: 0}}
-            whileInView={{ opacity: 1}}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="container h-full w-full  relative "
-            onDoubleClick={handleClick}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleClick();
-              }
-            }}
+            className="h-full w-full  relative "
             aria-label="Open 3D interactive experience (double-click to activate)"
           >
-            {/* <div className=" absolute  h-[28em] w-[60em] items-center justify-center px-9 py-3 top-40 z-10">
-              <Scene bg={[color]} >
-                <Heart visible={true} />
-              </Scene>
-            </div> */}
-            <img
-              src={"/images/Ipad.png"}
-              alt="iPad"
-              className=" container object-contain center"
-            />
-            
+            <div className="h-full container relative ">
+              <div
+                className="h-[68%] w-[92.4%] z-10 absolute top-[25.7%] left-[3.8%] rounded-2xl overflow-hidden"
+                onDoubleClick={handleClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleClick();
+                  }
+                }}
+              >
+                <Scene bg={[color]}>
+                  <Heart visible={true} />
+                </Scene>
+              </div>
+              <img
+                src={"/images/Ipad.png"}
+                alt="iPad"
+                className="w-full object-contain center"
+              />
+            </div>
           </motion.div>
+
           <div className="text-center mt-8 text-[#BBBCE2] ">
-              <p>双击进入全屏体验</p>
-              <p>Double-click to explore the full 3D experience</p>
+            <p>双击进入全屏体验</p>
+            <p>Double-click to explore the full 3D experience</p>
           </div>
           {/* 底下按键 */}
           <div className="flex justify-center mt-10">
@@ -340,7 +351,8 @@ function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">研究团队</h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
             <p className="mt-6 max-w-2xl mx-auto text-gray-700">
-              Meet the brilliant minds behind our groundbreaking research and innovation.
+              Meet the brilliant minds behind our groundbreaking research and
+              innovation.
             </p>
           </motion.div>
 
@@ -391,26 +403,44 @@ function Home() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
+                      <h3 className="text-xl font-semibold mb-1">
+                        {member.name}
+                      </h3>
                       <p className="text-gray-500 mb-3">{member.role}</p>
                     </div>
                   </div>
 
                   {/* Back of card */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl p-6 [transform:rotateY(180deg)] backface-hidden shadow-lg flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold mb-4">{member.name}</h3>
+                    <h3 className="text-xl font-semibold mb-4">
+                      {member.name}
+                    </h3>
                     <p className="text-gray-300 mb-4">{member.role}</p>
                     <p className="text-gray-100">{member.bio}</p>
                     <div className="mt-auto pt-4 flex justify-center space-x-4">
-                      <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                      <a
+                        href="#"
+                        className="text-white hover:text-gray-300 transition-colors"
+                      >
                         <span className="sr-only">LinkedIn</span>
-                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          className="h-5 w-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
                       </a>
-                      <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                      <a
+                        href="#"
+                        className="text-white hover:text-gray-300 transition-colors"
+                      >
                         <span className="sr-only">Twitter</span>
-                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          className="h-5 w-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                         </svg>
                       </a>
@@ -428,7 +458,11 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="mt-16 text-center"
           >
-            <Button variant="default" onClick={() => scrollToSection(homeRef)} className="rounded-full px-8">
+            <Button
+              variant="default"
+              onClick={() => scrollToSection(homeRef)}
+              className="rounded-full px-8"
+            >
               Back to Top
             </Button>
           </motion.div>
