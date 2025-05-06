@@ -333,7 +333,7 @@ function Home() {
               />
             </div>
             <div className="text-center mt-4 text-[#BBBCE2] relative  md:-top-35 sm:-top-10">
-              <p>双击进入全屏，发现无限可能</p>
+              <p>双击进入全屏，点击标签双指缩放进行尺度穿梭</p>
               <p>Double-click to explore the full 3D experience</p>
             </div> 
           {/* </motion.div> */}
@@ -368,9 +368,9 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">让医学预见</h2>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">精准到每一帧生命动态。</h2>
-            <p className="mt-6 max-w-3xl mx-auto text-gray-700 text-lg">可视人 - 物理人 - 生理人</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">让医学预见</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">精准到每一帧生命动态。</h2>
+            <p className="mt-6 max-w-3xl mx-auto text-gray-700 text-lg font-['Montserrat']">可视人 - 物理人 - 生理人</p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -393,7 +393,7 @@ function Home() {
       {/* Exploration Section */}
       <section
         ref={explorationRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -404,8 +404,8 @@ function Home() {
               viewport={{ once: true, margin: "-100px" }}
               className="text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">探索的脚步</h2>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">从未停歇。</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">探索的脚步</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">从未停歇。</h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -434,7 +434,7 @@ function Home() {
               className="rounded-xl overflow-hidden shadow-2xl"
             >
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-u6cWrkxomp75FcXy3VyfMuCTW4OU93.png"
+                src="/images/Paper.png"
                 alt="Library of research materials arranged in a circular pattern with copper hanging lamps"
                 className="w-full h-auto"
               />
@@ -455,13 +455,13 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">研究团队</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">研究团队</h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
-            <p className="mt-6 max-w-2xl mx-auto text-gray-700">
+            <p className="mt-6 max-w-2xl mx-auto text-gray-700 font-['Montserrat']">
              Meet the brilliant minds behind our groundbreaking research and innovation.
             </p>
-            <p className="text-left mt-6 max-w-2xl mx-auto text-gray-700">
-            经血管植入器械研究院由由院长王建安院士领衔，
+            <p className="text-left mt-6 max-w-2xl mx-auto text-gray-700 font-['Montserrat']">
+            经血管植入器械研究院由院长王建安院士领衔，
             团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
             建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
             打造世界一流的经血管植入器械研发、诊疗中心和人才高地。
@@ -475,25 +475,25 @@ function Home() {
               {
                 name: "王建安",
                 role: "Scientist",
-                // image: "/images/Team/WangJianAn.jpg?height=400&width=400",
+                image: "/placeholder.svg?height=400&width=400",
                 bio: "主要研究方向：心脏瓣膜病介入治疗和系列器械研发、冠状动脉功能评价、心肌损伤和修复的重要机制揭示等处于国际领先地位",
               },
               {
                 name: "计剑",
                 role: "Scientist",
-                // image: "/images/Team/JiJian.jpg?height=400&width=400",
+                image: "/placeholder.svg?height=400&width=400",
                 bio: "主要研究方向：材料学、生物医用高分子-生物医用界面的仿生组装与修饰",
               },
               {
                 name: "吴健",
                 role: "Scientist",
-                // image: "/images/Team/WuJian.jpg?height=400&width=400",
+                image: "/placeholder.svg?height=400&width=400",
                 bio: "主要研究方向：医学人工智能",
               },
               {
                 name: "Dr. Taylor Reed",
                 role: "Scientist",
-                // image: "/placeholder.svg?height=400&width=400",
+                image: "/placeholder.svg?height=400&width=400",
                 bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
               },
             ].map((member, index) => (
