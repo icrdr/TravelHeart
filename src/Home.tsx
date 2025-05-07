@@ -22,7 +22,7 @@ function Home() {
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
-  const [maskOpacity, setMaskOpacity] = useState(0.8);
+  const [maskOpacity, setMaskOpacity] = useState(0.7);
 
   //Handle scroll to update mask opacity and parallax effects
   useEffect(() => {
@@ -34,10 +34,7 @@ function Home() {
       const scrollPosition = window.scrollY;
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(
-        0.6,
-        0.8 - (scrollPosition / homeHeight) * 1.2
-      );
+      const newOpacity = Math.max(0,0.7 - (scrollPosition / homeHeight) * 1.1);
       setMaskOpacity(newOpacity);
     };
     // Add scroll event listener
@@ -56,6 +53,7 @@ function Home() {
     ref.current?.scrollIntoView({ behavior: "instant" });
   };
 
+  
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/travelheart");
@@ -77,38 +75,45 @@ function Home() {
   const carouselItems = [
     {
       id: 1,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/Highlights/CoronaryArtery_v002.png?height=400&width=600",
       title: "从宏观到微观",
       description: "多尺度心脏模型，跨层级解析心血管的生理和病理机制.",
     },
     {
       id: 2,
-      image: "/placeholder.svg?height=400&width=600",
-      title: "轻松交互  自由视角",
-      description: "通过简单的手势，轻松地探索心脏的各个部分。",
+      image: "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
+      title: "超简单上手",
+      description: "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。",
     },
     {
       id: 3,
-      image: "/placeholder.svg?height=400&width=600",
-      title: "多端兼容  一键直达",
+      image: "/images/Highlights/nDisplay.png?height=400&width=600",
+      title: "一键直达",
       description:
-        "无需安装额外软件，通过浏览器即可访问，支持多种设备和操作系统。",
+        "无需额外下载软件，点击网页即刻触达。",
     },
     {
       id: 4,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/Highlights/Muti.png?height=400&width=600",
+      title: "多端适配",
+      description:
+        "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
+    },
+    {
+      id: 5,
+      image: "/images/Highlights/Valve_v002.png?height=400&width=600",
       title: "生理模块",
       description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
     },
     {
-      id: 5,
-      image: "/placeholder.svg?height=400&width=600",
+      id: 6,
+      image: "/images/Highlights/Valve.png?height=400&width=600",
       title: "病理模块",
       description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
     },
     {
-      id: 6,
-      image: "/placeholder.svg?height=400&width=600",
+      id: 7,
+      image: "/images/Highlights/DigtalTwin_v002.png?height=400&width=600",
       title: "个性化模型",
       description:
         "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
@@ -124,7 +129,7 @@ function Home() {
          overflow-hidden  bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('/images/HeroHeart_v002.png?height=1920&width=1080')",
+          "url('/images/HeartClip.png?height=1920&width=1080')",
         }}
       >
         <div
@@ -138,11 +143,14 @@ function Home() {
           transition={{ duration: 0.8 }}
           className="z-20 flex flex-col items-center justify-center text-center"
         >
-          <h1 className="text-6xl sm:text-6xl md:text-8xl font-bold mb-4 ">
+          <h1 className="text-6xl sm:text-6xl md:text-8xl font-bold mb-4 font-['Montserrat']">
             可视心脏
           </h1>
-          <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold mb-4">
+          {/* <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold mb-4">
             Travel Heart
+          </h2> */}
+          <h2 className="text-2xl font-semibold mb-4 font-['Montserrat']">
+            Multi-Scale and Multi-Physics Cardiac Model
           </h2>
         </motion.div>
 
@@ -189,11 +197,11 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-2xl font-semibold mb-4 font-['Montserrat']">
-                心脏数字孪生 For Cardiac Digital Twins
+              <h3 className="text-2xl font-semibold mb-1 font-['Montserrat']">
+                心脏数字孪生 
               </h3>
               <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">
-                Multi-Scale and Multi-Physics Cardiac Model
+                For Cardiac Digital Twins
               </h3>
               <p className="text-lg mb-6 text-gray-700 font-['Montserrat']">
                 根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
@@ -243,7 +251,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
-              创新看得到，摸得到。
+              创新看得到，摸得着。
             </h2>
             <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
@@ -333,7 +341,7 @@ function Home() {
               />
             </div>
             <div className="text-center mt-4 text-[#BBBCE2] relative  md:-top-35 sm:-top-10">
-              <p>双击进入全屏，点击标签双指缩放进行尺度穿梭</p>
+              <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
               <p>Double-click to explore the full 3D experience</p>
             </div> 
           {/* </motion.div> */}
@@ -370,17 +378,24 @@ function Home() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">让医学预见</h2>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">精准到每一帧生命动态。</h2>
-            <p className="mt-6 max-w-3xl mx-auto text-gray-700 text-lg font-['Montserrat']">可视人 - 物理人 - 生理人</p>
+            
+            <video
+              src="/movie/HeartBeat.mp4"
+              autoPlay
+              loop={true}
+              
+              className="w-full h-auto mt-8 rounded-lg shadow-lg"/>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-12"
+              className="mt-6"
             >
+              <p className=" max-w-3xl mx-auto text-1xl md:text-3xl font-bold  font-['Montserrat'] ">可视人 - 物理人 - 生理人</p>
               <Button
                 variant="default"
-                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none"
+                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none mt-8"
                 onClick={() => scrollToSection(explorationRef)}
               >
                 <span className="mr-2">+</span> 即将到来
