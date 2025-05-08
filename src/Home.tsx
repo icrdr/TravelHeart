@@ -191,32 +191,27 @@ function Home() {
         style={{ backgroundImage:"url('/images/HomeBackground.png?height=1920&width=1080')",}}
       >
         <div
-          className="absolute w-full h-full bg-black transition-opacity duration-300"
-          style={{ opacity: maskOpacity }}
+          className="absolute w-full h-full bg-black/50 transition-opacity duration-300"
+          // style={{ opacity: maskOpacity }}
 
         />
         <div className="flex flex-col w-full h-full  ">
-          {/* <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className={HomeTitleClass}
-          > */}
+
           <div className={HomeTitleClass} >
-            <h1 className="text-6xl md:text-9xl font-semibold tracking-normal 
-            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md">
+            <h1 className="text-6xl md:text-9xl xl:text-[200px] font-semibold tracking-normal  
+            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               可视心脏
             </h1>
-            <h2 className="text-2xl  md:text-6xl font-bold md:px-5
+            <h2 className="text-2xl  md:text-6xl xl:text-[100px] font-light md:px-5 
             motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               Visible Heart
           </h2>
-            <h2 className="text-xs md:text-2xl  md:px-5 tracking-normal
+            <h2 className="text-xs md:text-2xl  xl:text-4xl md:px-5 tracking-normal 
             motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               Multi-Scale and Multi-Physics Cardiac Model
             </h2>
           </div>
-          {/* </motion.div> */}
+   
 
           <div className="flex flex-col items-center justify-center mb-20 ">
             <Button
@@ -506,27 +501,19 @@ function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
               研究团队
             </h2>
-            <p className="text-center mt-6 max-w-3xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
+            <p className="text-center mt-6 max-w-6xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
               Meet the brilliant minds behind our groundbreaking research and
               innovation.
             </p>
 
-            <p className=" text-left mt-6 max-w-3xl mx-auto text-gray-700 text-blance font-['Montserrat']">
-              经血管植入器械研究院由院长王建安院士领衔，
-              团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
-              建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
-              打造世界一流的经血管植入器械研发、诊疗中心和人才高地。
-              研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
-              多模态影像数据和数据挖掘、器械体内失效机理、
-              器械全生命周期性能优化设计、器械临床转化与应用。
+            <p className=" text-left mt-6 max-w-6xl mx-auto text-gray-700  font-['Montserrat']">
+              经血管植入器械研究院由院长王建安院士领衔，团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
+              打造世界一流的经血管植入器械研发、诊疗中心和人才高地。研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
+              多模态影像数据和数据挖掘、器械体内失效机理、器械全生命周期性能优化设计、器械临床转化与应用。
             </p>
           </motion.div>
 
           <TeamCarousel members={teamMembers} />
-
-          {/* <div className="h-[20vh] w-full">
-            <TouchParticleText text="contact us" color="#9ade00" height="100%" />
-          </div> */}
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -546,7 +533,7 @@ function Home() {
         </div>
       </section>
       {/* Sticky Footer */}
-      <footer className="sticky bottom-0 w-full bg-black/80 text-white py-4 z-10">
+      <footer className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm mb-2 md:mb-0">

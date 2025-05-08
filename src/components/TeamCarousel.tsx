@@ -416,7 +416,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
                     <img
                       src={member.image || "/src/icons/Heart.svg"}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 active:scale-110 "
+                      className="w-full h-full object-cover transition-transform duration-500 active:scale-110 md:group-hover:scale-110"
                     />
                   </div>
                   <div className="p-6">

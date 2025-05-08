@@ -166,15 +166,3 @@
     user-select: none;
   }
 }
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-50% - 4px)); /* 减去间隙 */
-  }
-}
-
-.animate-scroll {
-  animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
-}
