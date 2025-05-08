@@ -82,7 +82,7 @@ export function InfiniteCarousel({ items, autoScroll = true, autoScrollInterval 
               <img
                 src={item.image || "/placeholder.svg"}
                 alt={item.title}
-                className="h-64 w-full object-cover transition-transform duration-300 hover:scale-105 sm:h-80"
+                className="h-64 w-full object-cover transition-transform duration-300 hover:scale-105 sm:h-80  "
               />
             </div>
             <div className="mt-4">
@@ -113,7 +113,7 @@ export function InfiniteCarousel({ items, autoScroll = true, autoScrollInterval 
         <ChevronRight className="h-4 w-4" />
       </Button>
 
-      <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 space-x-2">
+      <div className="absolute bottom-0.5 left-1/2 flex -translate-x-1/2 space-x-2">
         {items.map((_, index) => (
           <button
             key={index}

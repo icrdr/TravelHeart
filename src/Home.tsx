@@ -10,6 +10,8 @@ import { Color } from "three";
 import { InfiniteCarousel } from "./components/InfiniteCarousel";
 import { cn } from "./lib/utils";
 import { TeamCarousel } from "./components/TeamCarousel";
+import Marquee from "./components/Marquee";
+
 
 
 function Home() {
@@ -175,9 +177,9 @@ function Home() {
 
   // 把类型提上来，这样更简洁，而且可以用三元组来简化代码
    const HomeTitleClass = cn(
-    "relative flex flex-col justify-center item-center md:items-left gap-2 md:gap-4 grow",
+    "relative flex flex-col justify-center item-center md:items-left gap-2 xl:gap-4 grow",
     "font-['Montserrat'] text-center md:text-left",
-    "w-full px-10"
+    "w-full px-10 md:pt-60 xl:px-30",
    );
 
 
@@ -198,20 +200,20 @@ function Home() {
         <div className="flex flex-col w-full h-full  ">
 
           <div className={HomeTitleClass} >
-            <h1 className="text-6xl md:text-9xl xl:text-[200px] font-semibold tracking-normal  
+            <h1 className="text-5xl  md:text-9xl  xl:text-[220px] font-bold tracking-wide 
             motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               可视心脏
             </h1>
-            <h2 className="text-2xl  md:text-6xl xl:text-[100px] font-light md:px-5 
-            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
-              Visible Heart
+            <h2 className="text-2xl  md:text-7xl xl:text-[100px] font-bold md:px-5 
+             ">
+              Visible  Heart
           </h2>
             <h2 className="text-xs md:text-2xl  xl:text-4xl md:px-5 tracking-normal 
-            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
+             ">
               Multi-Scale and Multi-Physics Cardiac Model
             </h2>
           </div>
-   
+       
 
           <div className="flex flex-col items-center justify-center mb-20 ">
             <Button
@@ -230,7 +232,7 @@ function Home() {
       {/* Background Section */}
       <section
         ref={backgroundRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
           <motion.div
@@ -238,7 +240,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-20 md:mb-40 ">
+            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-20 md:mb-40 tracking-wider">
               由临床需求驱动。
             </h2>
           </motion.div>
@@ -268,11 +270,12 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
      
             >
+              {/* active:rotate-x-50 hover:rotate-z-45 transition-transform duration-500 */}
               <img
                 src="/images/human.png?height=600&width=800"
                 alt="Project background"
                 className="w-full h-auto rounded-xl overflow-hidden shadow-2xl 
-                 active:rotate-x-50 hover:rotate-z-45 transition-transform duration-500"
+                 "
               />
             </motion.div>
           </div>
@@ -301,7 +304,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty">
+            <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty tracking-wider">
               创新看得到，摸得着。
             </h2>
           </motion.div>
@@ -336,7 +339,7 @@ function Home() {
             // viewport={{ once: true, margin: "-100px" }}
             // className="text-center "
           >
-            <h2 className="text-3xl md:text-5xl font-bold mt-10  font-['Montserrat'] text-[#BBBCE2] text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-6 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
               无需学习，自然上手。
             </h2>
           </motion.div>
@@ -386,7 +389,7 @@ function Home() {
         ref={precisionMedicineRef}
         className="min-h-svh w-full flex flex-col items-center justify-center bg-gray-200 text-black py-10"
       >
-        <div className="container max-w-6xl mx-auto px-4 mt-1 md:mt-30">
+        <div className="container max-w-6xl mx-auto px-4 mt-1 md:mt-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -394,8 +397,8 @@ function Home() {
             // viewport={{ once: true, margin: "-100px" }}
             className="text-center md:text-center "
           >
-            <h2 className="font-bold mb-4 text-3xl md:text-5xl">让医学预见</h2>
-            <h2 className="font-bold mb-8 text-2xl  md:text-5xl">
+            <h2 className="font-bold mb-4 text-3xl md:text-5xl tracking-wider">让医学预见</h2>
+            <h2 className="font-bold mb-8 text-2xl  md:text-5xl tracking-wider">
               精准到每一帧生命动态。
             </h2>
 
@@ -410,16 +413,14 @@ function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mt-6 "
+              transition={{ duration: 0.6}}
             >
-              <p className=" max-w-3xl mt-10 mx-auto text-1xl md:text-3xl  font-['Montserrat'] ">
-                可视人 - 物理人 - 生理人
+              <p className=" mt-10 mx-auto text-1xl md:text-2xl  font-['Montserrat'] text-center text-gray-500">
+                可视人 -  物理人  -  生理人
               </p>
               <Button
                 variant="default"
-                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none mt-10"
+                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none mt-10 mb-20"
                 onClick={() => scrollToSection(explorationRef)}
               >
                 <span className="mr-2">+</span> 即将到来
@@ -435,18 +436,18 @@ function Home() {
         className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center ">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               // viewport={{ once: true, margin: "-100px" }}
-              className="text-left"
+              className="text-left md:pl-20"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat'] tracking-wider">
                 探索的脚步
               </h2>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat'] tracking-wider">
                 从未停歇。
               </h2>
               <motion.div
@@ -458,7 +459,7 @@ function Home() {
               >
                 <a
                   href="#"
-                  className="text-blue-500 hover:text-blue-700 text-lg flex items-center"
+                  className="text-blue-500 hover:text-blue-700 text-lg  flex items-center font-['Montserrat']"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(teamRef);
@@ -488,32 +489,32 @@ function Home() {
       {/* Team Section */}
       <section
         ref={teamRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
+        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 text-black py-20"
       >
-        <div className="container max-w-6xl mx-auto px-10 mb-16">
+        <div className="container  mx-auto px-10 mb-18">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             // viewport={{ once: true, margin: "-100px" }}
-            className=" mb-16"
+            // className=" mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-              研究团队
+            {/* <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+            以临床需求为原点
+            </h2> */}
+            <h2 className="text-2xl md:text-5xl font-bold mb:2 md:mb-6 text-center  ont-['Montserrat'] tracking-wider">
+            这支多学科交叉团队，
             </h2>
-            <p className="text-center mt-6 max-w-6xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
-              Meet the brilliant minds behind our groundbreaking research and
-              innovation.
-            </p>
-
-            <p className=" text-left mt-6 max-w-6xl mx-auto text-gray-700  font-['Montserrat']">
-              经血管植入器械研究院由院长王建安院士领衔，团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
-              打造世界一流的经血管植入器械研发、诊疗中心和人才高地。研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
-              多模态影像数据和数据挖掘、器械体内失效机理、器械全生命周期性能优化设计、器械临床转化与应用。
-            </p>
+            <h2 className="text-2xl  md:text-5xl font-bold mb-6 text-center font-['Montserrat'] tracking-wider">
+            用开创性研究重塑未来。
+            </h2>
+            <h2 className="text-blue-500 hover:text-blue-700 text-sm  mb:text-4xl mb:mt-10 font-bold text-center font-['Montserrat']"
+            >
+              Meet the brilliant minds !
+            </h2>
           </motion.div>
-
           <TeamCarousel members={teamMembers} />
+          <Marquee/>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -529,11 +530,14 @@ function Home() {
             >
               Back to Top
             </Button>
+
           </motion.div>
+
         </div>
       </section>
       {/* Sticky Footer */}
-      <footer className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
+      <footer 
+      className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm mb-2 md:mb-0">
@@ -553,6 +557,7 @@ function Home() {
           </div>
         </div>
       </footer>
+      
     </main>
               
   );

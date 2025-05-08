@@ -9,17 +9,17 @@ export default function Marquee() {
       <motion.div
         className="flex whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ repeat: Number.POSITIVE_INFINITY, ease: "linear", duration: 20 }}
+        transition={{ repeat: Number.POSITIVE_INFINITY, ease: "linear", duration: 8 }}
       >
         {[...Array(4)].map((_, index) => (
           <div key={index} className="flex items-center mx-4">
             <span
               className="text-7xl sm:text-8xl md:text-9xl font-bold text-transparent px-4"
               style={{
-                WebkitTextStroke: "1px rgb(156 163 175)", // tailwind gray-400
+                WebkitTextStroke: "1px rgb(156 163 175) ", // tailwind gray-400
               }}
             >
-              Multi-Scale and Multi-Physics Cardiac Model
+              Meet the brilliant minds behind our groundbreaking research and innovation.
             </span>
           </div>
         ))}
