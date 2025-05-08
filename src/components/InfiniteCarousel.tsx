@@ -82,7 +82,7 @@ export function InfiniteCarousel({ items, autoScroll = true, autoScrollInterval 
               <img
                 src={item.image || "/placeholder.svg"}
                 alt={item.title}
-                className="h-64 w-full object-cover transition-transform duration-300 hover:scale-105 sm:h-80  "
+                className="h-64 w-full object-cover transition-transform duration-300 hover:scale-110 sm:h-90  "
               />
             </div>
             <div className="mt-4">

@@ -85,41 +85,42 @@ function Home() {
     },
     {
       id: 2,
-      image: "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
-      title: "超简单上手",
-      description: "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。",
-    },
-    {
-      id: 3,
-      image: "/images/Highlights/nDisplay.png?height=400&width=600",
-      title: "一键直达",
-      description: "无需额外下载软件，点击网页即刻触达。",
-    },
-    {
-      id: 4,
-      image: "/images/Highlights/Muti.png?height=400&width=600",
-      title: "多端适配",
-      description: "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
-    },
-    {
-      id: 5,
       image: "/images/Highlights/Valve_v002.png?height=400&width=600",
       title: "生理模块",
       description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
     },
     {
-      id: 6,
+      id: 3,
       image: "/images/Highlights/Valve.png?height=400&width=600",
       title: "病理模块",
       description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
     },
     {
-      id: 7,
+      id: 4,
       image: "/images/Highlights/DigtalTwin_v002.png?height=400&width=600",
       title: "个性化模型",
       description:
         "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
     },
+    {
+      id: 5,
+      image: "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
+      title: "超简单上手",
+      description: "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。",
+    },
+    {
+      id: 6,
+      image: "/images/Highlights/nDisplay.png?height=400&width=600",
+      title: "一键直达",
+      description: "无需额外下载软件，点击网页即刻触达。",
+    },
+    {
+      id: 7,
+      image: "/images/Highlights/Muti.png?height=400&width=600",
+      title: "多端适配",
+      description: "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
+    },
+
   ];
 
 
