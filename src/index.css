@@ -143,3 +143,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Improve touch interactions */
+@media (pointer: coarse) {
+  .cursor-grab {
+    cursor: default;
+  }
+
+  /* Optimize for touch devices */
+  .scrollbar-hide {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent text selection during swipe */
+  .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 4px)); /* 减去间隙 */
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
+}

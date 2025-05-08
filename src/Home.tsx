@@ -9,6 +9,8 @@ import Heart from "./scenes/TravelHeart/Heart";
 import { Color } from "three";
 import { InfiniteCarousel } from "./components/InfiniteCarousel";
 import { cn } from "./lib/utils";
+import { TeamCarousel } from "./components/TeamCarousel";
+
 
 function Home() {
   const intensity = 20;
@@ -51,8 +53,7 @@ function Home() {
   };
   const scrollToSectionInstantly = (
     ref: React.RefObject<HTMLDivElement | null>
-  ) => {
-    ref.current?.scrollIntoView({ behavior: "instant" });
+) => {ref.current?.scrollIntoView({ behavior: "instant" });
   };
 
   const navigate = useNavigate();
@@ -118,12 +119,67 @@ function Home() {
         "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
     },
   ];
+
+
+  // Team members data with more entries
+    const teamMembers = [
+      {
+        name: "Dr. Alex Morgan",
+        role: "Lead Researcher",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Ph.D. in Computer Science with 15+ years of experience in AI and machine learning.",
+      },
+      {
+        name: "Dr. Jamie Chen",
+        role: "Data Scientist",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Expert in statistical modeling and big data analytics with publications in top journals.",
+      },
+      {
+        name: "Dr. Sam Wilson",
+        role: "UX Researcher",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Specializes in human-computer interaction and user-centered design methodologies.",
+      },
+      {
+        name: "Dr. Taylor Reed",
+        role: "Technology Lead",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
+      },
+      {
+        name: "Dr. Jordan Lee",
+        role: "Biomedical Engineer",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Specializes in cardiac modeling and simulation with a focus on translational medicine.",
+      },
+      {
+        name: "Dr. Casey Zhang",
+        role: "Computational Physicist",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Expert in multi-physics simulations and high-performance computing for biological systems.",
+      },
+      {
+        name: "Dr. Riley Patel",
+        role: "Clinical Advisor",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Cardiologist with extensive experience in applying computational models to clinical practice.",
+      },
+      {
+        name: "Dr. Morgan Smith",
+        role: "Research Coordinator",
+        image: "/src/icons/Heart.svg?height=400&width=400",
+        bio: "Manages cross-disciplinary research initiatives and coordinates international collaborations.",
+      },
+    ]
+
   // 把类型提上来，这样更简洁，而且可以用三元组来简化代码
-  const HomeTitleClass = cn(
+   const HomeTitleClass = cn(
     "relative flex flex-col justify-center item-center md:items-left gap-2 md:gap-4 grow",
     "font-['Montserrat'] text-center md:text-left",
     "w-full px-10"
-  );
+   );
+
 
   return (
     <main className="relative">
@@ -139,23 +195,28 @@ function Home() {
           style={{ opacity: maskOpacity }}
 
         />
-        <div className="flex flex-col w-full h-full">
-          <motion.div
+        <div className="flex flex-col w-full h-full  ">
+          {/* <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
             className={HomeTitleClass}
-          >
-            <h1 className="text-6xl md:text-9xl font-semibold tracking-normal ">
+          > */}
+          <div className={HomeTitleClass} >
+            <h1 className="text-6xl md:text-9xl font-semibold tracking-normal 
+            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md">
               可视心脏
             </h1>
-            <h2 className="text-2xl  md:text-6xl font-bold md:px-5">
+            <h2 className="text-2xl  md:text-6xl font-bold md:px-5
+            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               Visible Heart
           </h2>
-            <h2 className="text-xs md:text-2xl  md:px-5 tracking-normal">
+            <h2 className="text-xs md:text-2xl  md:px-5 tracking-normal
+            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
               Multi-Scale and Multi-Physics Cardiac Model
             </h2>
-          </motion.div>
+          </div>
+          {/* </motion.div> */}
 
           <div className="flex flex-col items-center justify-center mb-20 ">
             <Button
@@ -210,24 +271,27 @@ function Home() {
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
+     
             >
               <img
                 src="/images/human.png?height=600&width=800"
                 alt="Project background"
-                className="w-full h-auto rounded-xl overflow-hidden shadow-2xl"
+                className="w-full h-auto rounded-xl overflow-hidden shadow-2xl 
+                 active:rotate-x-50 hover:rotate-z-45 transition-transform duration-500"
               />
             </motion.div>
           </div>
-
-          <div className="flex justify-center mt-20">
+       
+          <div className="flex justify-center mt-20 intersect-once ">
             <Button
               variant="outline"
               onClick={() => scrollToSection(highlightsRef)}
-              className="rounded-full px-8"
+              className="rounded-full px-8 "
             >
               Explore Highlights
             </Button>
           </div>
+       
         </div>
       </section>
 
@@ -284,7 +348,7 @@ function Home() {
 
           <div className="h-full container relative ">
             <div
-              className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden"
+              className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden "
               onDoubleClick={handleClick}
               role="button"
               tabIndex={0}
@@ -381,7 +445,7 @@ function Home() {
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, margin: "-100px" }}
+              // viewport={{ once: true, margin: "-100px" }}
               className="text-left"
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
@@ -405,7 +469,7 @@ function Home() {
                     scrollToSection(teamRef);
                   }}
                 >
-                  About us <span className="ml-1">&#62;</span>
+                  进一步了解 <span className="ml-1">&#62;</span>
                 </a>
               </motion.div>
             </motion.div>
@@ -431,18 +495,17 @@ function Home() {
         ref={teamRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
       >
-        <div className="container max-w-6xl mx-auto px-10">
+        <div className="container max-w-6xl mx-auto px-10 mb-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
+            // viewport={{ once: true, margin: "-100px" }}
             className=" mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
               研究团队
             </h2>
-            {/* <div className="h-1 w-20 bg-black mx-auto"></div> */}
             <p className="text-center mt-6 max-w-3xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
               Meet the brilliant minds behind our groundbreaking research and
               innovation.
@@ -459,97 +522,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-[1000px]">
-            {[
-              {
-                name: "王建安",
-                role: "Scientist",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "主要研究方向：心脏瓣膜病介入治疗和系列器械研发、冠状动脉功能评价、心肌损伤和修复的重要机制揭示等处于国际领先地位",
-              },
-              {
-                name: "计剑",
-                role: "Scientist",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "主要研究方向：材料学、生物医用高分子-生物医用界面的仿生组装与修饰",
-              },
-              {
-                name: "吴健",
-                role: "Scientist",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "主要研究方向：医学人工智能",
-              },
-              {
-                name: "Dr. Taylor Reed",
-                role: "Scientist",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
-              },
-            ].map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="group h-[400px] [transform-style:preserve-3d] transition-all duration-500"
-              >
-                <div className="relative h-full w-full rounded-xl [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-500">
-                  <div className="absolute inset-0 bg-gray-50 rounded-xl overflow-hidden shadow-lg backface-hidden">
-                    <div className="h-64 overflow-hidden">
-                      <img
-                        src={member.image || "/placeholder.svg"}
-                        alt={member.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-1">
-                        {member.name}
-                      </h3>
-                      <p className="text-gray-500 mb-3">{member.role}</p>
-                    </div>
-                  </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl p-6 [transform:rotateY(180deg)] backface-hidden shadow-lg flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold mb-4">
-                      {member.name}
-                    </h3>
-                    <p className="text-gray-300 mb-4">{member.role}</p>
-                    <p className="text-gray-100">{member.bio}</p>
-                    <div className="mt-auto pt-4 flex justify-center space-x-4">
-                      <a
-                        href="#"
-                        className="text-white hover:text-gray-300 transition-colors"
-                      >
-                        <span className="sr-only">LinkedIn</span>
-                        <svg
-                          className="h-5 w-5"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                      </a>
-                      <a
-                        href="#"
-                        className="text-white hover:text-gray-300 transition-colors"
-                      >
-                        <span className="sr-only">Twitter</span>
-                        <svg
-                          className="h-5 w-5"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <TeamCarousel members={teamMembers} />
 
           {/* <div className="h-[20vh] w-full">
             <TouchParticleText text="contact us" color="#9ade00" height="100%" />
@@ -594,7 +567,9 @@ function Home() {
         </div>
       </footer>
     </main>
+              
   );
+  
 }
 
 export default Home;
