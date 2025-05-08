@@ -3,10 +3,12 @@ import Layout2 from "./Layout2";
 import { Route, Routes } from "react-router";
 import Home from "./Home";
 import NotFoundPage from "./404";
+import About from "./pages/About";
 
 function App() {
   return (
     <Routes>
+      {/* <Route path="/about" index element={<About />} /> */}
       <Route path="/" index element={<Home />} />
       <Route
         path="travelheart/*"

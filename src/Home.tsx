@@ -8,23 +8,21 @@ import Scene from "./props/Scene";
 import Heart from "./scenes/TravelHeart/Heart";
 import { Color } from "three";
 import { InfiniteCarousel } from "./components/InfiniteCarousel";
-import TouchParticleText from "./components/TouchParticleText";
-
+import { cn } from "./lib/utils";
 
 function Home() {
   const intensity = 20;
   const color = new Color(intensity, intensity, intensity);
-  // const [showZoomable, setShowZoomable] = useState(false);
   const homeRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const highlightsRef = useRef<HTMLDivElement>(null);
   const interactiveRef = useRef<HTMLDivElement>(null);
-  const precisionMedicineRef = useRef<HTMLDivElement>(null)
-  const explorationRef = useRef<HTMLDivElement>(null)
+  const precisionMedicineRef = useRef<HTMLDivElement>(null);
+  const explorationRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
-  const [maskOpacity, setMaskOpacity] = useState(0.5);
+  const [maskOpacity, setMaskOpacity] = useState(0.3);
 
   //Handle scroll to update mask opacity and parallax effects
   useEffect(() => {
@@ -36,7 +34,10 @@ function Home() {
       const scrollPosition = window.scrollY;
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(0.1,0.5 - (scrollPosition / homeHeight) * 1.1);
+      const newOpacity = Math.max(
+        0.1,
+        0.3 - (scrollPosition / homeHeight) * 1.5
+      );
       setMaskOpacity(newOpacity);
     };
     // Add scroll event listener
@@ -44,7 +45,6 @@ function Home() {
     // Clean up
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,7 +55,6 @@ function Home() {
     ref.current?.scrollIntoView({ behavior: "instant" });
   };
 
-  
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/travelheart");
@@ -66,7 +65,7 @@ function Home() {
     const hash = location.hash;
     if (hash) {
       const sectionId = hash.slice(1);
-      console.log(sectionId);
+      // console.log(sectionId);
       if (sectionId === "3d") {
         scrollToSectionInstantly(interactiveRef);
       }
@@ -91,15 +90,13 @@ function Home() {
       id: 3,
       image: "/images/Highlights/nDisplay.png?height=400&width=600",
       title: "一键直达",
-      description:
-        "无需额外下载软件，点击网页即刻触达。",
+      description: "无需额外下载软件，点击网页即刻触达。",
     },
     {
       id: 4,
       image: "/images/Highlights/Muti.png?height=400&width=600",
       title: "多端适配",
-      description:
-        "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
+      description: "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
     },
     {
       id: 5,
@@ -121,57 +118,62 @@ function Home() {
         "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
     },
   ];
+  // 把类型提上来，这样更简洁，而且可以用三元组来简化代码
+  const buttonClass = cn(
+    "relative flex flex-col justify-center items-left gap-4 grow",
+    "w-full px-20"
+  );
 
   return (
     <main className="relative">
       {/* Home Section */}
       <section
         ref={homeRef}
-        className="min-h-svh w-screen flex flex-col items-center justify-center relative bg-black text-white
-         overflow-hidden  bg-cover bg-center bg-no-repeat bg-scroll "
+        className="h-svh w-screen relative bg-black text-white
+         overflow-hidden  bg-cover bg-center bg-no-repeat bg-scroll"
         style={{
           backgroundImage:
-          "url('/images/HomeBackground.png?height=1920&width=1080')",
+            "url('/images/HomeBackground.png?height=1920&width=1080')",
         }}
       >
         <div
-          className="absolute inset-0 w-full h-full bg-black  transition-opacity duration-300 z-10"
-          // style={{ opacity: maskOpacity }}
-          style={{ opacity: 0.5 }}
+          className="absolute w-full h-full bg-black transition-opacity duration-300"
+          style={{ opacity: maskOpacity }}
+          // style={{ opacity: 0.5 }}
         />
-
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="z-20 flex flex-col items-center justify-center text-center "
-        >
-          <h1 className="text-4xl md:text-8xl font-bold mb-4 font-['Montserrat']">
-            可视心脏
-          </h1>
-          {/* <h2 className="text-lg   md:text-5xl font-bold mb-4">
+        <div className="flex flex-col w-full h-full">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={buttonClass}
+          >
+            <h1 className="text-4xl md:text-8xl font-bold font-['Montserrat'] ">
+              可视心脏
+            </h1>
+            {/* <h2 className="text-lg   md:text-5xl font-bold mb-4">
             Travel Heart
           </h2> */}
-          <h2 className="text-xs   md:text-3xl font-semibold mb-4 font-['Montserrat']">
-            Multi-Scale and Multi-Physics Cardiac Model
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className=" bottom-40 z-20 "
-        >
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full animate-bounce "
-            onClick={() => scrollToSection(backgroundRef)}
+            <h2 className="text-xs md:text-3xl font-semibold font-['Montserrat']">
+              Multi-Scale and Multi-Physics Cardiac Model
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="flex flex-col items-center justify-center mb-20"
           >
-            <ArrowDown className="h-6 w-6" />
-          </Button>
-        </motion.div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full animate-bounce"
+              onClick={() => scrollToSection(backgroundRef)}
+            >
+              <ArrowDown className="h-6 w-6" />
+            </Button>
+          </motion.div>
+        </div>
       </section>
 
       {/* Background Section */}
@@ -180,13 +182,12 @@ function Home() {
         className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
-
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-40 ">
               由临床需求驱动。
             </h2>
           </motion.div>
@@ -195,15 +196,15 @@ function Home() {
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
               <h3 className="text-2xl font-semibold mb-1 font-['Montserrat']">
-                心脏数字孪生 
+                心脏数字孪生
               </h3>
               <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">
                 For Cardiac Digital Twins
               </h3>
-              <p className="text-lg mb-6 text-gray-700 font-['Montserrat']">
+              <p className=" text-sm md:text-lg mb-6 text-gray-700 font-['Montserrat']">
                 根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
                 目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
                 本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。
@@ -223,7 +224,7 @@ function Home() {
             </motion.div>
           </div>
 
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center mt-20">
             <Button
               variant="outline"
               onClick={() => scrollToSection(highlightsRef)}
@@ -249,13 +250,11 @@ function Home() {
             <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty">
               创新看得到，摸得着。
             </h2>
-
           </motion.div>
 
-            <main className="container mx-auto font-['Montserrat']">
-              <InfiniteCarousel items={carouselItems} />
-            </main>
-
+          <main className="container mx-auto font-['Montserrat']">
+            <InfiniteCarousel items={carouselItems} />
+          </main>
 
           <div className="flex justify-center mt-16">
             <Button
@@ -266,7 +265,6 @@ function Home() {
               Explore 3D Interactive
             </Button>
           </div>
-
         </div>
       </section>
 
@@ -274,7 +272,7 @@ function Home() {
       <section
         id="interactive"
         ref={interactiveRef}
-        className="h-full w-full flex flex-col items-center justify-center bg-black text-white py-20 "
+        className="min-h-svh w-full flex flex-col items-center justify-center bg-black text-white py-10 md:py-25"
       >
         <div className="container mx-auto px-2 md:px-6 lg:px-8 center">
           <motion.div
@@ -284,41 +282,40 @@ function Home() {
             // viewport={{ once: true, margin: "-100px" }}
             // className="text-center "
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-2  font-['Montserrat'] text-[#BBBCE2] text-center">
-            无需学习，自然上手。
+            <h2 className="text-3xl md:text-5xl font-bold mt-10  font-['Montserrat'] text-[#BBBCE2] text-center">
+              无需学习，自然上手。
             </h2>
           </motion.div>
 
-            <div className="h-full container relative ">
-              <div
-                className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden"
-                onDoubleClick={handleClick}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    handleClick();
-                  }
-                }}
-              >  
-                <Scene bg={[color]}>
-                  <Heart visible={true} />
-                </Scene>
-              </div>
-              <img
-                src={"/images/HandheldiPad.png"}
-                alt="iPad"
-                className="relative w-full object-contain center pointer-events-none"
-              />
+          <div className="h-full container relative ">
+            <div
+              className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden"
+              onDoubleClick={handleClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleClick();
+                }
+              }}
+            >
+              <Scene bg={[color]}>
+                <Heart visible={true} />
+              </Scene>
             </div>
+            <img
+              src={"/images/HandheldiPad.png"}
+              alt="iPad"
+              className="relative w-full object-contain center pointer-events-none"
+            />
+          </div>
 
-            <div className="text-center text-[10px] md:text-base mt-4 text-[#BBBCE2]  ">
-              <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
-              <p>Double-click to explore the full 3D experience</p>
-            </div> 
-  
+          <div className="text-center text-[10px] md:text-base md-4 md:-mt-30 text-[#BBBCE2]  ">
+            <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
+            <p>Double-click to explore the full 3D experience</p>
+          </div>
 
-          <div className="flex justify-center mt-5">
+          <div className="flex justify-center mt-30 md-40">
             <Button
               variant="outline"
               onClick={() => scrollToSection(precisionMedicineRef)}
@@ -329,41 +326,46 @@ function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Precision Medicine Section */}
       <section
         ref={precisionMedicineRef}
-        className="h-full w-full flex flex-col items-center justify-center bg-white text-black py-20"
+        className="min-h-svh w-full flex flex-col items-center justify-center bg-gray-200 text-black py-10"
       >
-        <div className="container max-w-6xl mx-auto px-4">
+        <div className="container max-w-6xl mx-auto px-4 mt-1 md:mt-30">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             // viewport={{ once: true, margin: "-100px" }}
-            className="text-left md:text-center "
+            className="text-center md:text-center "
           >
             <h2 className="font-bold mb-4 text-3xl md:text-5xl">让医学预见</h2>
-            <h2 className="font-bold mb-8 text-2xl  md:text-5xl">精准到每一帧生命动态。</h2>
-            
+            <h2 className="font-bold mb-8 text-2xl  md:text-5xl">
+              精准到每一帧生命动态。
+            </h2>
+
             <video
               src="/movie/HeartBeat.mp4"
               autoPlay
               loop
               muted
-              
-              className="w-full h-auto mt-8 rounded-lg  md:rounded-4xl shadow-lg"/>
+              className="w-full h-auto mt:5 md:mt-20 rounded-lg  md:rounded-4xl shadow-lg"
+            />
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-6"
+              className="mt-6 "
             >
-              <p className=" max-w-3xl mx-auto text-1xl md:text-3xl font-bold  font-['Montserrat'] ">可视人 - 物理人 - 生理人</p>
+              <p className=" max-w-3xl mt-10 mx-auto text-1xl md:text-3xl  font-['Montserrat'] ">
+                可视人 - 物理人 - 生理人
+              </p>
               <Button
                 variant="default"
-                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none mt-8"
+                className="rounded-full px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 border-none mt-10"
                 onClick={() => scrollToSection(explorationRef)}
               >
                 <span className="mr-2">+</span> 即将到来
@@ -387,8 +389,12 @@ function Home() {
               viewport={{ once: true, margin: "-100px" }}
               className="text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">探索的脚步</h2>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">从未停歇。</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
+                探索的脚步
+              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">
+                从未停歇。
+              </h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -400,8 +406,8 @@ function Home() {
                   href="#"
                   className="text-blue-500 hover:text-blue-700 text-lg flex items-center"
                   onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(teamRef)
+                    e.preventDefault();
+                    scrollToSection(teamRef);
                   }}
                 >
                   About us <span className="ml-1">&#62;</span>
@@ -438,19 +444,23 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className=" mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">研究团队</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
+              研究团队
+            </h2>
             {/* <div className="h-1 w-20 bg-black mx-auto"></div> */}
             <p className="text-center mt-6 max-w-3xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
-             Meet the brilliant minds behind our groundbreaking research and innovation.
+              Meet the brilliant minds behind our groundbreaking research and
+              innovation.
             </p>
 
             <p className=" text-left mt-6 max-w-3xl mx-auto text-gray-700 text-blance font-['Montserrat']">
-            经血管植入器械研究院由院长王建安院士领衔，
-            团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
-            建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
-            打造世界一流的经血管植入器械研发、诊疗中心和人才高地。
-            研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
-            多模态影像数据和数据挖掘、器械体内失效机理、 器械全生命周期性能优化设计、器械临床转化与应用。
+              经血管植入器械研究院由院长王建安院士领衔，
+              团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
+              建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
+              打造世界一流的经血管植入器械研发、诊疗中心和人才高地。
+              研究院主要研究方向包括：生物力学和近生理检测装备、临床大数据和人工智能、生物医用材料与植介入器械、
+              多模态影像数据和数据挖掘、器械体内失效机理、
+              器械全生命周期性能优化设计、器械临床转化与应用。
             </p>
           </motion.div>
 
@@ -489,9 +499,7 @@ function Home() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="group h-[400px] [transform-style:preserve-3d] transition-all duration-500"
               >
- 
                 <div className="relative h-full w-full rounded-xl [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-500">
-             
                   <div className="absolute inset-0 bg-gray-50 rounded-xl overflow-hidden shadow-lg backface-hidden">
                     <div className="h-64 overflow-hidden">
                       <img
@@ -547,9 +555,11 @@ function Home() {
               </motion.div>
             ))}
           </div>
-          <div className="h-[20vh] w-full">
+
+          {/* <div className="h-[20vh] w-full">
             <TouchParticleText text="contact us" color="#9ade00" height="100%" />
-          </div>
+          </div> */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -568,7 +578,7 @@ function Home() {
         </div>
       </section>
       {/* Sticky Footer */}
-      <footer className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
+      <footer className="sticky bottom-0 w-full bg-black/80 text-white py-4 z-10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm mb-2 md:mb-0">
