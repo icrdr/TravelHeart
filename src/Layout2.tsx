@@ -7,6 +7,7 @@ import { cn, sleep } from "./lib/utils";
 import Welcome from "@/scenes/Welcome";
 import { SceneRefMethods } from "@/props/Scene";
 import { useProgress } from "@react-three/drei";
+import MenuComponent from "./components/MenuComponent";
 
 const WELCOME_DURATION = 3000;
 

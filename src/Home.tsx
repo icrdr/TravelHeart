@@ -8,6 +8,8 @@ import Scene from "./props/Scene";
 import Heart from "./scenes/TravelHeart/Heart";
 import { Color } from "three";
 import { InfiniteCarousel } from "./components/InfiniteCarousel";
+import TouchParticleText from "./components/TouchParticleText";
+
 
 function Home() {
   const intensity = 20;
@@ -22,7 +24,7 @@ function Home() {
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
-  const [maskOpacity, setMaskOpacity] = useState(0.7);
+  const [maskOpacity, setMaskOpacity] = useState(0.5);
 
   //Handle scroll to update mask opacity and parallax effects
   useEffect(() => {
@@ -34,7 +36,7 @@ function Home() {
       const scrollPosition = window.scrollY;
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(0,0.7 - (scrollPosition / homeHeight) * 1.1);
+      const newOpacity = Math.max(0.1,0.5 - (scrollPosition / homeHeight) * 1.1);
       setMaskOpacity(newOpacity);
     };
     // Add scroll event listener
@@ -43,7 +45,7 @@ function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle parallax effect on background image
+
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -126,30 +128,31 @@ function Home() {
       <section
         ref={homeRef}
         className="min-h-svh w-screen flex flex-col items-center justify-center relative bg-black text-white
-         overflow-hidden  bg-cover bg-center bg-no-repeat"
+         overflow-hidden  bg-cover bg-center bg-no-repeat bg-scroll "
         style={{
           backgroundImage:
-          "url('/images/HeartClip.png?height=1920&width=1080')",
+          "url('/images/HomeBackground.png?height=1920&width=1080')",
         }}
       >
         <div
           className="absolute inset-0 w-full h-full bg-black  transition-opacity duration-300 z-10"
-          style={{ opacity: maskOpacity }}
-          // style={{ opacity: 0.9 }}
+          // style={{ opacity: maskOpacity }}
+          style={{ opacity: 0.5 }}
         />
+
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="z-20 flex flex-col items-center justify-center text-center"
+          className="z-20 flex flex-col items-center justify-center text-center "
         >
-          <h1 className="text-6xl sm:text-6xl md:text-8xl font-bold mb-4 font-['Montserrat']">
+          <h1 className="text-4xl md:text-8xl font-bold mb-4 font-['Montserrat']">
             可视心脏
           </h1>
-          {/* <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold mb-4">
+          {/* <h2 className="text-lg   md:text-5xl font-bold mb-4">
             Travel Heart
           </h2> */}
-          <h2 className="text-2xl font-semibold mb-4 font-['Montserrat']">
+          <h2 className="text-xs   md:text-3xl font-semibold mb-4 font-['Montserrat']">
             Multi-Scale and Multi-Physics Cardiac Model
           </h2>
         </motion.div>
@@ -163,7 +166,7 @@ function Home() {
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full animate-bounce"
+            className="rounded-full animate-bounce "
             onClick={() => scrollToSection(backgroundRef)}
           >
             <ArrowDown className="h-6 w-6" />
@@ -177,17 +180,15 @@ function Home() {
         className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
+            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-16">
               由临床需求驱动。
             </h2>
-            <div className="h-1 w-20 bg-black mx-auto"></div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -195,7 +196,6 @@ function Home() {
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
             >
               <h3 className="text-2xl font-semibold mb-1 font-['Montserrat']">
                 心脏数字孪生 
@@ -211,16 +211,14 @@ function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="rounded-xl overflow-hidden shadow-2xl"
             >
               <img
                 src="/images/human.png?height=600&width=800"
                 alt="Project background"
-                className="w-full h-auto"
+                className="w-full h-auto rounded-xl overflow-hidden shadow-2xl"
               />
             </motion.div>
           </div>
@@ -247,23 +245,17 @@ function Home() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">
+            <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty">
               创新看得到，摸得着。
             </h2>
-            <div className="h-1 w-20 bg-black mx-auto"></div>
+
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <main className="container mx-auto ">
+
+            <main className="container mx-auto font-['Montserrat']">
               <InfiniteCarousel items={carouselItems} />
             </main>
-          </motion.div>
+
 
           <div className="flex justify-center mt-16">
             <Button
@@ -274,6 +266,7 @@ function Home() {
               Explore 3D Interactive
             </Button>
           </div>
+
         </div>
       </section>
 
@@ -281,46 +274,24 @@ function Home() {
       <section
         id="interactive"
         ref={interactiveRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-20 "
+        className="h-full w-full flex flex-col items-center justify-center bg-black text-white py-20 "
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 center">
+        <div className="container mx-auto px-2 md:px-6 lg:px-8 center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-6"
+            // viewport={{ once: true, margin: "-100px" }}
+            // className="text-center "
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4  font-['Montserrat'] text-[#BBBCE2]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-2  font-['Montserrat'] text-[#BBBCE2] text-center">
             无需学习，自然上手。
             </h2>
-            <div className="h-1 w-20 bg-[#BBBCE2] mx-auto"></div>
-            {/* <p className="mt-6 max-w-2xl mx-auto text-neutral-300">Just drag, rotate, and zoom in as you normally would</p> */}
-            {/* <p className="mt-6 max-w-2xl mx-auto text-neutral-300">就像平常那样简单拖动、旋转、缩放</p> */}
           </motion.div>
 
-          {/* <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{  duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="h-full w-full  relative "
-            aria-label="Open 3D interactive experience (double-click to activate)"
-          > */}
             <div className="h-full container relative ">
-              {/* <div
-                className="h-[68%] w-[92.4%]  absolute top-[25.7%] left-[3.8%] rounded-2xl overflow-hidden"
-                onDoubleClick={handleClick}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    handleClick();
-                  }
-                }}
-              > */}
               <div
-                className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] rounded-2xl overflow-hidden"
+                className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden"
                 onDoubleClick={handleClick}
                 role="button"
                 tabIndex={0}
@@ -340,24 +311,20 @@ function Home() {
                 className="relative w-full object-contain center pointer-events-none"
               />
             </div>
-            <div className="text-center mt-4 text-[#BBBCE2] relative  md:-top-35 sm:-top-10">
+
+            <div className="text-center text-[10px] md:text-base mt-4 text-[#BBBCE2]  ">
               <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
               <p>Double-click to explore the full 3D experience</p>
             </div> 
-          {/* </motion.div> */}
+  
 
-           {/* <div className="text-center mt-4 text-[#BBBCE2] ">
-            <p>双击进入全屏体验</p>
-            <p>Double-click to explore the full 3D experience</p>
-          </div>  */}
-   
-          <div className="flex justify-center mt-1">
+          <div className="flex justify-center mt-5">
             <Button
               variant="outline"
               onClick={() => scrollToSection(precisionMedicineRef)}
               className="rounded-full px-8 border-white text-black hover:bg-white hover:text-blue-500"
             >
-              Learn About Precision Medicine
+              Future Research
             </Button>
           </div>
         </div>
@@ -366,25 +333,26 @@ function Home() {
       {/* Precision Medicine Section */}
       <section
         ref={precisionMedicineRef}
-        className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 text-black py-20"
+        className="h-full w-full flex flex-col items-center justify-center bg-white text-black py-20"
       >
         <div className="container max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center"
+            // viewport={{ once: true, margin: "-100px" }}
+            className="text-left md:text-center "
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">让医学预见</h2>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['Montserrat']">精准到每一帧生命动态。</h2>
+            <h2 className="font-bold mb-4 text-3xl md:text-5xl">让医学预见</h2>
+            <h2 className="font-bold mb-8 text-2xl  md:text-5xl">精准到每一帧生命动态。</h2>
             
             <video
               src="/movie/HeartBeat.mp4"
               autoPlay
-              loop={true}
+              loop
+              muted
               
-              className="w-full h-auto mt-8 rounded-lg shadow-lg"/>
+              className="w-full h-auto mt-8 rounded-lg  md:rounded-4xl shadow-lg"/>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -436,7 +404,7 @@ function Home() {
                     scrollToSection(teamRef)
                   }}
                 >
-                  进一步查看 <span className="ml-1">&#62;</span>
+                  About us <span className="ml-1">&#62;</span>
                 </a>
               </motion.div>
             </motion.div>
@@ -468,14 +436,15 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
+            className=" mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Montserrat']">研究团队</h2>
-            <div className="h-1 w-20 bg-black mx-auto"></div>
-            <p className="mt-6 max-w-2xl mx-auto text-gray-700 font-['Montserrat']">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">研究团队</h2>
+            {/* <div className="h-1 w-20 bg-black mx-auto"></div> */}
+            <p className="text-center mt-6 max-w-3xl mx-auto text-gray-700 font-['Montserrat'] text-balance">
              Meet the brilliant minds behind our groundbreaking research and innovation.
             </p>
-            <p className="text-left mt-6 max-w-2xl mx-auto text-gray-700 font-['Montserrat']">
+
+            <p className=" text-left mt-6 max-w-3xl mx-auto text-gray-700 text-blance font-['Montserrat']">
             经血管植入器械研究院由院长王建安院士领衔，
             团队聚焦经血管植入器械的重大需求，结合高端植介入医疗器械产业的发展趋势，
             建立由临床问题驱动，医学、工程和信息多学科联动的创新模式，突破新一代经血管植介入器械的关键技术，
@@ -520,9 +489,9 @@ function Home() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="group h-[400px] [transform-style:preserve-3d] transition-all duration-500"
               >
-                {/* Card container with 3D rotation on hover */}
+ 
                 <div className="relative h-full w-full rounded-xl [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-500">
-                  {/* Front of card */}
+             
                   <div className="absolute inset-0 bg-gray-50 rounded-xl overflow-hidden shadow-lg backface-hidden">
                     <div className="h-64 overflow-hidden">
                       <img
@@ -539,7 +508,6 @@ function Home() {
                     </div>
                   </div>
 
-                  {/* Back of card */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl p-6 [transform:rotateY(180deg)] backface-hidden shadow-lg flex flex-col justify-center">
                     <h3 className="text-xl font-semibold mb-4">
                       {member.name}
@@ -579,7 +547,9 @@ function Home() {
               </motion.div>
             ))}
           </div>
-
+          <div className="h-[20vh] w-full">
+            <TouchParticleText text="contact us" color="#9ade00" height="100%" />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
