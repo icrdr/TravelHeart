@@ -2,13 +2,11 @@ import TravelHeart from "@/scenes/TravelHeart/index";
 import Layout2 from "./Layout2";
 import { Route, Routes } from "react-router";
 import Home from "./Home";
-import NotFoundPage from "./404";
-import About from "./pages/About";
+import NotFoundPage from "./pages/404";
 
 function App() {
   return (
     <Routes>
-      {/* <Route path="/about" index element={<About />} /> */}
       <Route path="/" index element={<Home />} />
       <Route
         path="travelheart/*"

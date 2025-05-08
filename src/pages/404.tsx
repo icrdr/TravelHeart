@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import SplashCursor from "./components/SplashCursor";
+import SplashCursor from "../components/SplashCursor";
 
 function ErrorPage() {
   return (

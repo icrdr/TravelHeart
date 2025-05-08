@@ -22,7 +22,7 @@ function Home() {
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
-  const [maskOpacity, setMaskOpacity] = useState(0.3);
+  const [maskOpacity, setMaskOpacity] = useState(0.5);
 
   //Handle scroll to update mask opacity and parallax effects
   useEffect(() => {
@@ -35,8 +35,8 @@ function Home() {
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
       const newOpacity = Math.max(
-        0.1,
-        0.3 - (scrollPosition / homeHeight) * 1.5
+        0,
+        0.5 - (scrollPosition / homeHeight) * 1.5
       );
       setMaskOpacity(newOpacity);
     };
@@ -119,9 +119,10 @@ function Home() {
     },
   ];
   // 把类型提上来，这样更简洁，而且可以用三元组来简化代码
-  const buttonClass = cn(
-    "relative flex flex-col justify-center items-left gap-4 grow",
-    "w-full px-20"
+  const HomeTitleClass = cn(
+    "relative flex flex-col justify-center item-center md:items-left gap-2 md:gap-4 grow",
+    "font-['Montserrat'] text-center md:text-left",
+    "w-full px-10"
   );
 
   return (
@@ -131,48 +132,42 @@ function Home() {
         ref={homeRef}
         className="h-svh w-screen relative bg-black text-white
          overflow-hidden  bg-cover bg-center bg-no-repeat bg-scroll"
-        style={{
-          backgroundImage:
-            "url('/images/HomeBackground.png?height=1920&width=1080')",
-        }}
+        style={{ backgroundImage:"url('/images/HomeBackground.png?height=1920&width=1080')",}}
       >
         <div
           className="absolute w-full h-full bg-black transition-opacity duration-300"
           style={{ opacity: maskOpacity }}
-          // style={{ opacity: 0.5 }}
+
         />
         <div className="flex flex-col w-full h-full">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={buttonClass}
+            transition={{ duration: 0.9 }}
+            className={HomeTitleClass}
           >
-            <h1 className="text-4xl md:text-8xl font-bold font-['Montserrat'] ">
+            <h1 className="text-6xl md:text-9xl font-semibold tracking-normal ">
               可视心脏
             </h1>
-            {/* <h2 className="text-lg   md:text-5xl font-bold mb-4">
-            Travel Heart
-          </h2> */}
-            <h2 className="text-xs md:text-3xl font-semibold font-['Montserrat']">
+            <h2 className="text-2xl  md:text-6xl font-bold md:px-5">
+              Visible Heart
+          </h2>
+            <h2 className="text-xs md:text-2xl  md:px-5 tracking-normal">
               Multi-Scale and Multi-Physics Cardiac Model
             </h2>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="flex flex-col items-center justify-center mb-20"
-          >
+
+          <div className="flex flex-col items-center justify-center mb-20 ">
             <Button
               variant="ghost"
               size="icon"
               className="rounded-full animate-bounce"
               onClick={() => scrollToSection(backgroundRef)}
             >
-              <ArrowDown className="h-6 w-6" />
+              <ArrowDown className="h-6 w-6 " />
             </Button>
-          </motion.div>
+          </div>
+
         </div>
       </section>
 
@@ -187,21 +182,21 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-40 ">
+            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-20 md:mb-40 ">
               由临床需求驱动。
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <h3 className="text-2xl font-semibold mb-1 font-['Montserrat']">
+              <h3 className="text-lg  md:text-2xl font-semibold mb-1 font-['Montserrat'] ">
                 心脏数字孪生
               </h3>
-              <h3 className="text-1xl font-semibold mb-4 font-['Montserrat']">
+              <h3 className="text-lg  md:text-2xl font-semibold mb-4 font-['Montserrat']">
                 For Cardiac Digital Twins
               </h3>
               <p className=" text-sm md:text-lg mb-6 text-gray-700 font-['Montserrat']">
