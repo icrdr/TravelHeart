@@ -1,4 +1,4 @@
-import React from "react";
+
 
 function Window({ children, title, width }: any) {
   return (

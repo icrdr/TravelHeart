@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Billboard, CameraControls, Outlines, Text } from "@react-three/drei";
+import { CameraControls } from "@react-three/drei";
 import {
   createContext,
   Ref,
@@ -12,16 +12,14 @@ import {
 } from "react";
 import {
   EffectComposer,
-  N8AO,
   SMAA,
   ToneMapping,
-  Vignette,
 } from "@react-three/postprocessing";
 import { isMobile } from "react-device-detect";
 import { Color, Spherical } from "three";
 // import {  useSpring } from "@react-spring/three";
 // import { config } from "@react-spring/web";
-import { AutoFocusDOF } from "@/effects";
+// import { AutoFocusDOF } from "@/effects";
 import Label from "@/props/Label";
 import { fovToZoom, sleep } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router";
@@ -52,7 +50,7 @@ export const SceneContext = createContext<SceneContext | null>(null);
 
 export default function Scene({
   enabledControl = true,
-  bokehScale = 0,
+  
   labels = [],
   bookmarks = [],
   polarRotateSpeed,
@@ -65,7 +63,7 @@ export default function Scene({
   ref,
 }: {
   enabledControl?: boolean;
-  bokehScale?: number;
+  
   bookmarks?: Bookmark[];
   labels?: Label[];
   polarRotateSpeed?: number;

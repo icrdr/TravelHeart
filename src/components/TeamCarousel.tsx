@@ -207,7 +207,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
       touchStartTime = now;
     };
 
-    const handleTouchEnd = (e: TouchEvent) => {
+    const handleTouchEnd = () => {
       if (!carouselRef.current) return;
 
       touchEndTime = Date.now();

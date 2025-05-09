@@ -1,11 +1,10 @@
 import { ShiningHeart } from "@/icons";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Link, useNavigate } from "react-router";
+import { Link} from "react-router";
 
 function Title() {
-  const [isActive, setIsActive] = useState(false);
-  const navigate = useNavigate();
+  // const [isActive, setIsActive] = useState(false);
+  // const navigate = useNavigate();
   return (
     <>
       {/* <div

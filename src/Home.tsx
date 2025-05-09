@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
-import { useRef, useState } from "react";
+import {  useLocation, useNavigate } from "react-router";
+import { useRef} from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,26 +27,20 @@ function Home() {
   const teamRef = useRef<HTMLDivElement>(null);
 
   //State for mask opacity and parallax effects
-  const [maskOpacity, setMaskOpacity] = useState(0.5);
+  // const [maskOpacity, setMaskOpacity] = useState(0.5);
 
   //Handle scroll to update mask opacity and parallax effects
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!homeRef.current) return;
-      // Get the height of the home section
-      const homeHeight = homeRef.current.offsetHeight;
-      // Calculate how far we've scrolled
-      const scrollPosition = window.scrollY;
-      // Calculate opacity based on scroll position
-      // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(0, 0.5 - (scrollPosition / homeHeight) * 1.5);
-      setMaskOpacity(newOpacity);
-    };
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
-    // Clean up
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!homeRef.current) return;
+  //     const homeHeight = homeRef.current.offsetHeight;
+  //     const scrollPosition = window.scrollY;
+  //     const newOpacity = Math.max(0, 0.5 - (scrollPosition / homeHeight) * 1.5);
+  //     setMaskOpacity(newOpacity);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -141,7 +135,7 @@ function Home() {
                 const space = isMobile ? 40 : 70;
                 const offsetX = (slices.length - index) * space;
                 const offsetY = index * 15;
-                const opacity = (2 / slices.length) * (index + 1);
+                // const opacity = (2 / slices.length) * (index + 1);
                 return (
                   <div
                     key={index}

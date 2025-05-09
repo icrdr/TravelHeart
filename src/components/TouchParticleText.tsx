@@ -28,7 +28,7 @@ export default function ParticleText({
   const mousePositionRef = useRef({ x: 0, y: 0 })
   const isTouchingRef = useRef(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
+  const [, setContainerSize] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -73,7 +73,7 @@ export default function ParticleText({
       ctx.textBaseline = "middle"
 
       // Measure text width to center it properly
-      const textWidth = ctx.measureText(text).width
+      // const textWidth = ctx.measureText(text).width
 
       // Draw the text
       ctx.fillText(text, canvas.width / 2, canvas.height / 2)
@@ -86,7 +86,7 @@ export default function ParticleText({
       return fontSize / 100 // Return scale factor
     }
 
-    function createParticle(scale: number) {
+    function createParticle(_scale: number) {
       if (!ctx || !canvas || !textImageData) return null
 
       const data = textImageData.data

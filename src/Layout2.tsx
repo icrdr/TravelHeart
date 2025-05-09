@@ -1,18 +1,18 @@
 // import RotatableKnob from "@/components/RotatableKnob";
 import Title from "@/components/Title";
 // import { Flow, Heart, Valve } from "@/icons";
-import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import { cn, sleep } from "./lib/utils";
-import Welcome from "@/scenes/Welcome";
-import { SceneRefMethods } from "@/props/Scene";
-import { useProgress } from "@react-three/drei";
+// import {  useRef } from "react";
+// import { useLocation, useNavigate } from "react-router";
+import { cn } from "./lib/utils";
+// import Welcome from "@/scenes/Welcome";
+// import { SceneRefMethods } from "@/props/Scene";
+// import { useProgress } from "@react-three/drei";
 
 
-const WELCOME_DURATION = 3000;
+// const WELCOME_DURATION = 3000;
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const welcomeRef = useRef<SceneRefMethods>(null);
+  // const welcomeRef = useRef<SceneRefMethods>(null);
   // const stages = [
   //   {
   //     title: "Travel Heart",
@@ -35,8 +35,8 @@ function Layout({ children }: { children: React.ReactNode }) {
   //     icon: <Heart width={32} />,
   //   },
   // ];
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   // const stageIndex = useMemo(() => {
   //   let stageIndex = stages.findIndex((s) =>
