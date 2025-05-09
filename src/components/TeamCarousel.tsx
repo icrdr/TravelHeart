@@ -364,7 +364,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
         <Button
           variant="outline"
           size="icon"
-          className="h-12 w-12 rounded-full bg-white/90 shadow-md backdrop-blur-sm hover:bg-white"
+          className="h-12 w-12 rounded-full bg-white/90 shadow-md backdrop-blur-sm hover:bg-white cursor-pointer"
           onClick={() => scroll("right")}
         >
           <ChevronRight className="h-6 w-6" />
@@ -395,7 +395,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
       >
         <motion.div
-          className="flex gap-6 px-8"
+          className="flex gap-6 px-8 cursor-pointer"
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
           onDragStart={() => setIsDragging(true)}

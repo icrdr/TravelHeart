@@ -46,16 +46,16 @@ function Layout({ children }: { children: React.ReactNode }) {
   //   return stageIndex;
   // }, [location.pathname]);
 
-  const isHomePage = location.pathname === "/";
-  const [isWelcoming, setIsWelcoming] = useState(isHomePage);
-  useEffect(() => {
-    if (!isWelcoming && isHomePage) setIsWelcoming(true);
-  }, [isWelcoming, isHomePage]);
+  // const isHomePage = location.pathname === "/";
+  // const [isWelcoming, setIsWelcoming] = useState(isHomePage);
+  // useEffect(() => {
+  //   if (!isWelcoming && isHomePage) setIsWelcoming(true);
+  // }, [isWelcoming, isHomePage]);
 
-  const { progress } = useProgress();
+  // const { progress } = useProgress();
 
   return (
-    <div className="w-screen h-screen bg-gray-200 overflow-hidden relative">
+    <div className="w-screen h-screen overflow-hidden relative">
       <div
         className={cn(
           "absolute w-screen h-screen touch-none"

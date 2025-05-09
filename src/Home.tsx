@@ -120,55 +120,36 @@ function Home() {
         ref={backgroundRef}
         className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 text-black py-20"
       >
-        <div className="container max-w-6xl mx-auto px-4">
+        <div className="flex flex-col container max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-20 md:mb-40 tracking-wider">
+            <h2 className="text-3xl md:text-5xl font-bold  font-['Montserrat'] text-center mb-40 md:mb-50 tracking-wider">
               由临床需求驱动。
             </h2>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              <h3 className="text-lg  md:text-2xl font-semibold mb-1 font-['Montserrat'] ">
-                心脏数字孪生
-              </h3>
-              <h3 className="text-lg  md:text-2xl font-semibold mb-4 font-['Montserrat']">
-                For Cardiac Digital Twins
-              </h3>
-              <p className=" text-sm md:text-lg mb-6 text-gray-700 font-['Montserrat']">
-                根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
-                目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
-                本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。
-              </p>
-            </motion.div>
-
+          <div className="grid-cols-2 gap-4 items-center ">
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="relative h-[500px] w-full"
+              className="relative h-[250px] md:h-[500px] w-full flex flex-row-reverse"
             >
-              <div className="absolute">
-                {slices.map((s, index) => {
-                  const space = isMobile ? 40 : 70;
-                  const offsetX = (slices.length - index) * space;
-                  const offsetY = index * 10;
-                  const opacity = (2 / slices.length) * (index + 1);
-                  return (
-                    <div
-                      key={index}
-                      style={{ left: offsetX, top: offsetY }}
-                      className={`absolute -rotate-x-20 -rotate-y-40 
-                  duration-300 hover:-translate-y-8 active:-translate-y-8`}
-                    >
+              {slices.map((s, index) => {
+                const space = isMobile ? 40 : 70;
+                const offsetX = (slices.length - index) * space;
+                const offsetY = index * 15;
+                const opacity = (2 / slices.length) * (index + 1);
+                return (
+                  <div
+                    key={index}
+                    style={{ left: offsetX, top: offsetY }}
+                    className={`-rotate-x-20 -rotate-y-40 
+                      duration-300 hover:-translate-y-8 active:-translate-y-8 cursor-pointer shrink grow`}
+                  >
+                    <div className="absolute">
                       <Window title={s.name}>
                         <div
                           className={
@@ -177,99 +158,45 @@ function Home() {
                         >
                           <img
                             src={s.url}
-                            className="absolute size-[500px] object-cover top-2/3 left-1/2 -translate-1/2"
+                            className="absolute size-[300px] md:size-[500px] object-cover top-2/3 left-1/2 -translate-1/2"
                           />
                         </div>
                       </Window>
                     </div>
-                  );
-                })}
-                {/* 
-                <div
-                  className="absolute  left-60 transform 
-                  -rotate-x-20 -rotate-y-40  translate-x-45 transition-all 
-                  duration-300 hover:-translate-y-8 active:-translate-y-8
-                  blur-[0.8px]"
-                >
-                  <img
-                    src="/images/Level/MolecularLevel.png?height=600&width=800"
-                    alt="Molecular"
-                  />
-                </div>
-                <div
-                  className="absolute   left-50 transform 
-                    -rotate-x-20 -rotate-y-40 translate-x-35 transition-all duration-300 
-                    hover:-translate-y-8 active:-translate-y-8
-                    blur-[0.4px]"
-                >
-                  <img
-                    src="/images/Level/CellLevel.png?height=600&width=800"
-                    alt="Cell"
-                  />
-                </div>
-                <div
-                  className="absolute   left-40 transform 
-                    -rotate-x-20 -rotate-y-40 translate-x-25 transition-all duration-300 
-                    hover:-translate-y-8 active:-translate-y-8"
-                >
-                  <img
-                    src="/images/Level/TissueLevel2.png?height=600&width=800"
-                    alt="Tissue2"
-                  />
-                </div>
-                <div
-                  className="absolute  left-30 transform 
-                    -rotate-x-20 -rotate-y-40 translate-x-15 transition-all duration-300 
-                    hover:-translate-y-8 active:-translate-y-8"
-                >
-                  <img
-                    src="/images/Level/TissueLevel3.png?height=600&width=800"
-                    alt="Tissue3"
-                  />
-                </div>
-
-                <div
-                  className="absolute   left-20 transform 
-                    -rotate-x-20 -rotate-y-40 translate-x-5 transition-all duration-300 
-                    hover:-translate-y-8 active:-translate-y-8"
-                >
-                  <img
-                    src="/images/Level/OrganLevel.png?height=600&width=800"
-                    alt="Organ"
-                  />
-                </div>
-                <div
-                  className="absolute  left-10 transform 
-                    -rotate-x-20 -rotate-y-40  -translate-x-10 transition-all duration-300 
-                    hover:-translate-y-8 active:-translate-y-8"
-                >
-                  <img
-                    src="/images/Level/HumanLevel.png?height=600&width=800"
-                    alt="Human"
-                  />
-                </div> */}
-                {/* <div
-                  className="absolute  -left-25  
-                    "
-                >
-                  <img src="/images/Level/HeartWhite.png?" alt="Human" />
-                </div> */}
+                  </div>
+                );
+              })}
+              <div className="shrink grow">
+                <img
+                  src="/images/Level/HeartWhite.png"
+                  alt="Project background"
+                  className="absolute object-contain size-80 md:size-135 -translate-x-1/3 -translate-y-1/3"
+                />
               </div>
             </motion.div>
-            {/* <img
-                src="/images/human.png?height=600&width=800"
-                alt="Project background"
-                className="w-full h-auto rounded-xl overflow-hidden shadow-2xl 
-                 "
-              /> */}
-            {/* <img
-                src="/images/HandiPhone.png?height=600&width=800"
-                alt="Project background"
-                className="w-full h-full pl-10"
-              /> */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative grid-rows-2 gap-6 flex "
+            >
+              <div>
+                <h3 className=" text-base  md:text-1xl font-semibold  font-['Montserrat'] ">
+                  心脏数字孪生
+                </h3>
+                <h3 className=" text-sm md:text-1xl font-semibold  font-['Montserrat'] ">
+                  For Cardiac Digital Twins
+                </h3>
+              </div>
+              <p className=" text-sm  md:text-sm mb-20 text-gray-500  font-['Montserrat']  md:max-w-4/5 shrink text-pretty">
+                根据患者特定的临床数据开发的数据驱动的心血管系统计算模型可以帮助改进诊断和个性化治疗。
+                目前，心血管力学的数据驱动计算建模相关研究成果，大多仅存于学术论文，缺乏直观的可视化呈现与交互式应用。
+                本项目聚焦突破这一现状，以直观的可视化精彩呈现多尺度心血管建模、心脏血流模拟、瓣膜力学模拟等复杂研究，实现更广泛的应用。
+              </p>
+            </motion.div>
           </div>
 
-          <div className="flex justify-center mt-20 intersect-once ">
+          <div className="flex justify-center mt-1 intersect-once ">
             <Button
               variant="outline"
               onClick={() => scrollToSection(highlightsRef)}
@@ -328,14 +255,14 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center "
           >
-            <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-6 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
+            <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-10 md:mb-20 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
               无需学习，自然上手。
             </h2>
           </motion.div>
 
           <div className="h-full container relative ">
             <div
-              className="h-[55%] w-[47%]  absolute top-[13%] left-[26.5%] md:rounded-2xl rounded overflow-hidden "
+              className="h-[58%] w-[65%]  absolute top-[6%] left-[18%] md:rounded-2xl rounded overflow-hidden cursor-grab"
               onDoubleClick={handleClick}
               role="button"
               tabIndex={0}
@@ -350,7 +277,7 @@ function Home() {
               </Scene>
             </div>
             <img
-              src={"/images/HandheldiPad.png"}
+              src={"/images/iPadHand.png"}
               alt="iPad"
               className="relative w-full object-contain center pointer-events-none"
             />
