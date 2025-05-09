@@ -11,8 +11,9 @@ import { InfiniteCarousel } from "./components/InfiniteCarousel";
 import { cn } from "./lib/utils";
 import { TeamCarousel } from "./components/TeamCarousel";
 import Marquee from "./components/Marquee";
-
-
+import { carouselItems, teamMembers, slices } from "./data.json";
+import { isMobile } from "react-device-detect";
+import Window from "@/components/Window";
 
 function Home() {
   const intensity = 20;
@@ -38,10 +39,7 @@ function Home() {
       const scrollPosition = window.scrollY;
       // Calculate opacity based on scroll position
       // Start with 0.7 opacity and fade to 0 as we scroll through the home section
-      const newOpacity = Math.max(
-        0,
-        0.5 - (scrollPosition / homeHeight) * 1.5
-      );
+      const newOpacity = Math.max(0, 0.5 - (scrollPosition / homeHeight) * 1.5);
       setMaskOpacity(newOpacity);
     };
     // Add scroll event listener
@@ -55,7 +53,8 @@ function Home() {
   };
   const scrollToSectionInstantly = (
     ref: React.RefObject<HTMLDivElement | null>
-) => {ref.current?.scrollIntoView({ behavior: "instant" });
+  ) => {
+    ref.current?.scrollIntoView({ behavior: "instant" });
   };
 
   const navigate = useNavigate();
@@ -76,146 +75,33 @@ function Home() {
   }, [location]);
 
   // Sample data for the carousel
-  const carouselItems = [
-    {
-      id: 1,
-      image: "/images/Highlights/CoronaryArtery_v002.png?height=400&width=600",
-      title: "从宏观到微观",
-      description: "多尺度心脏模型，跨层级解析心血管的生理和病理机制.",
-    },
-    {
-      id: 2,
-      image: "/images/Highlights/Valve_v002.png?height=400&width=600",
-      title: "生理模块",
-      description: "生动呈现心脏收缩与舒张的动态模拟过程及血流动力学模拟。",
-    },
-    {
-      id: 3,
-      image: "/images/Highlights/Valve.png?height=400&width=600",
-      title: "病理模块",
-      description: "展示疾病在时间尺度上的动态演示，点击出现相关信息。",
-    },
-    {
-      id: 4,
-      image: "/images/Highlights/DigtalTwin_v002.png?height=400&width=600",
-      title: "个性化模型",
-      description:
-        "基于患者真实影像数据生成个性化心脏模型，精准反映个体心脏实际情况。",
-    },
-    {
-      id: 5,
-      image: "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
-      title: "超简单上手",
-      description: "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。",
-    },
-    {
-      id: 6,
-      image: "/images/Highlights/nDisplay.png?height=400&width=600",
-      title: "一键直达",
-      description: "无需额外下载软件，点击网页即刻触达。",
-    },
-    {
-      id: 7,
-      image: "/images/Highlights/Muti.png?height=400&width=600",
-      title: "多端适配",
-      description: "在电脑、平板、手机、会议大屏等终端上随时随地运行。",
-    },
-
-  ];
-
-
-  // Team members data with more entries
-    const teamMembers = [
-      {
-        name: "Dr. Alex Morgan",
-        role: "Lead Researcher",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Ph.D. in Computer Science with 15+ years of experience in AI and machine learning.",
-      },
-      {
-        name: "Dr. Jamie Chen",
-        role: "Data Scientist",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Expert in statistical modeling and big data analytics with publications in top journals.",
-      },
-      {
-        name: "Dr. Sam Wilson",
-        role: "UX Researcher",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Specializes in human-computer interaction and user-centered design methodologies.",
-      },
-      {
-        name: "Dr. Taylor Reed",
-        role: "Technology Lead",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Systems architect with expertise in scalable infrastructure and emerging technologies.",
-      },
-      {
-        name: "Dr. Jordan Lee",
-        role: "Biomedical Engineer",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Specializes in cardiac modeling and simulation with a focus on translational medicine.",
-      },
-      {
-        name: "Dr. Casey Zhang",
-        role: "Computational Physicist",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Expert in multi-physics simulations and high-performance computing for biological systems.",
-      },
-      {
-        name: "Dr. Riley Patel",
-        role: "Clinical Advisor",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Cardiologist with extensive experience in applying computational models to clinical practice.",
-      },
-      {
-        name: "Dr. Morgan Smith",
-        role: "Research Coordinator",
-        image: "/src/icons/Heart.svg?height=400&width=400",
-        bio: "Manages cross-disciplinary research initiatives and coordinates international collaborations.",
-      },
-    ]
 
   // 把类型提上来，这样更简洁，而且可以用三元组来简化代码
-   const HomeTitleClass = cn(
+  const homeTitleClass = cn(
     "relative flex flex-col justify-center item-center md:items-left gap-2 xl:gap-4 grow",
-    "font-['Montserrat'] text-center md:text-left",
-    "w-full px-10 md:pt-60 xl:px-30",
-   );
-
+    "font-['Montserrat'] text-center",
+    "w-full px-10 md:pt-60 xl:px-30"
+  );
+  const textShowUpClass =
+    "motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md";
+  const maskClass =
+    "absolute w-full h-full bg-gradient-to-b from-transparent to-black transition-opacity duration-300";
 
   return (
     <main className="relative">
       {/* Home Section */}
       <section
         ref={homeRef}
-        className="h-svh w-screen relative bg-black text-white
+        className="h-svh w-screen relative bg-[url('/images/Heart.jpg')] text-white
          overflow-hidden  bg-cover bg-center bg-no-repeat bg-scroll"
-        style={{ backgroundImage:"url('/images/HomeBackground.png?height=1920&width=1080')",}}
       >
-        <div
-          className="absolute w-full h-full bg-black/50 transition-opacity duration-300"
-          // style={{ opacity: maskOpacity }}
-
-        />
-        <div className="flex flex-col w-full h-full  ">
-
-          <div className={HomeTitleClass} >
-            <h1 className="text-5xl  md:text-9xl  xl:text-[220px] font-bold tracking-wide 
-            motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md ">
-              可视心脏
-            </h1>
-            <h2 className="text-2xl  md:text-7xl xl:text-[100px] font-bold md:px-5 
-             ">
-              Visible  Heart
-          </h2>
-            <h2 className="text-xs md:text-2xl  xl:text-4xl md:px-5 tracking-normal 
-             ">
-              Multi-Scale and Multi-Physics Cardiac Model
-            </h2>
+        <div className={maskClass} />
+        <div className="flex flex-col w-full h-full">
+          <div className={homeTitleClass}>
+            <h1 className={textShowUpClass}>可视心脏</h1>
+            <h2>Visible Heart</h2>
+            <h3>Multi-Scale and Multi-Physics Cardiac Model</h3>
           </div>
-       
-
           <div className="flex flex-col items-center justify-center mb-20 ">
             <Button
               variant="ghost"
@@ -226,7 +112,6 @@ function Home() {
               <ArrowDown className="h-6 w-6 " />
             </Button>
           </div>
-
         </div>
       </section>
 
@@ -269,18 +154,121 @@ function Home() {
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-     
+              className="relative h-[500px] w-full"
             >
-              {/* active:rotate-x-50 hover:rotate-z-45 transition-transform duration-500 */}
-              <img
+              <div className="absolute">
+                {slices.map((s, index) => {
+                  const space = isMobile ? 40 : 70;
+                  const offsetX = (slices.length - index) * space;
+                  const offsetY = index * 10;
+                  const opacity = (2 / slices.length) * (index + 1);
+                  return (
+                    <div
+                      key={index}
+                      style={{ left: offsetX, top: offsetY }}
+                      className={`absolute -rotate-x-20 -rotate-y-40 
+                  duration-300 hover:-translate-y-8 active:-translate-y-8`}
+                    >
+                      <Window title={s.name}>
+                        <div
+                          className={
+                            "relative w-[180px] md:w-[300px] h-[120px] md:h-[200px] overflow-hidden"
+                          }
+                        >
+                          <img
+                            src={s.url}
+                            className="absolute size-[500px] object-cover top-2/3 left-1/2 -translate-1/2"
+                          />
+                        </div>
+                      </Window>
+                    </div>
+                  );
+                })}
+                {/* 
+                <div
+                  className="absolute  left-60 transform 
+                  -rotate-x-20 -rotate-y-40  translate-x-45 transition-all 
+                  duration-300 hover:-translate-y-8 active:-translate-y-8
+                  blur-[0.8px]"
+                >
+                  <img
+                    src="/images/Level/MolecularLevel.png?height=600&width=800"
+                    alt="Molecular"
+                  />
+                </div>
+                <div
+                  className="absolute   left-50 transform 
+                    -rotate-x-20 -rotate-y-40 translate-x-35 transition-all duration-300 
+                    hover:-translate-y-8 active:-translate-y-8
+                    blur-[0.4px]"
+                >
+                  <img
+                    src="/images/Level/CellLevel.png?height=600&width=800"
+                    alt="Cell"
+                  />
+                </div>
+                <div
+                  className="absolute   left-40 transform 
+                    -rotate-x-20 -rotate-y-40 translate-x-25 transition-all duration-300 
+                    hover:-translate-y-8 active:-translate-y-8"
+                >
+                  <img
+                    src="/images/Level/TissueLevel2.png?height=600&width=800"
+                    alt="Tissue2"
+                  />
+                </div>
+                <div
+                  className="absolute  left-30 transform 
+                    -rotate-x-20 -rotate-y-40 translate-x-15 transition-all duration-300 
+                    hover:-translate-y-8 active:-translate-y-8"
+                >
+                  <img
+                    src="/images/Level/TissueLevel3.png?height=600&width=800"
+                    alt="Tissue3"
+                  />
+                </div>
+
+                <div
+                  className="absolute   left-20 transform 
+                    -rotate-x-20 -rotate-y-40 translate-x-5 transition-all duration-300 
+                    hover:-translate-y-8 active:-translate-y-8"
+                >
+                  <img
+                    src="/images/Level/OrganLevel.png?height=600&width=800"
+                    alt="Organ"
+                  />
+                </div>
+                <div
+                  className="absolute  left-10 transform 
+                    -rotate-x-20 -rotate-y-40  -translate-x-10 transition-all duration-300 
+                    hover:-translate-y-8 active:-translate-y-8"
+                >
+                  <img
+                    src="/images/Level/HumanLevel.png?height=600&width=800"
+                    alt="Human"
+                  />
+                </div> */}
+                {/* <div
+                  className="absolute  -left-25  
+                    "
+                >
+                  <img src="/images/Level/HeartWhite.png?" alt="Human" />
+                </div> */}
+              </div>
+            </motion.div>
+            {/* <img
                 src="/images/human.png?height=600&width=800"
                 alt="Project background"
                 className="w-full h-auto rounded-xl overflow-hidden shadow-2xl 
                  "
-              />
-            </motion.div>
+              /> */}
+            {/* <img
+                src="/images/HandiPhone.png?height=600&width=800"
+                alt="Project background"
+                className="w-full h-full pl-10"
+              /> */}
           </div>
-       
+
           <div className="flex justify-center mt-20 intersect-once ">
             <Button
               variant="outline"
@@ -290,7 +278,6 @@ function Home() {
               Explore Highlights
             </Button>
           </div>
-       
         </div>
       </section>
 
@@ -304,6 +291,7 @@ function Home() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty tracking-wider">
               创新看得到，摸得着。
@@ -337,8 +325,8 @@ function Home() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            // viewport={{ once: true, margin: "-100px" }}
-            // className="text-center "
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center "
           >
             <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-6 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
               无需学习，自然上手。
@@ -398,7 +386,9 @@ function Home() {
             // viewport={{ once: true, margin: "-100px" }}
             className="text-center md:text-center "
           >
-            <h2 className="font-bold mb-4 text-3xl md:text-5xl tracking-wider">让医学预见</h2>
+            <h2 className="font-bold mb-4 text-3xl md:text-5xl tracking-wider">
+              让医学预见
+            </h2>
             <h2 className="font-bold mb-8 text-2xl  md:text-5xl tracking-wider">
               精准到每一帧生命动态。
             </h2>
@@ -414,10 +404,10 @@ function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6}}
+              transition={{ duration: 0.6 }}
             >
               <p className=" mt-10 mx-auto text-1xl md:text-2xl  font-['Montserrat'] text-center text-gray-500">
-                可视人 -  物理人  -  生理人
+                可视人 - 物理人 - 生理人
               </p>
               <Button
                 variant="default"
@@ -504,18 +494,17 @@ function Home() {
             以临床需求为原点
             </h2> */}
             <h2 className="text-2xl md:text-5xl font-bold mb:2 md:mb-6 text-center  ont-['Montserrat'] tracking-wider">
-            这支多学科交叉团队，
+              这支多学科交叉团队，
             </h2>
             <h2 className="text-2xl  md:text-5xl font-bold mb-6 text-center font-['Montserrat'] tracking-wider">
-            用开创性研究重塑未来。
+              用开创性研究重塑未来。
             </h2>
-            <h2 className="text-blue-500 hover:text-blue-700 text-sm  mb:text-4xl mb:mt-10 font-bold text-center font-['Montserrat']"
-            >
+            <h2 className="text-blue-500 hover:text-blue-700 text-sm  mb:text-4xl mb:mt-10 font-bold text-center font-['Montserrat']">
               Meet the brilliant minds !
             </h2>
           </motion.div>
           <TeamCarousel members={teamMembers} />
-          <Marquee/>
+          <Marquee />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -531,14 +520,11 @@ function Home() {
             >
               Back to Top
             </Button>
-
           </motion.div>
-
         </div>
       </section>
       {/* Sticky Footer */}
-      <footer 
-      className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
+      <footer className="sticky bottom-0 w-full bg-black text-white py-4 z-10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm mb-2 md:mb-0">
@@ -558,11 +544,8 @@ function Home() {
           </div>
         </div>
       </footer>
-      
     </main>
-              
   );
-  
 }
 
 export default Home;

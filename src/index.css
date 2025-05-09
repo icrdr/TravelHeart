@@ -1,7 +1,6 @@
 @import url("https://fontsapi.zeoseven.com/519/main/result.css");
 @import url("https://fontsapi.zeoseven.com/384/main/result.css");
 
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -22,7 +21,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 
 .clip-rect {
   clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%);
@@ -141,6 +139,19 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-5xl md:text-7xl xl:text-7xl font-bold;
+  }
+  h2 {
+    @apply text-xl md:text-4xl xl:text-4xl font-bold;
+  }
+  h3 {
+    @apply text-xs md:text-sm xl:text-lg;
+  }
+
+  section {
+    @apply overflow-hidden;
   }
 }
 
