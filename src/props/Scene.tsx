@@ -12,23 +12,22 @@ import {
 } from "react";
 import {
   EffectComposer,
-  N8AO,
   SMAA,
   ToneMapping,
-  Vignette,
 } from "@react-three/postprocessing";
 import { isMobile } from "react-device-detect";
 import { Color, Spherical } from "three";
-import { animated, useSpring } from "@react-spring/three";
-import { config } from "@react-spring/web";
-import { AutoFocusDOF, LensDistortionn } from "@/effects";
+// import {  useSpring } from "@react-spring/three";
+// import { config } from "@react-spring/web";
+// import { AutoFocusDOF } from "@/effects";
 import Label from "@/props/Label";
 import { fovToZoom, sleep } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router";
 import { Bookmark, CameraData } from "./BlenderScene";
 import { ToneMappingMode } from "postprocessing";
+// import { Stats } from '@react-three/drei'
 
-const AnimatedLensDistortionn = animated(LensDistortionn);
+// const AnimatedLensDistortionn = animated(LensDistortionn);
 
 export interface SceneRefMethods {
   resetCamera: (enableTransition: boolean) => void;
@@ -40,17 +39,19 @@ export type SceneContext = {
   onDispose?: (bookmarks: Bookmark[]) => void;
 };
 
-export type label = {
+export type Label = {
   bookmark: string;
   title: string;
   subtitle?: string;
+  location?: [x: number, y: number, z: number];
 };
 
 export const SceneContext = createContext<SceneContext | null>(null);
 
 export default function Scene({
   enabledControl = true,
-  bokehScale = 0,
+  // @ts-ignore
+  bokehScale=0,
   labels = [],
   bookmarks = [],
   polarRotateSpeed,
@@ -63,9 +64,9 @@ export default function Scene({
   ref,
 }: {
   enabledControl?: boolean;
-  bokehScale?: number;
+  bokehScale?:number;
   bookmarks?: Bookmark[];
-  labels?: label[];
+  labels?: Label[];
   polarRotateSpeed?: number;
   azimuthRotateSpeed?: number;
   truckSpeed?: number;
@@ -79,20 +80,20 @@ export default function Scene({
   const navigate = useNavigate();
   const prevLocationRef = useRef(location);
   const [bookmarkList, setBookmarkList] = useState<Bookmark[]>(bookmarks);
-  const [distortion, setDistortion] = useState(0);
+  // const [distortion, setDistortion] = useState(0);
 
-  const springs = useSpring({
-    distortion,
-    config: config.slow,
-    onRest: () => {
-      setDistortion(0);
-    },
-  });
+  // const springs = useSpring({
+  //   distortion,
+  //   config: config.slow,
+  //   onRest: () => {
+  //     setDistortion(0);
+  //   },
+  // });
 
-  const d = springs.distortion.to([-1, 1], [-1, 1]);
-  const f = springs.distortion
-    .to((value) => (value > 0 ? value : 0))
-    .to([0, 0.5], [1, 0.05]);
+  // const d = springs.distortion.to([-1, 1], [-1, 1]);
+  // const f = springs.distortion
+  //   .to((value) => (value > 0 ? value : 0))
+  //   .to([0, 0.5], [1, 0.05]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isTransitionRef = useRef(false);
@@ -120,9 +121,9 @@ export default function Scene({
     if (!controls) return;
     controls.addEventListener("control", async () => {
       if (isTransitionRef.current) return;
-      if (controls.distance >= controls.maxDistance) {
+      if (controls.distance >= controls.maxDistance * 0.9) {
         if (!!location.hash) {
-          console.log("start leap out");
+          // console.log("start leap out");
           navigate(location.pathname);
         } else {
           const pathComponents = location.pathname.split("/");
@@ -136,13 +137,12 @@ export default function Scene({
             navigate(nextPathname);
           }
         }
-      } else if (controls.distance <= controls.minDistance) {
+      } else if (controls.distance <= controls.minDistance * 1.1) {
         if (!location.hash) return;
         const nextPathname =
           location.pathname + location.hash.replace("#", "/");
         if (!!bookmarkList?.find((b) => b.name === nextPathname)) {
-          console.log("start leap in");
-          console.log(nextPathname);
+          // console.log("start leap in");
           startTransition();
           controls.zoomTo(100, true);
           await sleep(200);
@@ -151,7 +151,7 @@ export default function Scene({
       }
     });
     controls.addEventListener("rest", () => {
-      console.log("rest");
+      // console.log("rest");
       endTransition();
     });
     return () => {
@@ -163,30 +163,35 @@ export default function Scene({
     if (!controls) return;
     const url = location.pathname + location.hash;
     const bookmark = bookmarkList?.find((b) => b.name === url);
-    if (!bookmark) return;
-    const prevLocation = prevLocationRef.current;
-    if (
-      prevLocation.pathname === location.pathname &&
-      prevLocation.hash !== location.hash
-    ) {
-      // jump between labels in same level of view
-      moveCamera(bookmark.data, true);
-    } else if (
-      prevLocation.pathname !== location.pathname &&
-      prevLocation.pathname.includes(location.pathname)
-    ) {
-      // leap from low level to high level
-      console.log("end leap out");
+    if (!bookmark) {
+      const bookmark = bookmarkList?.find((b) => !b.name.includes("#"));
+      if (!bookmark) return;
       moveCamera(bookmark.data);
-      controls.dolly(10);
-      startTransition();
-      controls.dolly(-5, true);
     } else {
-      console.log("end leap in");
-      moveCamera(bookmark.data);
-      controls.dolly(-10);
-      startTransition();
-      controls.dolly(5, true);
+      const prevLocation = prevLocationRef.current;
+      if (
+        prevLocation.pathname === location.pathname &&
+        prevLocation.hash !== location.hash
+      ) {
+        // jump between labels in same level of view
+        moveCamera(bookmark.data, true);
+      } else if (
+        prevLocation.pathname !== location.pathname &&
+        prevLocation.pathname.includes(location.pathname)
+      ) {
+        // leap from low level to high level
+        // console.log("end leap out");
+        moveCamera(bookmark.data);
+        controls.dolly(10);
+        startTransition();
+        controls.dolly(-5, true);
+      } else {
+        // console.log("end leap in");
+        moveCamera(bookmark.data);
+        controls.dolly(-10);
+        startTransition();
+        controls.dolly(5, true);
+      }
     }
   }, [controls, location]);
 
@@ -242,11 +247,11 @@ export default function Scene({
 
     const spherical = new Spherical();
     controls.getSpherical(spherical);
-    controls.minDistance = spherical.radius * 0.05;
-    controls.maxDistance = spherical.radius * 0.8;
+    controls.minDistance = spherical.radius * 0.5;
+    controls.maxDistance = spherical.radius * 1.5;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
-    controls.minPolarAngle = Math.max(spherical.phi - 0.5, 0);
+    controls.minPolarAngle = Math.max(spherical.phi - 1, 0);
     controls.maxPolarAngle = Math.min(spherical.phi + 0.5, Math.PI);
   };
 
@@ -269,7 +274,7 @@ export default function Scene({
     <SceneContext.Provider value={sceneContext}>
       <Canvas
         onScroll={(_e) => {
-          console.log("first");
+          // console.log("first");
         }}
         ref={canvasRef}
         shadows
@@ -277,7 +282,7 @@ export default function Scene({
           antialias: false,
           logarithmicDepthBuffer: false,
         }}
-        dpr={isMobile ? 0.5 : 1}
+        dpr={isMobile ? 0.9 : 1}
       >
         <group name="main" visible={!!controls}>
           {children}
@@ -290,12 +295,11 @@ export default function Scene({
             .filter((l) => l.bookmark.split("#")[0] === location.pathname)
             .map((l, i) => {
               const bookmark = bookmarkList.find((b) => b.name === l.bookmark);
-              console.log(bookmark);
               if (!bookmark) return null;
               return (
                 <Label
                   key={i}
-                  position={bookmark!.data.lookat}
+                  position={l.location || bookmark!.data.lookat}
                   title={l.title}
                   content={l.subtitle}
                   onClick={() => {
@@ -311,44 +315,55 @@ export default function Scene({
         <CameraControls
           ref={handleControlsReady}
           makeDefault
-          smoothTime={0.5}
+          smoothTime={0.2}
           polarRotateSpeed={enabledControl ? polarRotateSpeed || 0.5 : 0}
           azimuthRotateSpeed={enabledControl ? azimuthRotateSpeed || 0.5 : 0}
           truckSpeed={enabledControl ? truckSpeed || 0.5 : 0}
           dollySpeed={enabledControl ? dollySpeed || 0.5 : 0}
-          restThreshold={0.1}
+          restThreshold={0.2}
         />
 
         <EffectComposer enabled={true} multisampling={0}>
           <>
             {!isMobile && (
               <>
-                <AutoFocusDOF
+                {/* <AutoFocusDOF
                   bokehScale={bokehScale} //blur scale
                   resolution={4096} //resolution (decrease for performance)
-                  // mouseFocus //if false, the center of the screen will be the focus
-                  focusSpeed={0.5} // milliseconds to focus a new detected mesh
-                  focalLength={0.003} //how far the focus should go
-                />
-                <N8AO
+                  mouseFocus //if false, the center of the screen will be the focus
+                  focusSpeed={0.1} // milliseconds to focus a new detected mesh
+                  focalLength={0.004} //how far the focus should go
+                /> */}
+                {/* <N8AO
                   color="#f5efe6"
                   aoRadius={5}
                   intensity={40}
                   aoSamples={32}
                   denoiseSamples={8}
-                />
+                /> */}
               </>
             )}
           </>
-          <Vignette
+          {/* <Vignette
             offset={0.5} // vignette offset
             darkness={0.5} // vignette darkness
             eskil={false} // Eskil's vignette technique
-          />
-          <AnimatedLensDistortionn distortion={d} focalLength={f} />
+          /> */}
+          {/* <AnimatedLensDistortionn distortion={d} focalLength={f} /> */}
           <SMAA />
           <ToneMapping mode={ToneMappingMode.AGX} />
         </EffectComposer>
+        {/* <Stats /> */}
+        {/* <Billboard
+        follow={true}
+        lockX={false}
+        lockY={false}
+        lockZ={false} // Lock the rotation on the z axis (default=false)
+        >
+        <Text font={"/fonts/Montserrat-SemiBold.ttf"} fontSize={0.8} color="white" anchorX="center" anchorY="top" position={[0, 3.5, -8.5]} >
+          Travel            Heart
+        </Text>
+        </Billboard> */}
       </Canvas>
     </SceneContext.Provider>
   );

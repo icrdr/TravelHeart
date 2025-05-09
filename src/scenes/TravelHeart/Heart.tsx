@@ -3,7 +3,9 @@ import { useContext } from "react";
 import BlenderScene from "@/props/BlenderScene";
 import { SceneContext } from "@/props/Scene";
 
-const SCENE_PATH = "/HeartScene_Qiyi.glb";
+const SCENE_PATH = "/scenes/HeartWithInnerScene_Qiyi.glb";
+// const SCENE_PATH = "/scenes/HeartScene_Qiyi-transformed.glb";
+// const SCENE_PATH = "/HeartScene_Baked.glb";
 useGLTF.preload(SCENE_PATH);
 
 export default function Heart({ visible }: { visible: boolean }) {

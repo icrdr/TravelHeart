@@ -1,69 +1,70 @@
-import RotatableKnob from "@/components/RotatableKnob";
+// import RotatableKnob from "@/components/RotatableKnob";
 import Title from "@/components/Title";
-import { Flow, Heart, Valve } from "@/icons";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import { cn, sleep } from "./lib/utils";
-import Welcome from "@/scenes/Welcome";
-import { SceneRefMethods } from "@/props/Scene";
-import { useProgress } from "@react-three/drei";
+// import { Flow, Heart, Valve } from "@/icons";
+// import {  useRef } from "react";
+// import { useLocation, useNavigate } from "react-router";
+import { cn } from "./lib/utils";
+// import Welcome from "@/scenes/Welcome";
+// import { SceneRefMethods } from "@/props/Scene";
+// import { useProgress } from "@react-three/drei";
 
-const WELCOME_DURATION = 3000;
+
+// const WELCOME_DURATION = 3000;
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const welcomeRef = useRef<SceneRefMethods>(null);
-  const stages = [
-    {
-      title: "Travel Heart",
-      pathname: "/travelheart",
-      icon: <Heart width={32} />,
-    },
-    {
-      title: "Blood Flow",
-      pathname: "/bloodflow",
-      icon: <Flow width={32} />,
-    },
-    {
-      title: "Valve",
-      pathname: "/valve",
-      icon: <Valve width={32} />,
-    },
-    {
-      title: "Heart Beat",
-      pathname: "/heartbeat",
-      icon: <Heart width={32} />,
-    },
-  ];
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const welcomeRef = useRef<SceneRefMethods>(null);
+  // const stages = [
+  //   {
+  //     title: "Travel Heart",
+  //     pathname: "/travelheart",
+  //     icon: <Heart width={32} />,
+  //   },
+  //   {
+  //     title: "Blood Flow",
+  //     pathname: "/bloodflow",
+  //     icon: <Flow width={32} />,
+  //   },
+  //   {
+  //     title: "Valve",
+  //     pathname: "/valve",
+  //     icon: <Valve width={32} />,
+  //   },
+  //   {
+  //     title: "Heart Beat",
+  //     pathname: "/heartbeat",
+  //     icon: <Heart width={32} />,
+  //   },
+  // ];
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
-  const stageIndex = useMemo(() => {
-    let stageIndex = stages.findIndex((s) =>
-      location.pathname.startsWith(s.pathname)
-    );
-    stageIndex = stageIndex < 0 ? 0 : stageIndex;
-    return stageIndex;
-  }, [location.pathname]);
+  // const stageIndex = useMemo(() => {
+  //   let stageIndex = stages.findIndex((s) =>
+  //     location.pathname.startsWith(s.pathname)
+  //   );
+  //   stageIndex = stageIndex < 0 ? 0 : stageIndex;
+  //   return stageIndex;
+  // }, [location.pathname]);
 
-  const isHomePage = location.pathname === "/";
-  const [isWelcoming, setIsWelcoming] = useState(isHomePage);
-  useEffect(() => {
-    if (!isWelcoming && isHomePage) setIsWelcoming(true);
-  }, [isWelcoming, isHomePage]);
+  // const isHomePage = location.pathname === "/";
+  // const [isWelcoming, setIsWelcoming] = useState(isHomePage);
+  // useEffect(() => {
+  //   if (!isWelcoming && isHomePage) setIsWelcoming(true);
+  // }, [isWelcoming, isHomePage]);
 
-  const { progress } = useProgress();
+  // const { progress } = useProgress();
 
   return (
-    <div className="w-screen h-screen bg-gray-200 overflow-hidden relative">
+    <div className="w-screen h-screen overflow-hidden relative">
       <div
         className={cn(
-          "absolute w-screen h-screen touch-none",
-          isHomePage ? "opacity-0" : "opacity-100"
+          "absolute w-screen h-screen touch-none"
         )}
       >
         {children}
+        
       </div>
-      {isWelcoming && (
+      {/* {isWelcoming && (
         <div
           className={cn(
             "absolute w-screen h-screen",
@@ -111,17 +112,18 @@ function Layout({ children }: { children: React.ReactNode }) {
               : `${progress.toFixed(1)}% loaded`}{" "}
           </div>
         </div>
-      )}
-      <RotatableKnob
+      )} */}
+      {/* <RotatableKnob
         show={!isHomePage}
         items={stages}
         stageIndex={stageIndex}
         onChange={(step) => {
           navigate(stages[step].pathname);
         }}
-      />
+      /> */}
       {/* <Info /> */}
       <Title />
+
     </div>
   );
 }
