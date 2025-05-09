@@ -249,7 +249,7 @@ export default function Scene({
     const spherical = new Spherical();
     controls.getSpherical(spherical);
     controls.minDistance = spherical.radius * 0.5;
-    controls.maxDistance = spherical.radius * 1.75;
+    controls.maxDistance = spherical.radius * 1.5;
     // controls.minAzimuthAngle = spherical.theta - 2;
     // controls.maxAzimuthAngle = spherical.theta + 2;
     controls.minPolarAngle = Math.max(spherical.phi - 1, 0);
