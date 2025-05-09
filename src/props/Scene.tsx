@@ -50,7 +50,8 @@ export const SceneContext = createContext<SceneContext | null>(null);
 
 export default function Scene({
   enabledControl = true,
-  
+  // @ts-ignore
+  bokehScale=0,
   labels = [],
   bookmarks = [],
   polarRotateSpeed,
@@ -63,7 +64,7 @@ export default function Scene({
   ref,
 }: {
   enabledControl?: boolean;
-  
+  bokehScale?:number;
   bookmarks?: Bookmark[];
   labels?: Label[];
   polarRotateSpeed?: number;
