@@ -3,8 +3,8 @@
     {
       "id": 1,
       "image": "/images/Highlights/CoronaryArtery_v002.png?height=400&width=600",
-      "title": "从宏观到微观",
-      "description": "多尺度心脏模型，跨层级解析心血管的生理和病理机制."
+      "title": "多尺度心脏模型",
+      "description": "从宏观到微观，跨层级解析心血管的生理和病理机制。"
     },
     {
       "id": 2,
@@ -15,8 +15,9 @@
     {
       "id": 3,
       "image": "/images/Highlights/Valve.png?height=400&width=600",
-      "title": "病理模块",
-      "description": "展示疾病在时间尺度上的动态演示，点击出现相关信息。"
+      "title": "多组学数据整合",
+      "description": "通过整合转录组、蛋白质组、代谢组等多组学数据，对比心脏在健康与疾病状态下的分子特征。精准洞察这些分子机制，是开发突破性疗法、实现心血管疾病个体化防治的关键所在。"
+  
     },
     {
       "id": 4,
@@ -27,21 +28,16 @@
     {
       "id": 5,
       "image": "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
-      "title": "超简单上手",
-      "description": "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。"
+      "title": "多物理耦合模拟",
+      "description": "基于CFD，FEA和electrophsiology，实现对心脏结构-功能关系的多物理耦合模拟。精准预测心肌应力分布、血流异常及电活动紊乱，为个体化诊疗和介入策略提供动态仿真平台。"
     },
     {
       "id": 3,
       "image": "/images/Highlights/nDisplay.png?height=400&width=600",
-      "title": "一键直达",
-      "description": "无需额外下载软件，点击网页即刻触达。"
-    },
-    {
-      "id": 4,
-      "image": "/images/Highlights/Muti.png?height=400&width=600",
-      "title": "多端适配",
-      "description": "在电脑、平板、手机、会议大屏等终端上随时随地运行。"
+      "title": "人工智能对细胞命运轨迹的预测",
+      "description": "间充质细胞→肌成纤维细胞的转分化过程；免疫细胞亚群在心肌梗死后的功能转换；血管内皮细胞在动脉粥样硬化中的空间-时间命运路径。"
     }
+
   ],
   "teamMembers": [
     {

@@ -215,7 +215,7 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty tracking-wider">
-              创新看得到，摸得着。
+              创新看得到。
             </h2>
           </motion.div>
 
@@ -251,7 +251,7 @@ function Home() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-10 md:mb-20 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
               {/* 无需学习，自然上手。 */}
-              多尺度心脏模型
+              多尺度心脏模型。
             </h2>
             
           </motion.div>
