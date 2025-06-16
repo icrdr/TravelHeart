@@ -294,7 +294,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Precision Medicine Section */}
+      {/* Future Research Section */}
       <section
         ref={precisionMedicineRef}
         className="min-h-svh w-full flex flex-col items-center justify-center bg-gray-200 text-black py-10"
