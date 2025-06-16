@@ -250,8 +250,10 @@ function Home() {
             className="text-center "
           >
             <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-10 md:mb-20 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
-              无需学习，自然上手。
+              {/* 无需学习，自然上手。 */}
+              多尺度心脏模型
             </h2>
+            
           </motion.div>
 
           <div className="h-full container relative ">
@@ -278,7 +280,7 @@ function Home() {
           </div>
 
           <div className="text-center text-[10px] md:text-base md-4 md:-mt-30 text-[#BBBCE2]  ">
-            <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
+            <p>双击进入全屏，点击标签后双指缩放进行跨尺度穿梭</p>
             <p>Double-click to explore the full 3D experience</p>
           </div>
 
