@@ -90,11 +90,11 @@
     }
   ],
   "slices":[
-    {"name":"Molecular Level","url":"/images/Level/MolecularLevel.png?height=600&width=800"},
-    {"name":"Cell Level","url":"/images/Level/CellLevel.png?height=600&width=800"},
-    {"name":"Tissue Level","url":"/images/Level/TissueLevel2.png?height=600&width=800"},
-    {"name":"Tissue Level","url":"/images/Level/TissueLevel3.png?height=600&width=800"},
-    {"name":"Organ Level","url":"/images/Level/OrganLevel.png?height=600&width=800"},
-    {"name":"Human Level","url":"/images/Level/HumanLevel.png?height=600&width=800"}
+    {"name":"Molecular","url":"/images/Level/MolecularLevel.png?height=600&width=800"},
+    {"name":"Cell","url":"/images/Level/CellLevel.png?height=600&width=800"},
+    {"name":"Tissue","url":"/images/Level/TissueLevel3.png?height=600&width=800"},
+    {"name":"Organ","url":"/images/Level/OrganLevel.png?height=600&width=800"},
+    {"name":"Organism","url":"/images/Level/HumanLevel.png?height=600&width=800"}
    ]
+  
 }

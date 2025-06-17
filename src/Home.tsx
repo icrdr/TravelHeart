@@ -14,6 +14,11 @@ import Marquee from "./components/Marquee";
 import { carouselItems, teamMembers, slices } from "./data.json";
 import { isMobile } from "react-device-detect";
 import Window from "@/components/Window";
+import ThreeDCardDemo from "./components/ExplorationCards";
+
+
+
+
 
 function Home() {
   const intensity = 20;
@@ -383,20 +388,20 @@ function Home() {
                 </a>
               </motion.div>
             </motion.div>
-
-            <motion.div
+            <ThreeDCardDemo/>
+            {/* <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
               className="rounded-xl overflow-hidden shadow-2xl"
-            >
+            >      
               <img
                 src="/images/Paper.png"
                 alt="Library of research materials arranged in a circular pattern with copper hanging lamps"
                 className="w-full h-auto"
               />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
