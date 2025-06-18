@@ -14,7 +14,7 @@
     },
     {
       "id": 3,
-      "image": "/images/Highlights/Valve.png?height=400&width=600",
+      "image": "/images/Highlights/MutiOmics.png?height=400&width=600",
       "title": "多组学数据整合",
       "description": "通过整合转录组、蛋白质组、代谢组等多组学数据，对比心脏在健康与疾病状态下的分子特征。精准洞察这些分子机制，是开发突破性疗法、实现心血管疾病个体化防治的关键所在。"
   
@@ -27,13 +27,13 @@
     },
     {
       "id": 5,
-      "image": "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
+      "image": "/images/Highlights/cfd.png?height=400&width=600",
       "title": "多物理耦合模拟",
       "description": "基于CFD，FEA和electrophsiology，实现对心脏结构-功能关系的多物理耦合模拟。精准预测心肌应力分布、血流异常及电活动紊乱，为个体化诊疗和介入策略提供动态仿真平台。"
     },
     {
       "id": 3,
-      "image": "/images/Highlights/nDisplay.png?height=400&width=600",
+      "image": "/images/Highlights/AI.png?height=400&width=600",
       "title": "人工智能对细胞命运轨迹的预测",
       "description": "间充质细胞→肌成纤维细胞的转分化过程；免疫细胞亚群在心肌梗死后的功能转换；血管内皮细胞在动脉粥样硬化中的空间-时间命运路径。"
     }
@@ -90,8 +90,8 @@
     }
   ],
   "slices":[
-    {"name":"Molecular","url":"/images/Level/MolecularLevel.png?height=600&width=800"},
-    {"name":"Cell","url":"/images/Level/CellLevel.png?height=600&width=800"},
+    {"name":"Molecular","url":"/images/Level/8HCQ.png?height=600&width=800"},
+    {"name":"Cell","url":"/images/Level/CellLevel002.png?height=600&width=800"},
     {"name":"Tissue","url":"/images/Level/TissueLevel3.png?height=600&width=800"},
     {"name":"Organ","url":"/images/Level/OrganLevel.png?height=600&width=800"},
     {"name":"Organism","url":"/images/Level/HumanLevel.png?height=600&width=800"}
