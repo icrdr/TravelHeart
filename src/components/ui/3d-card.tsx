@@ -107,9 +107,9 @@ type CardItemProps<T extends ElementType> = {
   rotateZ?: number | string
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children">
 
-type CardItemRef<T extends ElementType> = React.ComponentPropsWithRef<T> extends { ref?: React.Ref<infer R> }
-  ? R
-  : never;
+// type CardItemRef<T extends ElementType> = React.ComponentPropsWithRef<T> extends { ref?: React.Ref<infer R> }
+//   ? R
+//   : never;
 
 // Define the function as a non-generic, using "div" as the default element type
 const CardItemInner = (
