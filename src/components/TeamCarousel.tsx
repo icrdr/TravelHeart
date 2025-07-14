@@ -404,7 +404,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
           {extendedMembers.map((member, index) => (
             <div
               key={index}
-              className="group h-[400px] min-w-[280px] max-w-[280px] [transform-style:preserve-3d] transition-all duration-500"
+              className="group h-[420px] min-w-[280px] max-w-[280px] [transform-style:preserve-3d] transition-all duration-500"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
@@ -412,24 +412,24 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
               <div className="relative h-full w-full rounded-xl [transform-style:preserve-3d] active:[transform:rotateY(180deg)] md:group-hover:[transform:rotateY(180deg)] transition-all duration-500">
                 {/* Front of card */}
                 <div className="absolute inset-0 bg-gray-50 rounded-xl overflow-hidden shadow-lg backface-hidden">
-                  <div className="h-64 overflow-hidden">
+                  <div className="h-78 overflow-hidden">
                     <img
                       src={member.image || "/src/icons/Heart.svg"}
                       alt={member.name}
                       className="w-full h-full object-cover transition-transform duration-500 active:scale-110 md:group-hover:scale-110"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-4">
                     <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                    <p className="text-gray-500 mb-3">{member.role}</p>
+                    <p className="text-gray-500 text-sm mb-3">{member.role}</p>
                   </div>
                 </div>
 
                 {/* Back of card */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl p-6 [transform:rotateY(180deg)] backface-hidden shadow-lg flex flex-col justify-center">
-                  <h3 className="text-xl font-semibold mb-4">{member.name}</h3>
-                  <p className="text-gray-300 mb-4">{member.role}</p>
-                  <p className="text-gray-100">{member.bio}</p>
+                  {/* <h3 className="text-xl font-semibold mb-4">{member.name}</h3> */}
+                  {/* <p className="text-gray-300 mb-2 text-sm">{member.role}</p> */}
+                  <p className="text-gray-100 text-[11px]">{member.bio}</p>
                 </div>
               </div>
             </div>

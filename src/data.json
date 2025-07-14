@@ -3,8 +3,8 @@
     {
       "id": 1,
       "image": "/images/Highlights/CoronaryArtery_v002.png?height=400&width=600",
-      "title": "从宏观到微观",
-      "description": "多尺度心脏模型，跨层级解析心血管的生理和病理机制."
+      "title": "多尺度心脏模型",
+      "description": "从宏观到微观，跨层级解析心血管的生理和病理机制。"
     },
     {
       "id": 2,
@@ -14,9 +14,10 @@
     },
     {
       "id": 3,
-      "image": "/images/Highlights/Valve.png?height=400&width=600",
-      "title": "病理模块",
-      "description": "展示疾病在时间尺度上的动态演示，点击出现相关信息。"
+      "image": "/images/Highlights/MutiOmics.png?height=400&width=600",
+      "title": "多组学数据整合",
+      "description": "通过整合转录组、蛋白质组、代谢组等多组学数据，对比心脏在健康与疾病状态下的分子特征。精准洞察这些分子机制，是开发突破性疗法、实现心血管疾病个体化防治的关键所在。"
+  
     },
     {
       "id": 4,
@@ -26,79 +27,74 @@
     },
     {
       "id": 5,
-      "image": "/images/Highlights/FreeTouch_v001.png?height=400&width=600",
-      "title": "超简单上手",
-      "description": "用你习惯的缩放、旋转、拖拽手势，自由探索心脏的各个部分。"
+      "image": "/images/Highlights/cfd.png?height=400&width=600",
+      "title": "多物理耦合模拟",
+      "description": "基于CFD，FEA和electrophsiology，实现对心脏结构-功能关系的多物理耦合模拟。精准预测心肌应力分布、血流异常及电活动紊乱，为个体化诊疗和介入策略提供动态仿真平台。"
     },
     {
       "id": 3,
-      "image": "/images/Highlights/nDisplay.png?height=400&width=600",
-      "title": "一键直达",
-      "description": "无需额外下载软件，点击网页即刻触达。"
-    },
-    {
-      "id": 4,
-      "image": "/images/Highlights/Muti.png?height=400&width=600",
-      "title": "多端适配",
-      "description": "在电脑、平板、手机、会议大屏等终端上随时随地运行。"
+      "image": "/images/Highlights/AI.png?height=400&width=600",
+      "title": "人工智能对细胞命运轨迹的预测",
+      "description": "间充质细胞→肌成纤维细胞的转分化过程；免疫细胞亚群在心肌梗死后的功能转换；血管内皮细胞在动脉粥样硬化中的空间-时间命运路径。"
     }
+
   ],
   "teamMembers": [
     {
-      "name": "Dr. Alex Morgan",
-      "role": "Lead Researcher",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Ph.D. in Computer Science with 15+ years of experience in AI and machine learning."
+      "name": "王建安",
+      "role": "杭州市滨江区浙医二院经血管植入器械研究院院长",
+      "image": "/images/Team/Wang.jpg?height=400&width=400",
+      "bio": "中国科学院院士、医学博士、教授、博士生导师，第十四届全国政协委员，现任浙江大学医学院附属第二医院党委书记、心脏中心主任，浙江大学医学院副院长 ( 兼 )，国家重大科学研究计划项目 ( 973 ) 、重点研发计划等项目负责人。围绕心力衰竭后心脏功能重建的重大科学问题，尤其是心脏瓣膜和冠脉功能学领域取得了系列创新性成果，是我国著名及有国际影响力的心血管专家。担任美国心脏病学会杂志亚洲刊 ( JACC:Aisa ) 首任主编、欧洲心脏先天结构与瓣膜介入大会 ( CSI ) 共同主席、全国统编教材《 内科学 》共同主编、经血管植入器械全国重点实验室主任、杭州市滨江区浙医二院经血管植入器械研究院院长、国家心血管病区域医疗中心 ( 建设 ) 主任、中华医学会心血管病学分会副主任委员，以通讯作者在 NEJM、Circulation、JACC、Science Translational Medicine、Circulation Research、PNAS 等发表论著 150 余篇，以第一完成人获国家科技进步奖二等奖、省部一等奖4项;获何梁何利奖、谈家桢临床医学奖、吴阶平科技进步奖及全国白求恩奖章。"
     },
     {
-      "name": "Dr. Jamie Chen",
-      "role": "Data Scientist",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Expert in statistical modeling and big data analytics with publications in top journals."
+      "name": "计剑",
+      "role": "杭州市滨江区浙医二院经血管植入器械研究院常务副院长",
+      "image": "/images/Team/Ji.png?height=400&width=400",
+      "bio": "教授，经血管植入器械全国重点实验室副主任，杭州市滨江区浙医二院经血管植入器械研究院常务副院长，科技部中国葡萄牙先进材料联合创新中心主任，浙江大学生物医用大分子研究所所长，国家杰出青年科学基金获得者，入选国家“万人计划”科技创新领军人才、教育部长江特聘教授、科技部中青年科技创新领军人才。主要从事生物医用材料的应用基础研究，在生命体系与材料界面的生物相容性和生物功能性方面开展了系统深入的研究，形成了采用过程仿生的自组装行为制备具有结构和功能仿生的新型生物材料的研究特色，并将该原理应用到现代介入医用材料和组织工程材料的设计和研发中，是我国具有自主知识产权的心动系列细胞膜仿生药物涂层支架的主要发明人。近年来在包括 Advanced Materials，Biomaterials，Biomacromolecules 等核心期刊发表 SCI，EI 收录论文百余篇（ 影响因子 10 以上论文 10 篇，7 以上 43 篇，5 以上 71 篇 ）。先后承担国家重点研发计划项目 1 项、自然科学基金重点项目 2 项、国家高技术研究发展计划（ 863计划 ）2项、国家重大基础研究计划（ 973 ）2项、教育部霍英东基金 1 项、以及浙江省自然科学基金重点项目和省科技计划项目多项。"
     },
     {
-      "name": "Dr. Sam Wilson",
-      "role": "UX Researcher",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Specializes in human-computer interaction and user-centered design methodologies."
+      "name": "胡新央",
+      "role": "浙江大学医学院附属第二医院副院长,心血管内科主任医师、教授、博士生导师",
+      "image": "/images/Team/Hu.png?height=400&width=400",
+      "bio": "浙江大学医学院附属第二医院副院长，心血管内科主任医师、教授、博士生导师，经血管植入器械全国重点实验室副主任，国家杰青，国家“万人计划”，中国青年女科学家团队奖获得者，科技部重点研发项目负责人。以项目负责人承担科技部重点研发项目、863 项目、国家自然科学基金项目等多个国家级项目。担任美国心脏病学会专家会员、欧洲心脏病学会专家会员、中华医学会心血管病学分会青年委员会委员、中国医师协会心血管内科医师分会心血管疾病临床研究工作组副组长等，并担任 Circulation Research 、JACC Asia 国际期刊编委和 JCMM 杂志副主编。在 New England Journal Of Medicine、Science Translational Medicine、Circulation Research、Hepatology、Advanced Science 等杂志发表 SCI 论文，获美国心脏年会（ AHA ）最佳循环研究论文奖。"
     },
     {
-      "name": "Dr. Taylor Reed",
-      "role": "Technology Lead",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Systems architect with expertise in scalable infrastructure and emerging technologies."
+      "name": "高长有",
+      "role": "教授",
+      "image": "/images/Team/Gao.png?height=400&width=400",
+      "bio": "教授，国家自然科学基金杰出青年基金获得者，主要从事组织微环境响应性和自适应性组织修复再生材料、炎症调控材料、梯度生物材料研究，建立了超支化聚赖氨酸的简便高效合成技术，研发了主链含有酮缩硫醇、MMP 响应性多肽的新型弹性体和水凝胶材料，制备了有效调控糖尿病创面、感染性创面、心梗、骨关节炎、肺炎等微环境的自适性材料和治疗体系，实现上了上述组织的有效修复与再生。作为负责人先后承担国家重点研发计划项目1项，国家自然科学基金面上项目 6 项，国家杰出青年科学基金1项，国家自然科学基金重点项目 3 项，国家自然科学基金重点国际合作项目 1 项，生物材料 973 计划课题 2 项，国家重点研发计划项目 1 项，参与 973 计划“组织工程的基本科学问题”研究。在Angewandte Chemie、Advanced Materials、Biomaterials 等本学科国内外核心期刊发表 SCI 收录论文 400 余篇，被他人引用 12000 余次；个人 H 因子 70。"
     },
     {
-      "name": "Dr. Jordan Lee",
-      "role": "Biomedical Engineer",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Specializes in cardiac modeling and simulation with a focus on translational medicine."
+      "name": "吴健",
+      "role": "求是特聘教授教育部长江学者",
+      "image": "/images/Team/WuJian.png?height=400&width=400",
+      "bio": "浙江大学求是特聘教授，教育部长江学者，浙江大学国际联合学院副院长、浙大睿医人工智能研究中心主任、人工智能医疗器械标准化技术归口单位专家组专家、中国计算机学会理事、中国卫生信息学会国际合作与交流专业委员会副主任委员、浙江省医疗数据产业研究会副理事长。研究兴趣集中在医学人工智能，发表 SCI / EI 收录论文 100 余篇。主持国家自然科学基金项目 6 项、国家重点研发项目子课题 2 项。授权发明专利 50 余项，软件著作 8 项。获得人工智能医疗器械三类证 1 项，二类证 3 项。2007 年获教育部科技进步一等奖，2008 年获浙江省科技进步一等奖，2009 年获中国商业联合会科学技术特等奖，2010 年获国家科技进步奖二等奖，2014 年获浙江省科技进步一等奖，2018 年获浙江省科技进步二等奖，2021 年获中国计算机学会科技进步优秀奖，2022 年获中国电子学会科学技术二等奖，2022 年获中国产学研合作创新成果二等奖。"
     },
     {
-      "name": "Dr. Casey Zhang",
-      "role": "Computational Physicist",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Expert in multi-physics simulations and high-performance computing for biological systems."
+      "name": "蒋峻",
+      "role": "杭州市滨江区浙医二院经血管植入器械研究院副院长",
+      "image": "/images/Team/Jiang.png?height=400&width=400",
+      "bio": "医学博士，主任医师，博士生导师，浙江大学医学院附属第二医院心内科常务副主任,卫生部冠心病介入诊疗及心律失常介入诊疗培训导师。擅长冠心病、高血压、心力衰竭和心律失常诊断与治疗，尤其对冠心病介入治疗、心律失常导管消融、先天性心脏病介入治疗有所心得，曾到马来西亚等知名心脏中心演示冠脉慢性完全闭塞病变介入治疗，获国家自然科学基金、浙江省重点研发计划项目支持，发表论文 40 余篇。"
     },
     {
-      "name": "Dr. Riley Patel",
-      "role": "Clinical Advisor",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Cardiologist with extensive experience in applying computational models to clinical practice."
+      "name": "刘先宝",
+      "role": "主任医师，博士生导师",
+      "image": "/images/Team/Liu.png?height=400&width=400",
+      "bio": "主任医师，现任浙江大学医学院附属第二医院心血管副主任，中华医学会心血管病分会结构学组委员、中国医师协会心血管青年医师委员会委员、浙江省医学会心血管病学分会委员。1998 年 - 2003 年浙江大学医学院学习，获临床医学学士学位；2003 年 - 2004 年参加共青团中央组织的扶贫接力计划研究生支教团，到四川省凉山州昭觉县参加支教工作；2004 年 - 2009 年浙江大学医学院硕博连读，获内科学（ 心血管病 ）科学博士学位；2007 年 9 月 - 2008 年 9 月在美国 Medical University of South Carolina 和 Emory University 进行访问学习；曾多次到德国学习经导管心脏瓣膜介入治疗。至今主持国家 863 计划（ 青年科学家专题 ）1 项、国家自然科学基金 3 项；累计发表 SCI 论文 60 余篇。主要的研究方向为干细胞心肌修复治疗以及心脏瓣膜病的基础研究、临床研究和新器械研发。"
     },
     {
-      "name": "Dr. Morgan Smith",
-      "role": "Research Coordinator",
-      "image": "/src/icons/Heart.svg?height=400&width=400",
-      "bio": "Manages cross-disciplinary research initiatives and coordinates international collaborations."
+      "name": "熊旭深",
+      "role": "博士生导师 “ 百人计划 ” 研究员",
+      "image": "/images/Team/Xiong.png?height=400&width=400",
+      "bio": "博士生导师，浙江大学医学中心/良渚实验室“百人计划”研究员，浙江大学医学院附属第二医院双聘研究员。长期从事以计算生物学和实验生物学手段相结合（“ 干湿结合 ”）的方式进行遗传疾病的多组学调控机制研究，致力于利用生物信息学和人工智能探究表观转录组和表观基因组在疾病中发挥作用的生物学机制，为疾病的预测、诊断和治疗提供了多个层次的分子靶点。以第一作者（ 含共同 ）发表 Nature Genetics，Molecular Cell，Nature Chemical Biology 等多篇高水平文章。他引超过 1500 次，H-index=11，获2019 年“吴瑞奖学金”。"
     }
   ],
   "slices":[
-    {"name":"Molecular Level","url":"/images/Level/MolecularLevel.png?height=600&width=800"},
-    {"name":"Cell Level","url":"/images/Level/CellLevel.png?height=600&width=800"},
-    {"name":"Tissue Level","url":"/images/Level/TissueLevel2.png?height=600&width=800"},
-    {"name":"Tissue Level","url":"/images/Level/TissueLevel3.png?height=600&width=800"},
-    {"name":"Organ Level","url":"/images/Level/OrganLevel.png?height=600&width=800"},
-    {"name":"Human Level","url":"/images/Level/HumanLevel.png?height=600&width=800"}
+    {"name":"Molecular","url":"/images/Level/8HCQ.png?height=600&width=800"},
+    {"name":"Cell","url":"/images/Level/CellLevel002.png?height=600&width=800"},
+    {"name":"Tissue","url":"/images/Level/TissueLevel3.png?height=600&width=800"},
+    {"name":"Organ","url":"/images/Level/OrganLevel.png?height=600&width=800"},
+    {"name":"Organism","url":"/images/Level/HumanLevel.png?height=600&width=800"}
    ]
+  
 }

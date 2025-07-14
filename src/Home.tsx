@@ -14,6 +14,11 @@ import Marquee from "./components/Marquee";
 import { carouselItems, teamMembers, slices } from "./data.json";
 import { isMobile } from "react-device-detect";
 import Window from "@/components/Window";
+import ThreeDCardDemo from "./components/ExplorationCards";
+
+
+
+
 
 function Home() {
   const intensity = 20;
@@ -215,7 +220,7 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-3xl md:text-5xl font-bold font-['Montserrat'] text-center mb-16 text-pretty tracking-wider">
-              创新看得到，摸得着。
+              创新看得到。
             </h2>
           </motion.div>
 
@@ -250,8 +255,10 @@ function Home() {
             className="text-center "
           >
             <h2 className="text-3xl md:text-5xl font-bold mt-1 mb-10 md:mb-20 font-['Montserrat'] text-[#BBBCE2] text-center tracking-wider">
-              无需学习，自然上手。
+              {/* 无需学习，自然上手。 */}
+              多尺度心脏模型。
             </h2>
+            
           </motion.div>
 
           <div className="h-full container relative ">
@@ -278,7 +285,7 @@ function Home() {
           </div>
 
           <div className="text-center text-[10px] md:text-base md-4 md:-mt-30 text-[#BBBCE2]  ">
-            <p>双击进入全屏，点击标签双指缩放进行穿梭</p>
+            <p>双击进入全屏，点击标签后双指缩放进行跨尺度穿梭</p>
             <p>Double-click to explore the full 3D experience</p>
           </div>
 
@@ -294,7 +301,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Precision Medicine Section */}
+      {/* Future Research Section */}
       <section
         ref={precisionMedicineRef}
         className="min-h-svh w-full flex flex-col items-center justify-center bg-gray-200 text-black py-10"
@@ -381,20 +388,20 @@ function Home() {
                 </a>
               </motion.div>
             </motion.div>
-
-            <motion.div
+            <ThreeDCardDemo/>
+            {/* <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
               className="rounded-xl overflow-hidden shadow-2xl"
-            >
+            >      
               <img
                 src="/images/Paper.png"
                 alt="Library of research materials arranged in a circular pattern with copper hanging lamps"
                 className="w-full h-auto"
               />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
