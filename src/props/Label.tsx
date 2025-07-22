@@ -36,10 +36,10 @@ export default function Label({
             if (onClick) onClick();
           }}
         >
-          <div className="text-xs  md:text-sm text-stone-700 md:text-gray-800  tracking-wider ">
+          <div className="text-base  md:text-lg font-bold text-stone-700 md:text-gray-800  tracking-wider ">
             {title}
           </div>
-          <div className="text-sm md:text-[10px] ">{content}</div>
+          <div className="text-base md:text-base ">{content}</div>
         </div>
       </Html>
     </group>
